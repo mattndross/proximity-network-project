@@ -3,8 +3,8 @@
 Proximity network es una aplicacion que permite a los consumidores de productos organicos y de proximidad encontrar tiendas que vendan los productos que buscan.
 
 Personas y acciones:
--El usuario consumidor puede visualizar la ubicacion de las tiendas que venden los producto que busca.
--El usuario tienda puede publicar su perfil y los productos que vende.
+- El usuario consumidor puede visualizar la ubicacion de las tiendas que venden los producto que busca.
+- El usuario tienda puede publicar su perfil y los productos que vende.
 
 tecnologías:
 - Fron-end:
