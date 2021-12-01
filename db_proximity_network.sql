@@ -24,4 +24,4 @@ create table products (
     origin          varchar(50) 
 )
 
-INSERT into stores ()
+
