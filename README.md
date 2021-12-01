@@ -1,6 +1,6 @@
 # proximity-network-project
 
-Proximity network es una aplicacion que permite a los consumidores de productos organicos y de proximidad encontrar tiendas que vendan los productos que buscan.
+Proximity network es una aplicacion que te permite buscar tanto tiendas como productos orgánicos cerca de ti.
 
 Personas y acciones:
 - El usuario consumidor, al buscar un producto, visualizará la ubicación de las tiendas que venden dicho producto.  
