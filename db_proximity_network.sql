@@ -27,4 +27,5 @@ create table products (
 insert into stores (name, mail, store_category, web_page, address, city, postcode, country, store_manager, manager_contact) 
         values ()
 
-
+insert into products (name, category, product_type, quantity_weight, price, producer, origin)       
+        values ()
