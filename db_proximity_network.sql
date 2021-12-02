@@ -24,4 +24,7 @@ create table products (
     origin          varchar(50) 
 )
 
+insert into stores (name, mail, store_category, web_page, address, city, postcode, country, store_manager, manager_contact) 
+        values ()
+
 
