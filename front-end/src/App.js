@@ -1,9 +1,19 @@
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import "./App";
+import LandingPage from "./pages/LandingPage";
+import ProductList from "./pages/ProductsList";
 
 function App() {
   return (
-    <div className="App">
-      <button className="btn btn-pn">Este es un boton de proximity network </button>
+    <div className="wrapper">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/products" element={<ProductList />} />
+          
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
