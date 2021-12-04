@@ -10,7 +10,8 @@ create table stores (
     postcode        VARCHAR(12),
     country         VARCHAR(20), 
     store_manager   varchar(50) not null, 
-    manager_contact varchar(120) not null
+    manager_contact varchar(120) not null, 
+    password        varchar(20) not null
 )
 
 create table products (
