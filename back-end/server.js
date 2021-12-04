@@ -35,7 +35,7 @@ app.get('/products', (req, res)=> {
     // displays list of products 
     pool.query('SELECT * FROM products', (error, result) => {
         console.log(result);
-        res.json(result.rows[0].name +" "+'€'+ result.rows[0].price + " "+result.rows[0].quantity_weight.slice(2,4)+ " "+'kg');
+        res.json(result.rows[0].name +" "+'€'+ result.rows[0].price + " " +result.rows[0].quantity_weight.slice(2,4) + " " +'kg');
     });
 })
 app.post('/store/product', (req, res)=> {
