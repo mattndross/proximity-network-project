@@ -18,29 +18,31 @@ const pool = new Pool({
     port: 5432
 });
 
-app.get('/', (req, res)=> {
-    const nameApp = { App: "Proximity network"}
-    // it displays the home page 
-    
+app.get('/', (req, res)=> { // display the home page 
+    const nameApp = { App: "Proximity network"}        
     res.status(200).send(nameApp);
 });
 
-app.get('/stores', (req, res)=> {
-// displays the list of stores
-pool.query('SELECT * FROM stores', (error, result) => {
-    res.json(result.rows);
+app.get('/stores', (req, res)=> {  // return list of all stores
+pool.query('SELECT * FROM stores')
+.then((result)=>res.json(result.rows))
+.catch((e)=> console.log(e)) 
 });
-})
-app.get('/products', (req, res)=> {
-    // displays list of products 
-    pool.query('SELECT * FROM products', (error, result) => {
-        console.log(result);
-        res.json(result.rows[0].name +" "+'€'+ result.rows[0].price + " "+result.rows[0].quantity_weight.slice(2,4)+ " "+'kg');
-    });
-})
-app.post('/store/product', (req, res)=> {
-// here a given store adds a product that it sells 
-})
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, ()=> console.log(`proximity network is running in port ${PORT}`))
 
+app.get('/stores/:city', (req, res)=>{ //return list of stores filtered by city
+    const city = req.params.city;
+    pool.query('SELECT * FROM stores WHERE UPPER(city) = UPPER($1)', [city])
+    .then((result) => res.json(result.rows))
+    .catch((e) => console.log(e));
+});
+
+app.get('/stores/profile/:storeId', (req,res)=>{
+    const storeId = req.params.storeId;
+    pool.query('SELECT * FROM stores WHERE id = $1', [storeId])
+    .then((result) => res.json(result.rows))
+    .catch((e) => console.log(e));
+});
+
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, ()=> console.log(`proximity network is running in port ${PORT}`));
