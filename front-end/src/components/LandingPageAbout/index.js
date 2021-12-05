@@ -5,7 +5,7 @@ import icon1 from "../../assets/img/img-about/icon-1.png"
 import icon2 from "../../assets/img/img-about/icon-2.png"
 import icon3 from "../../assets/img/img-about/icon-3.png"
 import icon4 from "../../assets/img/img-about/icon-4.png"
-
+import AboutInfoCard from "./AboutInfoCard"
 const LandingPageAbout = () => {
     return (
         <section id="about" style={{ backgroundImage: `url(${bg})` }}>
@@ -19,35 +19,17 @@ const LandingPageAbout = () => {
 
                     <div className=" col-lg-6 row">
                         <div className="col-lg-6">
-                            <div className="about-text">
-                                <h2> <img src={icon1} alt="" />Best Quality</h2>
-                                <p>From raw material selection to purchasing, official control ensures that all processes comply with all quality standards.</p>
-                            </div>
-
+                            <AboutInfoCard img={icon1} title="100% Organic" description="No preservaties,dyes, antibiotics, chemical fertilizers or pesticides are used, and they are made entirely from organic products." />
                         </div>
                         <div className="col-lg-6">
-                            <div className="about-text">
-
-                                <h2> <img src={icon1} alt="" />100% Organic</h2>
-
-                                <p>No preservaties,dyes, antibiotics, chemical fertilizers or pesticides are used, and they are made entirely from organic products.</p>
-                            </div>
+                            <AboutInfoCard img={icon2} title="Best Quality" description="From the selection of the raw material until we make the purchase, it is guaranteed that all the processes comply with the quality standards." />
                         </div>
                         <div className="col-lg-6">
-                            <div className="about-text">
-                                <h2> <img src={icon1} alt="" />Premiun Quality</h2>
-
-                                <p>The products offered are 100% organic. These processes allow us to maintain the purity of the product.</p>
-                            </div>
-
-
+                            <AboutInfoCard img={icon3} title="Premiun Quality" description="The products offered are 100% organic. These processes allow us to maintain the purity of the product." />
                         </div>
 
                         <div className="col-lg-6">
-                            <div className="about-text">
-                                <h2> <img src={icon1} alt="" />Family Healthy</h2>
-                                <p>They have more nutrients, thanks to the use of natural fertilizers, with more vitamins, minerals and antioxidants.</p>
-                            </div>
+                            <AboutInfoCard img={icon4} title="Family Healthy" description="They have more nutrients, thanks to the use of natural fertilizers, with more vitamins, minerals and antioxidants." />
                         </div>
                     </div>
                     <div className=" col-lg-6 align-self-center">
