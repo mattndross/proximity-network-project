@@ -36,7 +36,14 @@ app.get('/stores/:city', (req, res)=>{ //return list of stores filtered by city
     .catch((e) => console.log(e));
 });
 
-app.get('/stores/profile/:storeId', (req,res)=>{
+app.get('/stores/search/:storeName', (req, res)=>{ //return list of stores filtered by name
+    const storeName = req.params.storeName;
+    pool.query('SELECT * FROM stores WHERE UPPER(name) LIKE UPPER($1) ORDER BY name', [storeName])
+    .then((result) => res.json(result.rows))
+    .catch((e) => console.log(e));
+});
+
+app.get('/stores/profile/:storeId', (req,res)=>{ //return data of given store
     const storeId = req.params.storeId;
     pool.query('SELECT * FROM stores WHERE id = $1', [storeId])
     .then((result) => res.json(result.rows))
