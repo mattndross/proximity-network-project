@@ -34,6 +34,7 @@ app.get('/stores/:city', (req, res)=>{ //return list of stores filtered by city
     pool.query('SELECT * FROM stores WHERE UPPER(city) = UPPER($1)', [city])
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
+<<<<<<< HEAD
 });
 
 app.get('/stores/search/:storeName', (req, res)=>{ //return list of stores filtered by name
@@ -44,6 +45,11 @@ app.get('/stores/search/:storeName', (req, res)=>{ //return list of stores filte
 });
 
 app.get('/stores/profile/:storeId', (req,res)=>{ //return data of given store
+=======
+});
+
+app.get('/stores/profile/:storeId', (req,res)=>{
+>>>>>>> e9c6b5d (add endpoint: '/stores/profile/:storeId)
     const storeId = req.params.storeId;
     pool.query('SELECT * FROM stores WHERE id = $1', [storeId])
     .then((result) => res.json(result.rows))
