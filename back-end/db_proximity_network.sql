@@ -1,4 +1,4 @@
-gitcreate table stores (
+create table stores (
     id              serial PRIMARY key,
     name            varchar(50) not null,
     mail            varchar(120) not null,
