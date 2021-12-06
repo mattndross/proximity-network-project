@@ -4,7 +4,7 @@ create table stores (
     store_description varchar(255), 
     store_category  varchar(50) ,
     web_page        varchar(100), 
-    mail            varchar(120) not null,
+    email           varchar(120) not null,
     phone_number    varchar(20), 
     image 			varchar(255)
 );
@@ -17,11 +17,11 @@ create table store_location(
     foreign key(store_id) references stores(id)
  );
 
- create table userStore_authentication(
+ create table store_authentication(
  	store_id        int primary key, 
  	foreign key(store_id) references stores(id),
     store_manager   varchar(50) not null, 
-    mail 			varchar(120) not null, 
+    email 			varchar(120) not null, 
     password 		varchar(100) not null
     );
 
@@ -33,7 +33,7 @@ create table products (
     brand                 varchar(30) not null, 
     category              varchar(50) not null, 
     product_type          varchar(50),
-    quantity_weight       numeric(5,3), 
+    unit                  varchar(20), 
     price                 numeric(4,2), 
     producer              varchar(50), 
     origin                varchar(50) 
