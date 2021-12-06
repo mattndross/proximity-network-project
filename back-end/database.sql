@@ -25,9 +25,8 @@ create table store_location(
     password 		         givarchar(100) not null
     );
 
-create table products (
-    id                      serial primary key,
-    store_id                int,
+create table products (id                      serial primary key,
+ XZ   store_id                int,
     foreign key(store_id) REFERENCES stores(id),
     name                    varchar(50) not null, 
     category                varchar(50) not null, 
