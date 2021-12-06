@@ -4,6 +4,7 @@ import Button from '../../components/Button'
 import './LandingPage.css'
 import LandingPageBanner from '../../components/LandingPageBanner'
 import LandingPageAbout from '../../components/LandingPageAbout'
+import Footer from '../../components/Footer'
 
 export default function LandingPage() {
     return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
             <LandingPageBanner></LandingPageBanner>
             <h1>Search <br /> <br /><br /></h1>
             <LandingPageAbout></LandingPageAbout>
+            <Footer></Footer>
         </div>
     )
 }
