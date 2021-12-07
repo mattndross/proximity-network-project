@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/products" element={<StoreList />} />
+          <Route path="/store-list" element={<StoreList />} />
 
         </Routes>
       </BrowserRouter>

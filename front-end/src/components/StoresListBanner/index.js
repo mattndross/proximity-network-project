@@ -1,8 +1,8 @@
-import "./ProductsListBanner.css"
+import "./StoresListBanner.css"
 import logo from "../../assets/img/product-list-banner/logo.png"
 import banner from "../../assets/img/product-list-banner/banner.jpg"
 
-const ProductsListBanner = () => {
+const StoresListBanner = () => {
     return (
         <section id="productListBanner" style={{ backgroundImage: `url(${banner})` }}>
             <div className="container">
@@ -14,4 +14,4 @@ const ProductsListBanner = () => {
         </section>
     )
 }
-export default ProductsListBanner;
+export default StoresListBanner;
