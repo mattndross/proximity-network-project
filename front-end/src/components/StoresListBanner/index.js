@@ -1,6 +1,6 @@
 import "./StoresListBanner.css"
-import logo from "../../assets/img/product-list-banner/logo.png"
-import banner from "../../assets/img/product-list-banner/banner.jpg"
+import logo from "../../assets/img/stores-list-banner/logo.png"
+import banner from "../../assets/img/stores-list-banner/banner.jpg"
 
 const StoresListBanner = () => {
     return (
