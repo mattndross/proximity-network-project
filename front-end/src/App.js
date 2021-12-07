@@ -5,7 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css"
 import "./App";
 import "./index.css"
 import LandingPage from "./pages/LandingPage";
-import ProductList from "./pages/ProductsList";
+import StoresList from "./pages/StoresList";
 
 function App() {
   return (
@@ -13,12 +13,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/products" element={<ProductList />} />
+          <Route path="/stores-list" element={<StoresList />} />
 
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
-
 export default App;
