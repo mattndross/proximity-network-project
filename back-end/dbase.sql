@@ -41,7 +41,8 @@ create table products (
     unit                  varchar(20), 
     price                 numeric(4,2), 
     producer              varchar(50), 
-    origin                varchar(50) 
+    origin                varchar(50),
+    product_image         varchar(100)
 );
 
 insert into stores (name, store_description, store_category, web_page,  store_email, phone_number) 
