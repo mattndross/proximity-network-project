@@ -50,10 +50,18 @@ app.get('/stores/profile/:storeId', (req,res)=>{ //return data of given store
     .catch((e) => console.log(e));
 });
 
-app.get ('/products/:productId', (req,res)=> { //return data of the given product
+app.get('/products/:productId', (req,res)=> { //return data of the given product
     const productId = req.params.productId;
 
     pool.query('SELECT * FROM products WHERE id = $1', [productId])
+    .then((result)=> res.json(result.rows))
+    .catch((e)=> console.log(e));
+});
+
+app.get('/products/storeProducts/:storeId', (req,res)=> { //return data of the given product
+    const storeId = req.params.storeId;
+
+    pool.query('SELECT * FROM products WHERE store_id = $1', [storeId])
     .then((result)=> res.json(result.rows))
     .catch((e)=> console.log(e));
 });
