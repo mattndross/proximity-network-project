@@ -31,21 +31,21 @@ pool.query('SELECT * FROM stores')
 
 app.get('/stores/:city', (req, res)=>{ //return list of stores filtered by city
     const city = req.params.city;
-    pool.query('SELECT * FROM stores WHERE UPPER(city) = UPPER($1)', [city])
+    pool.query('SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.id WHERE UPPER(city) = UPPER($1)', [city])
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
 });
 
-app.get('/stores/search/:storeName', (req, res)=>{ //return list of stores filtered by name
+app.get('/stores/search/:storeName', (req, res)=>{ //return stores that matched the input filtered by name
     const storeName = req.params.storeName;
-    pool.query('SELECT * FROM stores WHERE UPPER(name) LIKE UPPER($1) ORDER BY name', [storeName])
+    pool.query('SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s WHERE UPPER(s.name) LIKE UPPER($1) ORDER BY name', [storeName]) //
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
 });
 
 app.get('/stores/profile/:storeId', (req,res)=>{ //return data of given store
     const storeId = req.params.storeId;
-    pool.query('SELECT * FROM stores WHERE id = $1', [storeId])
+    pool.query('SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s WHERE id = $1', [storeId])
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
 });
