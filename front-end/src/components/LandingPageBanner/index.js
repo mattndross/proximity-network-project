@@ -18,9 +18,12 @@ const LandingPageBanner = () => {
                     </ol>
 
                     <div className="carousel-inner" role="listbox">
-                        <CarouselSlide propsImg={slide1} active={true} />
-                        <CarouselSlide propsImg={slide2} />
-                        <CarouselSlide propsImg={slide3} />
+                        <div className="container">
+
+                            <CarouselSlide propsImg={slide1} active={true} />
+                            <CarouselSlide propsImg={slide2} />
+                            <CarouselSlide propsImg={slide3} />
+                        </div>
 
 
 

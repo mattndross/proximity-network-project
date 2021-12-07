@@ -27,7 +27,7 @@
 }
 #hero .carousel-item::before {
   content: "";
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.555);
 }
 #hero .carousel-container {
   display: flex;
@@ -57,14 +57,20 @@
 }
 
 @media (max-width: 440px) {
+  #hero h2{
+    font-size: 22px;
+  }
   #hero h2 span{
-    font-size: 28px;
+    font-size: 20px;
   }
 }
 @media (max-width: 768px) {
   #hero h2 {
     font-size: 30px;
     line-height: 1.2;
+  }
+  #hero h2 span{
+    font-size: 26px;
   }
   #hero p {
     font-size: 18px;
@@ -85,6 +91,7 @@
   }
   #hero p {
     width: 50%;
+    text-align: left;
     
   }
 
@@ -95,8 +102,9 @@
   
   }
   #hero h2{
+    text-align: left;
     font-weight: bold;
-    font-size: 55px;
+    font-size: 50px;
     
     margin-bottom: 20px;
   }
@@ -108,10 +116,16 @@
   #hero .content-text{
     text-align: center;
   }
+  #hero h2{
+    font-size:40px;
+  }
   #hero p {
-    font-size: 28px;
+    font-size: 20px;
     line-height: 1.2;
     color:#fff
+  }
+  #hero h2 span{
+    font-size: 30px;
   }
 }
 #hero .carousel-fade {
@@ -154,10 +168,6 @@
   background: none;
   font-size: 36px;
   line-height: 1;
-  border-radius: 50%;
-  border: 4px #92BA5A solid;
-  width: 50px;
-  height: 50px;
 }
 #hero .carousel-indicators li {
   cursor: pointer;
@@ -176,15 +186,11 @@
   }
 
   #hero h2 span{
-  font-family: Pacifico;
-  font-weight: normal;
   font-size: 40px;
-  color:#333333
-  
+  color:#333333;
+  margin-bottom: 10px;
   }
   #hero h2{
-    font-weight: bold;
-    font-size: 55px;
     color:#333333;
     margin-bottom: 20px;
   }
