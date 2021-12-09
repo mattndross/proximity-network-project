@@ -9,12 +9,12 @@ const Header = ()=>{
     return(
         //*----Header---*//
         <nav className= "main-header">
-            <a><img src={logo} alt="..." className="logo"></img></a>
+            <a href="#"><img src={logo} alt="..." className="logo"></img></a>
             <ul className="main-menu">
                 <li className="main-menu_item">
                     <a className="main-menu_link" href="#">Become a Member</a></li>
                 <li className="main-menu_item">
-                    <a className="main-menu_link" href="#">Login<img src={icon} alt="..." className="icon"></img></a></li>         
+                    <a className="main-menu_link" href="#">Login <img src={icon} alt="..." className="icon"></img></a></li>         
                 <label for="check" className="checkbtn">
                  <FaBars></FaBars>
                 </label>
