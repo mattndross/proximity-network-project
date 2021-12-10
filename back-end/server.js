@@ -52,11 +52,10 @@ app.get('/stores/profile/:storeId', (req,res)=>{ //return data of given store
 });
 
 app.delete('/products/:productId', (req, res) => {
-    console.log(req)
     const idProduct = req.params.productId;
     const queryDeleteProduct = 'DELETE FROM products USING stores WHERE products.store_id = stores.store_id and products.id = $1';
     pool.query(queryDeleteProduct, [idProduct])
-        .then((result) => res.status(200).send({message : `Product number ${idProduct} was deleted`}))
+        .then(() => res.status(200).send({message : `Product number ${idProduct} was deleted`}))
         .catch(e => console.log(e))
 })
 
@@ -75,6 +74,17 @@ app.get('/products/storeProducts/:storeId', (req,res)=> { //return data of the g
     .then((result)=> res.json(result.rows))
     .catch((e)=> console.log(e));
 });
+app.post('/stores/profile/:idStore/addproducts', (req, res) => { // the store add a product 
+    const idStore= req.params.idStore;
+    const { type, brand, category, description, unit, price, producer, origin } = req.body;
+    const query = 'INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
+
+    pool.query(query, [idStore, type, brand, category, description, unit, price, producer, origin])
+    .then(() => res.status(200).send({message : `Product ${brand} was added succesfully`}))
+    .catch(error => console.log(error))
+    //res.send(console.log(req.body))
+
+})
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, ()=> console.log(`proximity network is running in port ${PORT}`));

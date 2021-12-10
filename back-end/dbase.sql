@@ -1,6 +1,6 @@
 drop table if exists stores_authentications;
-drop table if exists stores_locations;
 drop table if exists stores;
+drop table if exists stores_locations;
 drop table if exists products;
 
 create table stores_authentications(
@@ -9,6 +9,7 @@ create table stores_authentications(
     manager_email	        varchar(120) not null, 
     password 		        varchar(100) not null
     );
+   
 create table stores (
  	store_id                serial primary key, 
  	foreign key(store_id)   references stores_authentications(id),
@@ -52,10 +53,11 @@ insert into stores (store_id, name, store_description, store_category, web_page,
 insert into stores (store_id, name, store_description, store_category, web_page,  store_email, phone_number) 
         values (2, 'Lo de marta', '', 'alimentación' , 'https://www.lodemarta.com', 'marta@mail.com', '634675637');
 
+
 insert into stores_locations (store_id, address, city, postcode, country) 
         values (2, 'asturies 9', 'barcelona', '08015' , 'Spain'); 
 insert into stores_locations (store_id, address, city, postcode, country) 
-        values (1, 'corsega 464', 'barcelona', '08025' , 'Spain'); 
+        values (1, 'corsega 464', 'tarragona', '08025' , 'Spain'); 
  insert into stores_locations (store_id, address, city, postcode, country) 
         values (2, 'rec 15', 'barcelona', '08003' , 'Spain');   
  insert into stores_locations (store_id, address, city, postcode, country) 
@@ -66,4 +68,4 @@ INSERT INTO products (store_id, product_type, brand, category, product_descripti
 INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) 
 		VALUES(1, 'yogurt', 'casandra', 'lacteos', '', '6', '2.90', 'Laborolo', 'Lleida');  
 INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) 
-		VALUES(1, 'vino', 'vent de mar', 'bebidas', '', '1', '4.65', 'Locrau', 'Ganedas');  
+		VALUES(1, 'vino', 'vent de mar', 'bebidas', '', '1', '4.65', 'Locrau', 'Ganedas');   
