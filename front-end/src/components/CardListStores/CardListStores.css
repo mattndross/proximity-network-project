@@ -1,0 +1,40 @@
+.section-header{
+    margin-bottom: 50px;
+}
+
+#cardListStore{
+    padding: 30px;
+}
+#cardListStore .section-header{
+    gap: 15px;
+}
+
+#cardListStore .section-header h1{
+    font-weight: 700;
+    font-size: 30px;
+    color: #575757;
+}
+.card-list-content{
+    max-height: 850px;
+    overflow-y: scroll;
+}
+#cardListStore .section-header img{
+    height: 60px;
+
+}
+@media (min-width: 576px) {
+    #cardListStore{
+        padding: 50px;
+    }
+ }
+ @media (min-width: 768px) {
+    #cardListStore{
+        padding: 80px;
+    }
+    .section-header{
+        margin-bottom: 100px;
+    }
+    #cardListStore .section-header h1{
+        font-size: 36px;
+    }
+ }
