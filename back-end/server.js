@@ -31,7 +31,7 @@ pool.query('SELECT * FROM stores')
 
 app.get('/stores/:city', (req, res)=>{ //return list of stores filtered by city
     const city = req.params.city;
-    pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.id WHERE upper(city) = upper($1)", [city])
+    pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE upper(city) = upper($1)", [city])
     
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
@@ -46,16 +46,26 @@ app.get('/stores/search/:storeName', (req, res)=>{ //return list of stores if th
 
 app.get('/stores/profile/:storeId', (req,res)=>{ //return data of given store
     const storeId = req.params.storeId; 
-    pool.query('SELECT * FROM stores WHERE id = $1', [storeId])
+    pool.query('SELECT * FROM stores WHERE store_id = $1', [storeId])
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
 });
+
+//>>>>>> NO FUNCIONA DELETE METHOD <<<<<//
+app.delete('/products/:productId', (req, res) => {
+    console.log(req)
+    const idProduct = req.params.productId;
+    const queryDeleteProduct = 'DELETE FROM products USING stores WHERE products.store_id = stores.store_id and products.id = $1';
+    pool.query(queryDeleteProduct, [idProduct])
+        .then((result) => res.status(200).send({message : `Product number ${idProduct} was deleted`}))
+        .catch(e => console.log(e))
+})
 
 app.get('/products/:productId', (req,res)=> { //return data of the given product
     const productId = req.params.productId;
 
     pool.query('SELECT * FROM products WHERE id = $1', [productId])
-    .then((result)=> res.json(result.rows))
+    .then((result)=> res.json(result))
     .catch((e)=> console.log(e));
 });
 
@@ -66,6 +76,9 @@ app.get('/products/storeProducts/:storeId', (req,res)=> { //return data of the g
     .then((result)=> res.json(result.rows))
     .catch((e)=> console.log(e));
 });
+
+
+
 
 
 const PORT = process.env.PORT || 4000;
