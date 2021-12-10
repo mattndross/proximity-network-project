@@ -1,0 +1,52 @@
+#storeProfileBanner{
+    background-repeat: no-repeat;
+    height: 600px;
+    background-size: cover;
+    background-position: right;
+    padding:30px;
+}
+#storeProfileBanner .container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#storeProfileBanner .container p{
+    
+    font-size: clamp(16px,2vw ,30px);
+    color: #FFFFFF;
+    font-family: 'Pacifico';
+    margin-bottom: 0;
+}
+#storeProfileBanner .container h2{
+    font-weight: bold;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow:  1px 1px #192221;
+    border-top: 1px solid #ffff;
+    border-bottom: 1px solid #ffff;
+    padding: 5px;
+    font-size: clamp(26px,2vw ,70px);
+}
+#storeProfileBanner .content-text{
+    display: flex;
+    gap: 10px;
+}
+#storeProfileBanner .content-text p{
+    
+    font-size: clamp(9px,2vw ,25px);
+    font-family: Raleway;
+    justify-content: flex-start;
+}
+#storeProfileBanner .content-text img{
+    width:clamp(20px,2vw,45px);
+}
+.icon-store{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height:clamp(40px, 5vw,70px);
+    margin-top:clamp(20px,5vw,40px);
+}

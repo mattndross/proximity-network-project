@@ -6,6 +6,7 @@ import "./App";
 import "./index.css"
 import LandingPage from "./pages/LandingPage";
 import StoresList from "./pages/StoresList";
+import StoreProfile from "./pages/StoreProfile";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/stores-list" element={<StoresList />} />
+
+          <Route path="/store-profile" element={
+            <StoreProfile />} />
 
         </Routes>
       </BrowserRouter>
