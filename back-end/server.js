@@ -36,6 +36,7 @@ app.get('/stores/:city', (req, res)=>{ //return list of stores filtered by city
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
 });
+
 app.get('/stores/search/:postCode',  (req,res) => { // return list of stores that have the given post code.
     const postCode = req.params.postCode;
     pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.id WHERE postcode = $1", [postCode])
@@ -69,8 +70,6 @@ app.get('/products/:productId', (req,res)=> { //return data of the given product
     .catch((e)=> console.log(e));
 });
 
-
-
 app.get('/products/storeProducts/:storeId', (req,res)=> { //return data of the given product
     const storeId = req.params.storeId;
 
@@ -78,6 +77,7 @@ app.get('/products/storeProducts/:storeId', (req,res)=> { //return data of the g
     .then((result)=> res.json(result.rows))
     .catch((e)=> console.log(e));
 });
+
 app.post('/stores/profile/:idStore/addproducts/', (req, res) => { // the store add a product 
     const idStore= req.params.idStore;
     const { type, brand, category, description, unit, price, producer, origin } = req.body;
