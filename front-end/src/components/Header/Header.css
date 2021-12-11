@@ -53,12 +53,6 @@
 
     padding-top: 20px;
 }
-
-.icon{
-    width: 18px;
-    height: 18px;
-
-}
 .checkbtn{
  cursor: pointer;
  display: none;
