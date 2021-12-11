@@ -1,12 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
+
+import "./App";
+import SearchBar from "./components/SearchBar/SearchBar";
+
 import LandingPage from "./pages/LandingPage";
 import StoresList from "./pages/StoresList";
- //>>>Header
+ 
 import Header from "./components/Header"
 
 import StoreProfile from "./pages/StoreProfile";
-//>>> main
+
+
+
+
+
+
 
 function App() {
   return (
@@ -15,14 +25,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+
           <Route path="/stores-list" element={<StoresList />} />
- //>>>Header
+
 
           <Route path="/store-profile" element={
             <StoreProfile />} />
 
-//>>>main
+
+          <Route path="/products" element={<ProductList />} />
+
         </Routes>
+         <SearchBar />
       </BrowserRouter>
     </div>
   );
