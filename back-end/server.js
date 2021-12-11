@@ -18,6 +18,78 @@ const pool = new Pool({
     port: 5432
 });
 
+const secret = "proximity migracode";
+
+//middlewares
+const checkDuplicatedEmail = (req, res, next) => {
+  const email = req.body.managerEmail;
+  pool
+    .query(
+      "SELECT  manager_email FROM stores_authentications WHERE manager_email = $1",
+      [email]
+    )
+    .then((result) => {
+      console.log(result.rows);
+      if (result.rows.length > 0) {
+        return res.status(400).json({
+          messege: "Error! ya existe una cuenta vinculada a este email!",
+        });
+      }
+      next();
+    })
+    .catch((error) => console.log(error));
+};
+
+//FUNCTION
+const registerController = (req, res) => {
+  const newUser = req.body;
+  newUser.password = bcrypt.hashSync(newUser.password, 6);
+  pool
+    .query(
+      "INSERT INTO stores_authentications ( store_manager, manager_email, password) VALUES ( $1, $2, $3)",
+      [newUser.storeManager, newUser.managerEmail, newUser.password]
+    )
+    .then(() => {
+      res.status(200).json({ message: "store user created!" });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+const logInController = (req, res) => {
+  const user = req.body;
+  pool
+    .query("SELECT * FROM stores_authentications where manager_email = $1", [
+      user.email,
+    ])
+    .then((result) => {
+      if (result.rows.length < 1) {
+        return res.status(400).json({ messege: "email not found" });
+      }
+      const data = result.rows[0];
+      const passwordIsValid = bcrypt.compareSync(user.password, data.password);
+      if (!passwordIsValid) {
+        return res.status(404).send(`not valid email or password.`);
+      } else {
+
+        let token = jwt.sign({ id: result.rows[0].id }, secret, {
+            expiresIn: 86400,
+          });
+          return res
+            .status(200)
+            .json({ id: result.rows[0].id, token: token, isAuthenticated: true });
+      }
+    });
+};
+
+//AUTH ENDPOINTS
+app.post("/register", checkDuplicatedEmail, registerController);
+app.post("/login", logInController);
+
+
+//PUBLIC ENDPOINTS
+
 app.get('/', (req, res)=> { // display the home page 
     const nameApp = { App: "Proximity network"}        
     res.status(200).send(nameApp);
