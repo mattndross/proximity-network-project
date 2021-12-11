@@ -2,11 +2,15 @@ import './CardStoreProfile.css'
 import logoTienda from '../../assets/img/card-store-profile/bioproducts.png'
 import iconMapa from '../../assets/img/card-store-profile/icono-map.svg'
 import iconMail from '../../assets/img/card-store-profile/icono-mail.svg'
-
+import ButtonBack from '../BaseComponents/ButtonBack'
 const CardStoreProfile = () => {
     return (
         <section id="cardStoreProfile" className="p-4">
+
             <div className="container">
+                <div className="backButton px-5 mb-5" >
+                    <ButtonBack path="/stores-list" text="Back to list" />
+                </div>
                 <div className="row align-items-center">
                     <div className="col-lg-6 d-flex justify-content-center justify-content-lg-end">
                         <div className="card-img-store">
