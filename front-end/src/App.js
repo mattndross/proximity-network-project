@@ -1,8 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App";
-import SearchBar from "./components/SearchBar/SearchBar";
+
+import "bootstrap-icons/font/bootstrap-icons.css"
+import "bootstrap/dist/js/bootstrap.bundle"
 import LandingPage from "./pages/LandingPage";
-import ProductList from "./pages/ProductsList";
+import StoresList from "./pages/StoresList";
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+import StoreProfile from "./pages/StoreProfile";
+
 
 
 
@@ -13,14 +18,23 @@ function App() {
   return (
     <div className="wrapper">
       <BrowserRouter>
+        {<Header />}
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/products" element={<ProductList />} />
+          
+        
+         
+          <Route path="/stores-list" element={<StoresList />} />
+
+          <Route path="/store-profile" element={
+            <StoreProfile />} />
+
+
         </Routes>
-         <SearchBar />
+        {<Footer />}
       </BrowserRouter>
+
     </div>
   );
 }
-
 export default App;

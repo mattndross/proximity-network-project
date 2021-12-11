@@ -1,0 +1,45 @@
+
+  #productListBanner{
+    height:400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:right;
+}
+#productListBanner .container{
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10px
+}
+#productListBanner .img-container{
+    max-width: 250px;
+    margin: 0 auto;
+}
+   #productListBanner .container p{
+        font-weight: 400;
+        font-size: 15px;
+        color: #ffff;
+    }
+    #productListBanner .container p span{ 
+        color: #80B03D;
+    }
+    @media (min-width: 576px) { 
+  
+    
+    #productListBanner .container .img-banner-product{
+        margin-bottom: 10px;
+    }
+    #productListBanner .img-container{
+        max-width: 350px;
+    }
+    #productListBanner .container p{
+        font-size: 25px;
+    }
+}
+@media (min-width: 992px) { 
+    #productListBanner .container p{
+        font-size: 30px;
+    }
+ }

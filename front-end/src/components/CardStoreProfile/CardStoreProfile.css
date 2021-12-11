@@ -1,0 +1,111 @@
+#cardStoreProfile{
+    margin-top: clamp(20px,5vw,80px);
+}
+.card-img-store{
+border: clamp(5px, 2vw, 15px) solid #81B03E;
+width: clamp(200px, 75vw, 550px);
+height: clamp(150px, 50vw, 450px);
+border-radius: 20px;
+padding:40px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.card-img-store > img{
+   width: 100%;
+}
+#cardStoreProfile .card-text-store h2{
+    color: #333333;
+    padding-bottom: 6px;
+    display: inline-block;
+    border-bottom: 2px solid #c3c3c3;
+    font-size: clamp(28px,5vw,40px);
+    font-weight: 800;
+    text-align: center;
+    margin-top:clamp(30px,5vw,50px);
+    margin-bottom:clamp(20px,2vw,30px);
+    letter-spacing: 2px;
+}
+#cardStoreProfile .card-text-store p{
+    color: #333333;
+    font-size: clamp(14px,3vw,18px);
+}
+#cardStoreProfile .card-text-store h3{
+    font-weight: 700;
+    color: #333131;
+    font-size:clamp(18px,3vw,20px);
+    margin: 20px 0 10px 0;
+}
+.card-icon-store img{
+    width: clamp(30px, 5vw,40px);
+    margin-bottom: 20px;
+}
+
+.card-icon-store a{
+    color: #333131;
+    font-size: clamp(16px,2vw,18px);
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: all ease .8s;
+}
+.card-icon-store > div:hover,.card-icon-store > div:hover  a{
+    cursor: pointer;
+    color: #77a832;
+}
+@media (min-width: 550px){
+    .card-text-store{
+        padding: 40px;
+    }
+}
+@media (min-width: 576px) { 
+    #cardStoreProfile .card-text-store h2{
+        font-size: 42px;
+    }
+   .card-icon-store{
+       margin-top: 30px;
+   }
+   .card-text-store{
+       padding: 0 40px;
+   }
+ }
+@media (min-width: 768px) { 
+    .card-icon-store a{
+        font-size: clamp(18px, 2vw,22px);
+    }
+    #cardStoreProfile .card-text-store h2{
+        font-size: 45px;
+    }
+ }
+@media (min-width: 992px) { 
+    #cardStoreProfile{
+        margin-bottom: clamp(20px,5vw,80px);
+    }
+    #cardStoreProfile .card-text-store h2{
+        text-align: start;
+        margin-top: unset;
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    .card-img-store{
+        width: 600px;
+        height: 450px;
+    }
+    #cardStoreProfile .card-text-store p {
+        font-size: 16px;
+    }
+#cardStoreProfile .card-text-store h3{
+    margin: 10px 0;
+}
+.card-text-store{
+    width: clamp(45ch, 50%,60ch);
+
+}
+.card-icon-store{
+    width: min(100%, 500px);
+}
+.card-icon-store a{
+    font-size: 14px;
+}
+}

@@ -1,0 +1,13 @@
+#product-grid{
+    background-color:#F1EEE7;
+    padding-top: 80px;
+}
+#product-grid .container-products{
+    padding-top: 50px;
+}
+
+@media (min-width:768px){
+    #product-grid .container-products{
+        padding-top: 100px;
+    }
+}

@@ -1,8 +1,8 @@
 import React from "react"
 import icon_search from "../SearchBar/images/icon_search.png"
 import img_banner from "../SearchBar/images/img_banner_search.png"
-import "./SearchBar.css"
 import Search from "./index"
+import "./SearchBar.css"
 
 
 

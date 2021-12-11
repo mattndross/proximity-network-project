@@ -1,0 +1,63 @@
+#searchStoresList{
+    padding: 50px 20px;
+}
+#searchStoresList .search-content{
+    align-items: center;
+}
+#searchStoresList .stores-list-text{
+    text-align: center;
+}
+
+#searchStoresList .stores-list-text p{
+    color: #a2a2a2;
+    font-family: Pacifico;
+    font-size: 20px;
+    margin-bottom: 0;
+    margin-top: 18px;
+}
+#searchStoresList .stores-list-text span{
+    font-size: 22px;
+    font-family: Pacifico;
+    color: #a2a2a2;
+}
+
+@media (min-width: 576px){
+    #searchStoresList{
+        padding: 80px 30px;
+    }
+    #searchStoresList .stores-list-text p{
+        margin-top: 30px;
+        font-size: 22px;
+    }
+    #searchStoresList .stores-list-text span{
+        font-size: 28px;
+    }
+}
+@media (min-width: 768px){
+    #searchStoresList{
+        padding: 80px 50px;
+    }
+    #searchStoresList .stores-list-text p{
+        margin-top: 30px;
+        font-size: 30px;
+    }
+    #searchStoresList .stores-list-text span{
+        font-size: 35px;
+    }
+}
+@media (min-width: 992px) { 
+    #searchStoresList{
+        padding: 60px;
+    }
+    #searchStoresList .stores-list-text p{
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    #searchStoresList .stores-list-text span{
+        font-size: 30px;
+    }
+    .form-control {
+        width: 80%;
+    }
+ }
+
