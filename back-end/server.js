@@ -9,6 +9,8 @@ const corsOptions = {
 };
 app.use(cors(corsOptions)); 
 
+const { searchController } = require("./controllers/search.controller");
+
 const { Pool } = require('pg');
 const pool = new Pool({
     user: 'postgres',
@@ -95,6 +97,9 @@ app.get('/', (req, res)=> { // display the home page
     res.status(200).send(nameApp);
 });
 
+
+app.get('/search/:zone', searchController);
+
 app.get('/stores', (req, res)=> {  // return list of all stores
 pool.query('SELECT * FROM stores')
 .then((result)=>res.json(result.rows))
@@ -103,6 +108,7 @@ pool.query('SELECT * FROM stores')
 
 app.get('/stores/:city', (req, res)=>{ //return list of stores filtered by city
     const city = req.params.city;
+    
     pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE upper(city) = upper($1)", [city])
     
     .then((result) => res.json(result.rows))
