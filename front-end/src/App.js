@@ -11,8 +11,8 @@ import StoreProfile from "./pages/StoreProfile";
 function App() {
   return (
     <div className="wrapper">
-      {<Header />}
       <BrowserRouter>
+        {<Header />}
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/stores-list" element={<StoresList />} />
@@ -22,8 +22,9 @@ function App() {
 
 
         </Routes>
+        {<Footer />}
       </BrowserRouter>
-      {<Footer />}
+
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import "./Footer.css"
+import { Link } from "react-router-dom"
 
 
 const Footer = () => {
@@ -11,7 +12,7 @@ const Footer = () => {
                         <p className="copyright">© Copyright sitename.All Rights Reserved.</p>
                     </div>
                     <div className="col-lg-4 footer-icon">
-                        <a href="/" style={{ marginRight: "20px" }}><i className="bi bi-house-door-fill"></i></a>
+                        <Link to="/" style={{ marginRight: "20px" }}><i className="bi bi-house-door-fill"></i></Link>
                         <a href="https://github.com/mattndross/proximity-network-project" target="_blank"><i className="bi bi-github"></i></a>
                     </div>
                 </div>
