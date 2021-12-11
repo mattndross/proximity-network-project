@@ -79,6 +79,9 @@ align-items: center;
     }
  }
 @media (min-width: 992px) { 
+    #cardStoreProfile{
+        margin-bottom: clamp(20px,5vw,80px);
+    }
     #cardStoreProfile .card-text-store h2{
         text-align: start;
         margin-top: unset;

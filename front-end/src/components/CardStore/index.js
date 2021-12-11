@@ -7,7 +7,7 @@ const CardStore = () => {
 
         <div className="row align-items-center mb-5">
             <div className="col-6">
-                <div class="img-container">
+                <div className="img-container">
                     <img src={imgPrueba} className="img-fluid card-img" alt="picture store" />
                 </div>
             </div>
@@ -18,7 +18,7 @@ const CardStore = () => {
                     <a href="https://www.google.es/maps/?hl=es" target="_blank"><img src={icon} className="img-fluid icon-direction" alt="icon" /></a>
                     <p>Carrer de sant Quinti, 89<span className="d-block">08041 barcelona</span></p>
                 </div>
-                <a class="btn btn-primary btn-card-store" href="#" role="button">view profile</a>
+                <a className="btn btn-primary btn-card-store" href="#" role="button">view profile</a>
             </div>
         </div>
 
