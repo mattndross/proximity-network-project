@@ -115,10 +115,11 @@ app.get('/stores/search/:storeName', (req, res)=>{ //return list of stores if th
     .then((result) => res.json(result.rows))
     .catch((e) => console.log(e));
 });
-app.get('/stores/search/:postCode',  (req,res) => { // return list of stores that have the given post code.
+app.get('/stores/postcode/:postCode',  (req,res) => { // return list of stores that have the given post code.
     const postCode = req.params.postCode;
-    pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.id WHERE postcode = $1", [postCode])
+    pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE postcode = $1", [postCode])
     .then((result) => { if(result.rowCount == 0){
+                        console.log(result);
                         res.send({message : "there are not stores in this area"})
                     } else { 
                         return res.json(result.rows)}
