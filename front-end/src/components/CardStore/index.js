@@ -1,6 +1,7 @@
 import "./CardStore.css"
 import imgPrueba from "../../assets/img/stores-list-banner/img-prueba-card.jpg"
 import icon from "../../assets/img/stores-list-banner/icon-direction.png"
+import { Link } from "react-router-dom"
 
 const CardStore = () => {
     return (
@@ -18,7 +19,7 @@ const CardStore = () => {
                     <a href="https://www.google.es/maps/?hl=es" target="_blank"><img src={icon} className="img-fluid icon-direction" alt="icon" /></a>
                     <p>Carrer de sant Quinti, 89<span className="d-block">08041 barcelona</span></p>
                 </div>
-                <a className="btn btn-primary btn-card-store" href="#" role="button">view profile</a>
+                <Link className="btn btn-primary btn-card-store" to="/store-profile" role="button">view profile</Link>
             </div>
         </div>
 
