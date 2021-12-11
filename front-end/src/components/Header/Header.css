@@ -1,9 +1,8 @@
 .main-header{
     width: 100%;
- 
     display: flex;
     justify-content: space-between;
-    padding: 9px 49px 9px 49px;
+    padding: 20px 45px;
     position: fixed;
     z-index: 100;
     background-color: white;
@@ -21,24 +20,38 @@
     
 }
 
-a{
+.main-menu  li a{
 
     text-decoration: none;
     color: black;
+    transition: all ease 0.8s;
 }
-img{
-    width: 155px;
-    height: 36px;
 
+.icon-navbar{
+    font-size: 18px;
+    color:  #80b03d;
+    transition: all ease .8s;
 }
-ul{
+
+ .main-menu_item:hover a {
+    color: #80b03d;
+    font-weight: 600;
+}
+
+.main-menu_item:hover .icon-navbar{
+    color:#595959;
+}
+.logo{
+    transition: all ease .8s;
+}
+
+.main-header .logo:hover{
+    filter: grayscale(1)
+}
+
+.main-header .main-menu{
 
     padding-top: 20px;
-}
-.icon{
-    width: 18px;
-    height: 18px;
-
 }
 .checkbtn{
  cursor: pointer;
@@ -66,10 +79,5 @@ ul{
         justify-content: space-between;
         padding: 18px 13px 18px 13px;
       
-    }
-    img{
-        width: 100px;
-        height: 23px;
-  
     }
 }

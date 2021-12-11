@@ -11,7 +11,7 @@ const Footer = () => {
                         <p className="copyright">© Copyright sitename.All Rights Reserved.</p>
                     </div>
                     <div className="col-lg-4 footer-icon">
-                        <a href="#home" style={{ marginRight: "20px" }}><i className="bi bi-house-door-fill"></i></a>
+                        <a href="/" style={{ marginRight: "20px" }}><i className="bi bi-house-door-fill"></i></a>
                         <a href="https://github.com/mattndross/proximity-network-project" target="_blank"><i className="bi bi-github"></i></a>
                     </div>
                 </div>
