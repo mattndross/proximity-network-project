@@ -1,0 +1,25 @@
+#bannerSecundario{
+    padding:50px;
+}
+
+#bannerSecundario .banner-text p{
+    color: #ffff;
+    font-size: clamp(18px,5vw,26px);
+    font-weight: 700;
+    text-align: center;
+}
+#bannerSecundario .banner-text span{
+    font-size: clamp(14px,3vw,18px);
+}
+#bannerSecundario .banner-text .parrafo-banner{
+    font-size: clamp(12px,3vw,20px);
+    font-weight: 300;
+    margin-top: 20px;
+    line-height: 20px;
+    color: #ffff;
+}
+@media(min-width:992px){
+    #bannerSecundario{
+        padding:80px;
+    }
+}

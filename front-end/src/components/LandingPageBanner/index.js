@@ -9,8 +9,9 @@ const LandingPageBanner = () => {
         <section id="hero">
             <div className="hero-container">
                 <div id="heroCarousel" className="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-                    <ol id="hero-carousel-indicators" class="carousel-indicators">
-                        <li data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
+
+                    <ol id="hero-carousel-indicators" className="carousel-indicators">
+                        <li data-bs-target="#heroCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></li>
                         <li data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></li>
                         <li data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></li>
                     </ol>
@@ -37,7 +38,7 @@ const LandingPageBanner = () => {
 
                 </div>
             </div>
-        </section>
+        </section >
 
     )
 }
