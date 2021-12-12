@@ -60,7 +60,7 @@ insert into stores (store_id, name, profile_name, store_description, store_categ
 insert into stores_locations (store_id, address, city, postcode, country, maps_url) 
         values (1, 'carrer de Asturies 9', 'Barcelona', '08015' , 'Spain', 'https://www.google.com/maps/search/?api=1&query=ecoalimentaria+asturies+9+barcelona'); 
 insert into stores_locations (store_id, address, city, postcode, country, maps_url) 
-        values (2, 'carrer de Córsega 464', 'Tarragona', '08025' , 'Spain', 'https://www.google.com/maps/search/?api=1&query=lo+de+marta+carrer+de+corsega+tarragona');
+        values (2, 'carrer de Córsega 464', 'Barcelona', '08025' , 'Spain', 'https://www.google.com/maps/search/?api=1&query=lo+de+marta+carrer+de+corsega+tarragona');
 
 INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) 
 		VALUES(2, 'yogurt', 'casandra', 'lacteos', '', '6', '2.10', 'Laborolo', 'Lleida');   
