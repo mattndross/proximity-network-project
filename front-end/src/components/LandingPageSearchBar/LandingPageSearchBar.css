@@ -28,29 +28,31 @@
   margin-bottom: clamp(20px,5vw,50px);
   align-items: center;
 }
-.content-search-postal{
+.content-select{
   padding-right: 0;
 }
 .search-postal {
   position: relative;
   width: 100%;
 }
-.search-postal input {
-  /* padding-left: 34px; */
-  padding-right: 10px;
+.search-postal select {
+  padding-left: clapm(15px,3vw,40px);
   width: 100%;
   height: clamp(40px,5vw,70px);
   border: 3px solid #92BA5A;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
-  padding-left: clamp(35px,5vw,50px);
+  font-size: clamp(12px,3vw,22px);
+  color:#747373;
   border-right: none;
   transition: all ease .8s;
 }
-
-.search-postal input:focus-visible {
+.search-postal .form-select{
+  background-size: clamp(16px,3vw,22px);
+}
+.search-postal select:focus {
   border: 4px solid #758f51;
-  box-shadow: 1px 1px 2px rgb(81 135 57 / 99%), 0px 1px 6px rgb(159 255 7 / 23%);
+  box-shadow: 3px 1px 5px rgb(81 135 57 / 99%), 0px 1px 6px rgb(159 255 7 / 23%);
   border-color: none;
   outline: none;
 }
@@ -65,19 +67,19 @@
 
 ::placeholder {
   color: rgb(216, 216, 216);
-  font-size: clamp(10px,3vw,18px);
+  font-size: clamp(10px,3vw,20px);
   opacity: 1;
 }
-.content-search-city{
+.content-search-city-postal{
   padding-left: 0;
 }
-.search-city {
+.search-city-postal {
  position: relative;
  width: 100%
 
 }
 
-.search-city input {
+.search-city-postal input {
   border: 3px solid #92BA5A;
   border-top-right-radius: 22px;
   width: 100%;
@@ -87,14 +89,14 @@
   transition: all ease 0.8s;
 }
 
-.search-city input:focus-visible {
+.search-city-postal input:focus-visible {
   border: 3px solid #7d9b54;
   box-shadow: 1px 1px 2px rgb(81 135 57 / 99%), 0px 1px 6px rgb(159 255 7 / 23%);
   border-color: none;
   outline: none;
 }
 
-.search-city i {
+.search-city-postal i {
   position: absolute;
   top: 8px;
   left: 14px;
@@ -118,14 +120,13 @@
   background-color: #686262;
 }
 @media (min-width:755px){
-  .search-postal i{
-    top:-8px
-  }
 }
 @media (min-width:992px) {
   
- .content-search-city .search-city i {
+ .content-search-city-postal .search-city i {
     top: 13px;
   }
 }
+
+
   
