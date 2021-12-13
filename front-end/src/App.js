@@ -8,6 +8,8 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 import StoreProfile from "./pages/StoreProfile";
 import LoginModal from './components/LoginModal'
+import Modalregister from './components/ModalRegister';
+
 // import global context
 import { Context } from './context/SearchContext.js'
 
@@ -21,6 +23,7 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
         {<Header />}
+        <Modalregister></Modalregister>
         <LoginModal></LoginModal>
         <Context.Provider value={[searchGlobal, setSearchGlobal]}>
           <Routes>

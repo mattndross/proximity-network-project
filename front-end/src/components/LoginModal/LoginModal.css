@@ -60,6 +60,11 @@
 }
 .modal-login-link a:hover{
     color: #81B03E;
+    cursor:pointer;
+}
+.modal-link:hover{
+    color: #81B03E;
+    cursor:pointer;
 }
 @media(min-width:992px){
     .modal-body-content .input-login{

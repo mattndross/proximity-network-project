@@ -5,7 +5,6 @@ import './LandingPage.css'
 import LandingPageBanner from '../../components/LandingPageBanner'
 import LandingPageAbout from '../../components/LandingPageAbout'
 import LandingPageSearchBar from '../../components/LandingPageSearchBar'
-
 export default function LandingPage() {
     return (
         <div>
@@ -13,7 +12,6 @@ export default function LandingPage() {
             <LandingPageBanner></LandingPageBanner>
             < LandingPageSearchBar />
             <LandingPageAbout></LandingPageAbout>
-
             <Link to="/stores-list">
                 <Button color="gray-bg" textColor="white-txt" text="products list"></Button>
             </Link>
