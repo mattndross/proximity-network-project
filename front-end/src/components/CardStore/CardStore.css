@@ -1,27 +1,30 @@
 .img-container{
-    text-align: end;
-}
-.card-img{
-    width: 160px;
-   height: 160px;
-    object-fit: cover;
+    width: clamp(140px,40vw,250px);
+    height: clamp(140px,40vw,250px);
     border: 5px solid #81B03E;
     border-radius: 17px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-img{
+    width: 80%;
 }
 .icon-direction{
-    width: 20px;
-    height: 20px;
+    width: clamp(20px,3vw,30px);
 }
 .card-store-text h1{
     font-weight: bold;
-    font-size: 17px;
+    font-size: clamp(17px,5vw,32px);
+    margin-bottom: clamp(2px,1vw,10px);
     color: #333333;
-    margin-bottom: 0;
 
 }
 .card-store-text p{
     color: #5B5757;
-    font-size: 12px;
+    margin-bottom: clamp(5px,2vw,18px);
+    font-size: clamp(12px,3vw,24px);
 }
 .card-store-text .card-direction{
     display: flex;
@@ -29,102 +32,34 @@
 }
 .card-store-text .card-direction p{
     color: #5B5757;
-    font-size: 11px;
+    font-size: clamp(9px,2vw,18px);
     line-height: 14px;
 }
  .btn-card-store{
-    padding: 1px;
+    padding: clamp(1px,1vw,10px);
     background: #607D33;
     width: 90%;
     border-radius: 9px;
     border-color: unset;
     font-weight: 600;
+    font-size: clamp(12px,3vw,22px);
 }
 .btn-card-store:hover,.btn-card-store:focus,.btn-card-store:active:focus{
     color: #fff;
+
     background-color: #446417;
     border-color: unset;
     box-shadow: none;
 }
-@media (min-width: 428px){
+/* @media (min-width: 992px) and (max-width: 1199px) {
+    
 .card-store-text h1{
-        font-size: 20px;
-    
-    }
+    font-size: clamp(30px,5vw,40px);
+    margin-bottom: clamp(2px,1vw,10px);
+}
 .card-store-text p{
-        font-size: 14px;
-    }
-    
-.card-store-text .card-direction p{
-    font-size: 12px;   
-} 
+    color: #5B5757;
+    margin-bottom: clamp(5px,2vw,18px);
+    font-size: clamp(12px,3vw,24px);
 }
-@media (min-width: 576px) { 
-.card-img{
-        width: 230px;
-       height: 230px;
-        
-    }
-.icon-direction{
-    font-size: 20px;
-}
-.card-store-text h1{
-        font-size: 28px;
-    }
-.card-store-text p{
-        font-size: 20px;
-    }
-    
-.card-store-text .card-direction p{
-    font-size: 16px; 
-}
-
-.btn-card-store{
-    padding: 2px;
-    width: 90%;
-}
-.icon-direction{
-    width: 25px;
-    height: 25px;
-}
-.card-direction span{
-    margin-bottom: 15px;
-}
- }
- @media (min-width: 768px) { 
-    .card-img{
-        width: 250px;
-       height: 250px;
-        
-    }
-.card-store-text h1{
-        font-size: 28px;
-    
-    }
-.card-store-text p{
-        font-size: 20px;
-    }
-    
-.card-store-text .card-direction p{
-    font-size: 16px;
-    line-height: 20px;
-    
-}
-.btn-card-store{
-    padding: 5px;
-    background: #607D33;
-    max-width: 278px;
-    border-radius: 9px;
-    border-color: unset;
-}
-.card-direction span{
-    margin-bottom: 15px;
-}
-.btn-card-store{
-        width: 83%;
-    }
-.icon-direction{
-        width: 25px;
-        height: 25px;
-    }
-  }
+} */

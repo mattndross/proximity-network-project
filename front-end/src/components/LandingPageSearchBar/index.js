@@ -62,7 +62,7 @@ const LandingPageSearchBar = () => {
                 <div className="col-6 content-search-city-postal">
                   <div className=" search-city-postal">
                     <i class="bi bi-search"></i>
-                    <input type="text" placeholder="city or zip code" value={searchLocalValue} onChange={handleSearchLocalValue} />
+                    <input type="text" required placeholder="city or zip code" value={searchLocalValue} onChange={handleSearchLocalValue} />
                   </div>
                 </div>
               </div>
