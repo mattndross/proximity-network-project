@@ -42,7 +42,7 @@
   border: 3px solid #92BA5A;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
-  font-size: clamp(12px,3vw,22px);
+  font-size: clamp(12px,3vw,18px);
   color:#747373;
   border-right: none;
   transition: all ease .8s;
@@ -83,7 +83,7 @@
   border: 3px solid #92BA5A;
   border-top-right-radius: 22px;
   width: 100%;
-  font-size: clamp(16px,5vw,24px);
+  font-size: clamp(16px,5vw,20px);
   height: clamp(40px,5vw,70px);
   padding-left: clamp(34px,5vw,50px);
   border-bottom-right-radius: 22px;
