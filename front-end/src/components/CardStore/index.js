@@ -17,7 +17,7 @@ const CardStore = ({ cardInfo }) => {
                 <p>{cardInfo.store_category}</p>
                 <div className="card-direction">
                     <a href="https://www.google.es/maps/?hl=es" target="_blank"><img src={icon} className="img-fluid icon-direction" alt="icon" /></a>
-                    <p>{cardInfo.location}<span className="d-block">{cardInfo.postalCode}</span></p>
+                    <p>{cardInfo.address}<span className="d-block">{cardInfo.postcode} - {cardInfo.city}</span></p>
                 </div>
                 <Link className="btn btn-primary btn-card-store" to="/store-profile" role="button">view profile</Link>
             </div>

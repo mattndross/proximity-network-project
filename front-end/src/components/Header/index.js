@@ -15,8 +15,8 @@ const Header = () => {
             <ul className="main-menu">
                 <li className="main-menu_item">
                     <a className="main-menu_link" href="#">Become a Member</a></li>
-                <li className="main-menu_item">
-                    <a className="main-menu_link" href="#">Login <i class="bi bi-person-circle icon-navbar"></i></a></li>
+                <li className="main-menu_item" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ cursor: "pointer" }}>
+                    <a className="main-menu_link" >Login <i class="bi bi-person-circle icon-navbar"></i></a></li>
                 <label for="check" className="checkbtn">
                     <FaBars></FaBars>
                 </label>

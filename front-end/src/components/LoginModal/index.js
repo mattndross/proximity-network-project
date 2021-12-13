@@ -9,7 +9,7 @@ const LoginModal = () => {
                         <h6 className="modal-title" id="exampleModalLabel">Login</h6>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div className="modal-body">
+                    <div className="modal-body pb-4">
                         <div className='container modal-body-login'>
                             <h2>¡Welcome back!</h2>
                             <p>Enter your data below</p>
@@ -26,7 +26,8 @@ const LoginModal = () => {
                                 <button type="submit" className="btn btn-primary btn-login">Sign in</button>
                             </form>
                             <div className="modal-login-link d-flex">
-                                <a href="">Lost your password? <span>|</span></a>
+                                <a href="">Lost your password? </a>
+                                <span>|</span>
                                 <a href="">Regístrate</a>
                             </div>
                         </div>
