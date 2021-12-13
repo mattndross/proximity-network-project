@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 const ButtonBack = (props) => {
     return (
 
-        <Link class='animated-arrow' to={props.path}>
-            <span class='the-arrow -left'>
-                <span class='shaft'></span>
+        <Link className='animated-arrow' to={props.path}>
+            <span className='the-arrow -left'>
+                <span className='shaft'></span>
             </span>
-            <span class='main'>
-                <span class='the-arrow -right'>
-                    <span class='shaft'></span>
+            <span className='main'>
+                <span className='the-arrow -right'>
+                    <span className='shaft'></span>
                 </span>
-                <span class='text'>
+                <span className='text'>
                     {props.text ? props.text : "Back"}
                 </span>
             </span>
