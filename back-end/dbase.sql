@@ -15,13 +15,12 @@ create table stores (
  	store_id                serial primary key, 
  	foreign key(store_id)   references stores_authentications(id),
     name                varchar(50) not null,
-    profile_name    varchar(50),
     store_description   varchar(255), 
     store_category      varchar(50),
     web_page            varchar(100), 
     store_email         varchar(120),
     phone_number        varchar(20), 
-    image_url 			    varchar(255)
+    image			    varchar(255)
 );
 create table stores_locations(
 	store_id		      int,
@@ -51,10 +50,10 @@ insert into stores_authentications (store_manager, manager_email, password)
 insert into stores_authentications (store_manager, manager_email, password)
 		values ('Marta Navarra', 'lodemarta@gmail.com', 'martitaveni');   
 
-insert into stores (store_id, name, profile_name, store_description, store_category, web_page,  store_email, phone_number, image_url) 
-     values (1, 'Ecoalimentaria', 'ecoalimentaria', '', 'alimentación' , 'https://www.ecoalimentaria.es/es/', 'eco@mail.com', '632347635', 'https://scontent.fbcn7-2.fna.fbcdn.net/v/t1.18169-9/74265_436358423093621_2118048283_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=973b4a&_nc_ohc=cwb__zaKqcUAX8lZTe-&_nc_ht=scontent.fbcn7-2.fna&oh=00_AT_-n_w7UC1lEkHu1dNpYwHyaEbMxHMK1VgK0Rx8BqH5Kw&oe=61DDB3BE');
-insert into stores (store_id, name, profile_name, store_description, store_category, web_page,  store_email, phone_number, image_url) 
-        values (2, 'Lo de marta', 'lo-de-marta', '' , 'alimentación', 'https://www.lodemarta.com', 'marta@mail.com', '634675637', 'http://www.pro-cert.org/wp-content/uploads/2018/02/LogoBioCanadaRGBpresse.jpg');
+insert into stores (store_id, name, store_description, store_category, web_page,  store_email, phone_number, image) 
+     values (1, 'Ecoalimentaria', '', 'alimentación' , 'https://www.ecoalimentaria.es/es/', 'eco@mail.com', '632347635', 'https://scontent.fbcn7-2.fna.fbcdn.net/v/t1.18169-9/74265_436358423093621_2118048283_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=973b4a&_nc_ohc=cwb__zaKqcUAX8lZTe-&_nc_ht=scontent.fbcn7-2.fna&oh=00_AT_-n_w7UC1lEkHu1dNpYwHyaEbMxHMK1VgK0Rx8BqH5Kw&oe=61DDB3BE');
+insert into stores (store_id, name, store_description, store_category, web_page,  store_email, phone_number, image) 
+        values (2, 'Lo de marta', '' , 'alimentación', 'https://www.lodemarta.com', 'marta@mail.com', '634675637', 'http://www.pro-cert.org/wp-content/uploads/2018/02/LogoBioCanadaRGBpresse.jpg');
 
 
 insert into stores_locations (store_id, address, city, postcode, country, maps_url) 
@@ -63,8 +62,8 @@ insert into stores_locations (store_id, address, city, postcode, country, maps_u
         values (2, 'carrer de Córsega 464', 'Barcelona', '08025' , 'Spain', 'https://www.google.com/maps/search/?api=1&query=lo+de+marta+carrer+de+corsega+tarragona');
 
 INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) 
-		VALUES(2, 'yogurt', 'casandra', 'lacteos', '', '6', '2.10', 'Laborolo', 'Lleida');   
+		VALUES(1, 'yogurt', 'La Lacteo', 'lacteos', '', 'pack x6', '2.10', 'Laborolo', 'Lleida');   
 INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) 
-		VALUES(1, 'yogurt', 'casandra', 'lacteos', '', '6', '2.90', 'Laborolo', 'Lleida');  
+		VALUES(1, 'yogurt', 'Casandra', 'lacteos', '', 'pack x6', '2.90', 'Laborolo', 'Lleida');  
 INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) 
-		VALUES(1, 'vino', 'vent de mar', 'bebidas', '', '1', '4.65', 'Locrau', 'Ganedas'); 
+		VALUES(1, 'vino', 'vent de mar', 'bebidas', '', '1 botella', '4.65', 'Locrau', 'Ganedas'); 
