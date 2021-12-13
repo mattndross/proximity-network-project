@@ -4,11 +4,13 @@ import "./LandingPageSearchBar.css";
 import iconSearch from "../../assets/img/search-landing/icon-search.png"
 import imagenSearch from "../../assets/img/search-landing/imagen-search.png"
 import { useState, useContext } from "react"
+import { useNavigate } from 'react-router-dom'
 
 import { Context } from '../../context/SearchContext'
 
 
 const LandingPageSearchBar = () => {
+  let navigate = useNavigate();
   // Haciendo uso del context para modificarlo, con la data del search!!
   const [searchGlobal, setSearchGlobal] = useContext(Context)
   const [searchType, setSearchType] = useState(null);
@@ -27,10 +29,8 @@ const LandingPageSearchBar = () => {
 
   const replaceSearchGlobal = (event) => {
     event.preventDefault()
-    setSearchGlobal({
-      type: searchType,
-      value: searchLocalValue
-    })
+    setSearchGlobal(searchLocalValue)
+    navigate('/stores-list')
 
   }
 

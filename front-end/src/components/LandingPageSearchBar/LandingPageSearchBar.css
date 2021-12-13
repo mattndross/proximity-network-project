@@ -67,7 +67,7 @@
 
 ::placeholder {
   color: rgb(216, 216, 216);
-  font-size: clamp(10px,3vw,20px);
+  font-size: clamp(10px,3vw,22px);
   opacity: 1;
 }
 .content-search-city-postal{
@@ -83,6 +83,7 @@
   border: 3px solid #92BA5A;
   border-top-right-radius: 22px;
   width: 100%;
+  font-size: clamp(16px,5vw,24px);
   height: clamp(40px,5vw,70px);
   padding-left: clamp(34px,5vw,50px);
   border-bottom-right-radius: 22px;
