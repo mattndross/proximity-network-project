@@ -2,7 +2,7 @@ import './LoginModal.css'
 
 const LoginModal = () => {
     return (
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered ">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -28,7 +28,7 @@ const LoginModal = () => {
                             <div className="modal-login-link d-flex">
                                 <a href="">Lost your password? </a>
                                 <span>|</span>
-                                <a href="">Regístrate</a>
+                                <a className="modal-link" data-bs-toggle="modal" data-bs-target="#modalRegister">Regístrate</a>
                             </div>
                         </div>
                     </div>
