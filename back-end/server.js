@@ -124,16 +124,35 @@ app.put('/products/:productId', (req, res) =>{
 
 })
 //PUT/stores/:storeId?section |-- la tienda puede editar una sección(columna) específica de su perfil.
-app.put('/stores/profile/:storeId', (req, res)=>{ // aqui solo cambia de las tablas stores y stores_locations
-    const idStore = req.params.storeId;
-    const {address, city, postcode, country} = req.body;
-    const query = 'UPDATE stores_locations as s_l SET  address = $1, city = $2, postcode = $3, country = $4 where store_id = $5';
-    pool.query(query, [address, city, postcode, country, idStore])
-        .then((result)=>{console.log(result.rows); res.send(result)})
+// app.put('/stores/location/:storeId', (req, res)=>{ // aqui solo cambia de las tablas stores y stores_locations
+//     const idStore = req.params.storeId;
+//     const {address, city, postcode, country} = req.body;
+//     const query = 'UPDATE stores_locations SET  address = $1, city = $2, postcode = $3, country = $4 where store_id = $5';
+//    console.log(address);
+//     pool.query(query, [address, city, postcode, country, idStore])
+//         .then((result)=>{console.log(result.rows); res.send(result)})
     
-})
+// })
+// app.put('/stores/profile/:storeId', (req, res)=>{ // aqui solo cambia de las tablas stores y stores_locations
+//     const idStore = req.params.storeId;
+//     const { name, storeEmail, description, category, webPage, phone, image } = req.body;
+//     console.log("store_email", storeEmail);
+//     const query = "UPDATE stores SET name = $1, store_email = $2, store_description = $3, store_category = $4, web_page = $5, phone_number = $6, image = $7 WHERE store_id = $8";
+//     if (!storeEmail) {
+//        console.log(`estos son los datos: ${name}, ${storeEmail}, ${description}, ${category}, ${webPage}, ${phone}`);
+//      } 
+//     pool.query(query, [name, storeEmail, description, category, webPage, phone, image, idStore])
+//         .then((result)=> { res.send("donde esta el body", result);
+//     })
+//         .catch(error=> console.log(error))
+    
+// })
 
- 
+// const querySelect = 'select * from stores as s inner join stores_locations as s_l on s_l.store_id = s.store_id where s.store_id =$1'
+// .then((result)=>{
+//     if(result.rows[0].address === address || result.rows[0].city === city || result.rows[0].postcode === postcode || result.rows[0].country === country ){
+//         return res.send({message : "you changed nothing"})
+//     } })
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () =>
   console.log(`proximity network is running in port ${PORT}`)
