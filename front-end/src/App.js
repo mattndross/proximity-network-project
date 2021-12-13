@@ -7,6 +7,7 @@ import StoresList from "./pages/StoresList";
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import StoreProfile from "./pages/StoreProfile";
+import LoginModal from './components/LoginModal'
 // import global context
 import { Context } from './context/SearchContext.js'
 
@@ -20,7 +21,7 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
         {<Header />}
-
+        <LoginModal></LoginModal>
         <Context.Provider value={[searchGlobal, setSearchGlobal]}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
@@ -30,7 +31,7 @@ function App() {
           </Routes>
         </Context.Provider>
 
-        {<Footer />}
+        <Footer />
       </BrowserRouter>
     </div>
   );

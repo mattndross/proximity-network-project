@@ -33,7 +33,7 @@
 .card-store-text .card-direction p{
     color: #5B5757;
     font-size: clamp(9px,2vw,18px);
-    line-height: 14px;
+    line-height: clamp(14px,5vw,20px);
 }
  .btn-card-store{
     padding: clamp(1px,1vw,10px);
