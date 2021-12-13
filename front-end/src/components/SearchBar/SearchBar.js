@@ -16,12 +16,11 @@ function SearchBar() {
         </div>
 
         <div className="bgImageLeft" style={{ backgroundImage: `url(${img_banner})`, backgroundRepeat: "no-repeat", height: "650px", backgroundPosition: "left", marginLeft: "100px" }}>
-          <div className="text">
-            <h2 className="searchText">Find the best organic stores in your city, with quality products.</h2>
-            < Search />
-            
-          </div>
         </div>
+          <div className="text">
+            <h2 className="searchText">Find <span>the best organic stores in your <br/>city</span>, with quality products.</h2>
+          </div>
+          < Search />
       </div>
     </>
 
@@ -43,3 +42,5 @@ export default SearchBar
 
 
 
+            
+            
