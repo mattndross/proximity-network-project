@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 import StoresListBanner from '../../components/StoresListBanner'
@@ -9,8 +9,24 @@ import CardListStores from '../../components/CardListStores'
 import { Context } from '../../context/SearchContext.js'
 
 export default function StoresList() {
-    const valor = useContext(Context);
-    console.log(valor)
+    const searchValueGlobal = useContext(Context);
+    const [stores, setStores] = useState([]);
+
+    useEffect(() => {
+        const getData = () => {
+            fetch(`http://localhost:4000/search/${searchValueGlobal}`)
+                .then(response => response.json())
+                .then(data => {
+                    setStores(data);
+                    console.log("fetched", data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        };
+        getData();
+    }, []);
+    console.log("oustside stores", stores)
     return (
         <div>
             <StoresListBanner></StoresListBanner>
