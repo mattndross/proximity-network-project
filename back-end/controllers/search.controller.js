@@ -9,9 +9,10 @@ const pool = new Pool({
 
 //QUERIES
 const searchByPostalCodeQuery =
-  "SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE postcode = $1";
-const searchByCityQuery =
-  "SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE upper(city) = upper($1)";
+  "SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE postcode = $1";
+  const searchByCityQuery =
+  "SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE upper(city) = upper($1)";
+  
 
 exports.searchController = (req, res) => {
   const zone = req.params.zone;
