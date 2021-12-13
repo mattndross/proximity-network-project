@@ -46,19 +46,17 @@
     background: #648536;
 }
 .modal-login-link{
-    width: 85%;
     margin: 30px auto;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .modal-login-link a {
     color: #838282;
-    font-size: 12px;
+    font-size: clamp(12px,3vw,16px);
     text-decoration: unset;
     transition: all ease .8s;
 }
 .modal-login-link span{
     font-weight: 700;
-    margin-left: 20px;
 }
 .modal-login-link a:hover{
     color: #81B03E;

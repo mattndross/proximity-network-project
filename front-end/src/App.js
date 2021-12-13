@@ -12,7 +12,10 @@ import { Context } from './context/SearchContext.js'
 
 function App() {
   // Variable global que se modificara en el componente search de la landing !
+
+
   const [searchGlobal, setSearchGlobal] = useState('')
+
   return (
     <div className="wrapper">
       <BrowserRouter>

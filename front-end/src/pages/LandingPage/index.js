@@ -13,9 +13,6 @@ export default function LandingPage() {
             <LandingPageBanner></LandingPageBanner>
             < LandingPageSearchBar />
             <LandingPageAbout></LandingPageAbout>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-            </button>
             <LoginModal></LoginModal>
             <Link to="/stores-list">
                 <Button color="gray-bg" textColor="white-txt" text="products list"></Button>
