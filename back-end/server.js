@@ -12,6 +12,7 @@ app.use(cors(corsOptions));
 const { pool } = require("./pool");
 const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
+const { deleteProduct } = require("./controllers/privilege.controller");
 
 //FUNCTION
 
@@ -37,19 +38,7 @@ app.get("/stores/search/:storeName", publicController.findStoreByName); //devuel
 app.get("/stores/profile/:storeId", publicController.findStoresById); //devuleve los datos de la tienda con ese id
 app.get("/products/:productId", publicController.findProductById);//devuelve los datos del producto con ese id
 
-app.delete("/products/:productId", (req, res) => {
-  const idProduct = req.params.productId;
-  const queryDeleteProduct =
-    "DELETE FROM products USING stores WHERE products.store_id = stores.store_id and products.id = $1";
-  pool
-    .query(queryDeleteProduct, [idProduct])
-    .then(() =>
-      res
-        .status(200)
-        .send({ message: `Product number ${idProduct} was deleted` })
-    )
-    .catch((e) => console.log(e));
-});
+app.delete("/products/:productId", deleteProduct);
 
 app.get("/products/storeProducts/:storeId", (req, res) => {
   //return data of the given product
