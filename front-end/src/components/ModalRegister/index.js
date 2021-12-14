@@ -17,15 +17,9 @@ const Modalregister = () => {
                                 <h5>Store manager:</h5>
                             </div>
                             <form className="form-register">
-                                <div className="row mb-3">
-                                    <div className="col-6">
-                                        <label for="exampleInputEmail1" className="form-label">Firstname<span>* </span></label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                    <div className="col-6">
-                                        <label for="exampleInputEmail1" className="form-label">Lastname<span>* </span></label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
+                                <div className="mb-3">
+                                    <label for="exampleInputEmail1" className="form-label">Fullname<span>* </span></label>
+                                    <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
 
                                 </div>
                                 <div className="mb-3">
@@ -40,7 +34,7 @@ const Modalregister = () => {
                                     <label for="exampleInputPassword1" className="form-label">Store name<span>* </span></label>
                                     <input type="password" className="form-control input-register" id="exampleInputPassword1" />
                                 </div>
-                                <div className="row mb-3">
+                                {/* <div className="row mb-3">
                                     <label for="exampleInputEmail1" className="form-label">Store address<span>* </span></label>
                                     <div className="col-4">
                                         <label for="exampleInputEmail1" className="form-label form-alternative">street</label>
@@ -68,7 +62,7 @@ const Modalregister = () => {
                                 <div className="mb-3">
                                     <label for="exampleInputPassword1" className="form-label">Store web</label>
                                     <input type="password" className="form-control input-register" id="exampleInputPassword1" />
-                                </div>
+                                </div> */}
                                 <button type="submit" className="btn btn-primary btn-register">Create an account</button>
                             </form>
                             <div className='text-center mt-2 mb-5'>

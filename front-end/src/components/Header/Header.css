@@ -5,6 +5,9 @@
     padding: 20px 45px;
     position: fixed;
     z-index: 100;
+    top:0;
+    right: 0;
+    left:0;
     background-color: white;
     align-items: center;
  
@@ -21,7 +24,7 @@
 }
 
 .main-menu  li a{
-
+    font-size: 18px;
     text-decoration: none;
     color: black;
     transition: all ease 0.8s;
