@@ -62,3 +62,12 @@ exports.findProductById = (req, res) => {
     .then((result) => res.json(result))
     .catch((e) => console.log(e));
 };
+
+exports.getProfile = (req, res)=>{ //devuelve datos de la tienda idicada
+  const storeName = req.params.storeName;
+  storeName = storeName.trim().split("-").join(" ");
+
+  pool.query("SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id  WHERE UPPER(name) = UPPER($1)", [storeName])
+  .then((result) => res.json(result.rows))
+  .catch((e) => console.log(e));
+}

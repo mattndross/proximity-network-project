@@ -33,10 +33,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/search/:zone", publicController.search); //devuelve lista de tiendas fitradas por codigo postal o ciudad
+app.get('/store-profile/:storeName', publicController.getProfile);//devuelve los datos de perfil de la tienda indicada
+
 app.get("/stores", publicController.findAllStores); //devuelve lista de todas las tiendas
 app.get("/stores/search/:storeName", publicController.findStoreByName); //devuelve los datos publicos de las tienda que coinciden con la busqueda
 app.get("/stores/profile/:storeId", publicController.findStoresById); //devuleve los datos de la tienda con ese id
 app.get("/products/:productId", publicController.findProductById);//devuelve los datos del producto con ese id
+
 
 app.delete("/products/:productId", deleteProduct);
 
