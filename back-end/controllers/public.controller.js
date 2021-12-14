@@ -70,4 +70,13 @@ exports.getProfile = (req, res)=>{ //devuelve datos de la tienda idicada
   pool.query("SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id  WHERE UPPER(name) = UPPER($1)", [storeName])
   .then((result) => res.json(result.rows))
   .catch((e) => console.log(e));
-}
+};
+
+exports.getAllStoreProducts = (req, res) => { 
+  const storeId = req.params.storeId;
+
+  pool
+    .query("SELECT * FROM products WHERE store_id = $1", [storeId])
+    .then((result) => res.json(result.rows))
+    .catch((e) => console.log(e));
+};
