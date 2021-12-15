@@ -48,9 +48,9 @@ exports.findStoreByName = (req, res)=>{
   .catch((e) => console.log(e));
 }
 
-exports.findStoresById =  (req,res)=>{ 
+exports.getStoreById =  (req,res)=>{ 
   const storeId = req.params.storeId; 
-  pool.query('SELECT * FROM stores WHERE store_id = $1', [storeId])
+  pool.query('SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id  WHERE s.store_id = $1', [storeId])
   .then((result) => res.json(result.rows))
   .catch((e) => console.log(e));
 }
@@ -64,10 +64,19 @@ exports.findProductById = (req, res) => {
 };
 
 exports.getProfile = (req, res)=>{ //devuelve datos de la tienda idicada
-  const storeName = req.params.storeName;
+  let storeName = req.params.storeName;
   storeName = storeName.trim().split("-").join(" ");
 
   pool.query("SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id  WHERE UPPER(name) = UPPER($1)", [storeName])
   .then((result) => res.json(result.rows))
   .catch((e) => console.log(e));
-}
+};
+
+exports.getAllStoreProducts = (req, res) => { 
+  const storeId = req.params.storeId;
+
+  pool
+    .query("SELECT * FROM products WHERE store_id = $1", [storeId])
+    .then((result) => res.json(result.rows))
+    .catch((e) => console.log(e));
+};
