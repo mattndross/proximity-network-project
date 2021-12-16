@@ -1,7 +1,7 @@
 import './ModalRegister.css'
 const Modalregister = () => {
     return (
-        <div className="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="modalRegister" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered ">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -19,54 +19,54 @@ const Modalregister = () => {
                             <form className="form-register">
                                 <div className="row mb-3">
                                     <div className="col-6">
-                                        <label for="exampleInputEmail1" className="form-label">Firstname<span>* </span></label>
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Firstname<span>* </span></label>
                                         <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div className="col-6">
-                                        <label for="exampleInputEmail1" className="form-label">Lastname<span>* </span></label>
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Lastname<span>* </span></label>
                                         <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
 
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleInputEmail1" className="form-label">Email address<span>* </span></label>
+                                    <label htmlFor="exampleInputEmail1" className="form-label">Email address<span>* </span></label>
                                     <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleInputPassword1" className="form-label">Password<span>* </span></label>
+                                    <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
                                     <input type="password" className="form-control input-register" id="exampleInputPassword1" />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleInputPassword1" className="form-label">Store name<span>* </span></label>
+                                    <label htmlFor="exampleInputPassword1" className="form-label">Store name<span>* </span></label>
                                     <input type="password" className="form-control input-register" id="exampleInputPassword1" />
                                 </div>
                                 <div className="row mb-3">
-                                    <label for="exampleInputEmail1" className="form-label">Store address<span>* </span></label>
+                                    <label htmlFor="exampleInputEmail1" className="form-label">Store address<span>* </span></label>
                                     <div className="col-4">
-                                        <label for="exampleInputEmail1" className="form-label form-alternative">street</label>
+                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">street</label>
                                         <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div className="col-4">
-                                        <label for="exampleInputEmail1" className="form-label form-alternative">store number</label>
+                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">store number</label>
                                         <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div className="col-4">
-                                        <label for="exampleInputEmail1" className="form-label form-alternative">postal code</label>
+                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">postal code</label>
                                         <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                 </div>
                                 <div className="row mb-3">
                                     <div className="col-6">
-                                        <label for="exampleInputEmail1" className="form-label form-alternative">City</label>
+                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">City</label>
                                         <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                     <div className="col-6">
-                                        <label for="exampleInputEmail1" className="form-label form-alternative">Country</label>
+                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">Country</label>
                                         <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleInputPassword1" className="form-label">Store web</label>
+                                    <label htmlFor="exampleInputPassword1" className="form-label">Store web</label>
                                     <input type="password" className="form-control input-register" id="exampleInputPassword1" />
                                 </div>
                                 <button type="submit" className="btn btn-primary btn-register">Create an account</button>

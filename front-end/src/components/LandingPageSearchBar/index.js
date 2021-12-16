@@ -13,7 +13,7 @@ const LandingPageSearchBar = () => {
   let navigate = useNavigate();
   // Haciendo uso del context para modificarlo, con la data del search!!
   const [searchGlobal, setSearchGlobal] = useContext(Context)
-  const [searchType, setSearchType] = useState(null);
+  const [searchType, setSearchType] = useState("");
   const [searchLocalValue, setSearchLocalValue] = useState("");
   // Método para obtener el search Value
   const handleSearchLocalValue = (event) => {
@@ -51,17 +51,17 @@ const LandingPageSearchBar = () => {
             <form className="text-center" onSubmit={replaceSearchGlobal}>
               <div className="row search-form">
                 <div className=" col-6 content-select">
-                  <di className="search-postal">
-                    <select class="form-select" onChange={handleChangeSearchType} value={searchType} aria-label="Default select example">
+                  <div className="search-postal">
+                    <select className="form-select" onChange={handleChangeSearchType} value={searchType} aria-label="Default select example">
 
-                      <option value="city" selected>Search by City</option>
+                      <option value="city" >Search by City</option>
                       <option value="postal">Search by postal code</option>
                     </select>
-                  </di>
+                  </div>
                 </div>
                 <div className="col-6 content-search-city-postal">
                   <div className=" search-city-postal">
-                    <i class="bi bi-search"></i>
+                    <i className="bi bi-search"></i>
                     <input type="text" required placeholder="city or zip code" value={searchLocalValue} onChange={handleSearchLocalValue} />
                   </div>
                 </div>
@@ -76,3 +76,5 @@ const LandingPageSearchBar = () => {
 };
 
 export default LandingPageSearchBar;
+
+// selected
