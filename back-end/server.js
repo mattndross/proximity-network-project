@@ -128,56 +128,56 @@ app.put('/stores/location/:storeId', (req, res) => { // aqui solo cambia de las 
     .then((result) => { console.log(result.rows); res.send(result) })
 
 })
-// app.put('/stores/profile/:storeId', (req, res) => { // aqui solo cambia de las tablas stores y stores_locations
-//   const idStore = req.params.storeId;
-//   const { name, storeEmail, description, category, webPage, phone, image, address, city, postcode, country } = req.body;
-//   const querySelect = 'select * from stores as s inner join stores_locations as s_l on s_l.store_id = s.store_id where s.store_id =$1';
-//   const qUpdateStores = "UPDATE stores SET name = $1, store_email = $2, store_description = $3, store_category = $4, web_page = $5, phone_number = $6, image = $7 WHERE store_id = $8";
-//   const qUpdateLocation = 'UPDATE stores_locations SET  address = $1, city = $2, postcode = $3, country = $4 where store_id = $5';
 
-//   pool.query(querySelect, [idStore])
-//     .then((result) => {
-//       console.log("result.rows[0].address",result.rows[0].address);
-//       console.log("result.rows",result.rows);
-//       if (
-//         result.rows[0].name !== name) { res.json({message: `you store name is now: ${name}`})}
-//         else if (
-//           result.rows[0].store_email === storeEmail||
-//           result.rows[0].store_description === description||
-//           result.rows[0].store_category === category ||
-//           result.rows[0].web_page === webPage||
-//           result.rows[0].phone_number === phone||
-//           result.rows[0].image === image &&
-//           result.rows[0].address === address){  res.send("the address is the same as before")}
-//           else if
-//           (result.rows[0].city === city &&
-//           result.rows[0].postcode === postcode &&
-//           result.rows[0].country === country ) 
-//         {  res.send({ message: "you did not chage any value" }) };
+//>>>> PROBANDO PUT METHOD para que la tienda pueda editar su perfil,
+//>>>>  NO FUNCIONA <<< 
+// la idea es hacer un query para que solo cambie las filas que modifica,
+// no que actualize todos los campos por mas que se modifique uno solo.
 
-//     }    ); 
-//     pool.query(qUpdateLocation, [address, city, postcode, country, idStore])
-//         .then((result) => { console.log("result in query", result); res.send({message: "your changes was succesfully submitted"});
-//     }
-//     )
-//     .catch(e => console.log(e));
-//     pool.query(qUpdateStores, [name, storeEmail, description, category, webPage, phone, image, idStore])
-//         .then(result => {res.send(result.rows)})
-        
-// }
-// );
+app.put('/stores/profile/:storeId', (req, res) => { // aqui solo cambia de las tablas stores y stores_locations
+  const idStore = req.params.storeId;
+  const { name, storeEmail, description, category, webPage, phone, image, address, city, postcode, country } = req.body;
+  const querySelect = 'select * from stores as s inner join stores_locations as s_l on s_l.store_id = s.store_id where s.store_id =$1';
+  const qUpdateStores = "UPDATE stores SET name = $1, store_email = $2, store_description = $3, store_category = $4, web_page = $5, phone_number = $6, image = $7 WHERE store_id = $8";
+  const qUpdateLocation = 'UPDATE stores_locations SET  address = $1, city = $2, postcode = $3, country = $4 where store_id = $5';
+
+  pool.query(querySelect, [idStore])
+    .then((result) => {
+
+      if (
+        result.rows[0].name !== name) { res.json({ message: `you store name is now: ${name}` }) }
+      else if (
+        result.rows[0].store_email === storeEmail ||
+        result.rows[0].store_description === description ||
+        result.rows[0].store_category === category ||
+        result.rows[0].web_page === webPage ||
+        result.rows[0].phone_number === phone ||
+        result.rows[0].image === image &&
+        result.rows[0].address === address) { res.send("the address is the same as before") }
+      else if
+        (result.rows[0].city === city &&
+        result.rows[0].postcode === postcode &&
+        result.rows[0].country === country) { res.send({ message: "you did not chage any value" }) };
+
+    });
+  pool.query(qUpdateLocation, [address, city, postcode, country, idStore])
+    .then(() => res.send({ message: "your changes was succesfully submitted" }))
+    .catch(e => console.log(e));
+  pool.query(qUpdateStores, [name, storeEmail, description, category, webPage, phone, image, idStore])
+    .then(result => { res.send(result.rows) })
+
+}
+);
 
 
-//     console.log("req.body", req.body);
-//     const query = "UPDATE stores SET name = $1, store_email = $2, store_description = $3, store_category = $4, web_page = $5, phone_number = $6, image = $7 WHERE store_id = $8";
-//     if (!storeEmail) {
-//        console.log(`estos son los datos: ${name}, ${storeEmail}, ${description}, ${category}, ${webPage}, ${phone}`);
-//      } 
-//     pool.query(query, [name, storeEmail, description, category, webPage, phone, image, idStore])
-//         .then((result)=> { res.send("donde esta el body", result);
-//     })
-//         .catch(error=> console.log(error))
-// })
+// const query = "UPDATE stores SET name = $1, store_email = $2, store_description = $3, store_category = $4, web_page = $5, phone_number = $6, image = $7 WHERE store_id = $8";
+// if (!storeEmail) {
+//    console.log(`estos son los datos: ${name}, ${storeEmail}, ${description}, ${category}, ${webPage}, ${phone}`);
+//  } 
+// pool.query(query, [name, storeEmail, description, category, webPage, phone, image, idStore])
+//     .then((result)=> res.send("donde esta el body", result))
+//     .catch(error=> console.log(error))
+
 
 
 const PORT = process.env.PORT || 4000;
