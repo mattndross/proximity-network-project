@@ -172,10 +172,6 @@ app.put('/stores/profile/:storeId', (req, res) => { // aqui solo cambia de las t
 
 }
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () =>
-  console.log(`proximity network is running in port ${PORT}`)
-);
 
 
 // const query = "UPDATE stores SET name = $1, store_email = $2, store_description = $3, store_category = $4, web_page = $5, phone_number = $6, image = $7 WHERE store_id = $8";
