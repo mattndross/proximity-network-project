@@ -22,6 +22,12 @@
     height: 60px;
 
 }
+.parrafo-error{
+    font-weight: 700;
+    font-size: clamp(16px, 5vw,24px);
+    color: #7a7a7a;
+    
+}
 @media (min-width: 576px) {
     #cardListStore{
         padding: 50px;

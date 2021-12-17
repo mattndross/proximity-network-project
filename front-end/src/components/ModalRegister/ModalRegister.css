@@ -1,0 +1,74 @@
+.model-content{
+    border-radius: 15px;
+}
+.modal-register-body{
+    padding-left:clamp(20px,5vw,50px);
+    padding-right: clamp(20px,5vw,50px);
+}
+.modal-register-body h2{
+    font-size: clamp(22px,3vw,28px);
+    color: #333333;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.modal-register-body p{
+    font-size: clamp(16px,3vw,20px);
+    color: #656161;
+    text-align: center;
+
+}
+.content-manager h5{
+    font-size: clamp(16px,3vw,22px);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.content-manager i{
+    margin-right: 10px;
+    font-size: clamp(20px,3vw,28px);
+    color: #4cb04c;
+}
+.form-register label {
+    font-size: clamp(14px,3vw,18px);
+    font-weight: 600;
+}
+.form-register label span{
+    font-size: clamp(18px, 5vw,24px);
+    color:#FF0000;
+}
+.form-register .form-alternative{
+    font-size: clamp(12px,3vw,14px);
+}
+.form-register .input-register{
+    border-radius: unset;
+    padding: 4px;
+    border: unset;
+    border-bottom: 1px solid #999898;
+    background: #E8FEE8;
+    width: 100%;
+}
+.btn-register{
+    background: #81B03E;
+    border: unset;
+    padding-top:clamp(5px,4vw,10px);
+    padding-bottom:clamp(5px,4vw,10px);
+    border-radius: 22px;
+    width: 100%;
+    font-size: clamp(16px,3vw,20px);
+    font-weight: 700;
+    transition: all ease .8s;
+    margin-top: 20px;
+}
+.btn-register:hover{
+    background: #648536;
+}
+.enlace-login{
+    color: #838282;
+    font-size: clamp(16px,3vw,18px);
+    text-decoration: unset;
+    transition: all ease .8s;
+}
+.enlace-login:hover{
+    cursor:pointer;
+    color: #81B03E;
+}

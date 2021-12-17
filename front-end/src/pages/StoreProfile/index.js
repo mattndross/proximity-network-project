@@ -7,6 +7,7 @@ import CardStoreProfile from '../../components/CardStoreProfile';
 import SearchListProduct from '../../components/SearchListProduct';
 import CardProductStore from '../../components/CardProductStore';
 import StoreProductBanner from '../../components/StoreProductBanner';
+import ModalProduct from '../../components/ModalProduct';
 
 export default function StoreProfile() {
     const dataFake = [1, 2, 3, 4, 5, 6]
@@ -27,10 +28,8 @@ export default function StoreProfile() {
                     </div>
                 </div>
             </section>
+            <ModalProduct></ModalProduct>
             <StoreProductBanner></StoreProductBanner>
-            <Link to="/">
-                <Button color="gray-bg" textColor="white-txt" text="Go Home"></Button>
-            </Link>
         </div>
     )
 }

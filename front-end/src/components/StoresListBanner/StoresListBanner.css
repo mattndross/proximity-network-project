@@ -13,7 +13,7 @@
     justify-content: center;
     gap:10px
 }
-#productListBanner .img-container{
+#productListBanner .img-container-list{
     max-width: 250px;
     margin: 0 auto;
 }
@@ -31,7 +31,7 @@
     #productListBanner .container .img-banner-product{
         margin-bottom: 10px;
     }
-    #productListBanner .img-container{
+    #productListBanner .img-container-list{
         max-width: 350px;
     }
     #productListBanner .container p{
