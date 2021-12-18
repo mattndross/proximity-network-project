@@ -30,10 +30,10 @@ const CardStoreProfile = () => {
                         <h3>Where we are :</h3>
                         <div className="row  card-icon-store">
                             <div className="col-sm-6">
-                                <a href="www.bioproductsspain.com" className=" d-flex flex-column align-items-center" target="_blank"><img src={iconMail} alt="" />{storeInfo.web_page}</a>
+                                <a href={storeInfo.web_page} className=" d-flex flex-column align-items-center" target="_blank"><img src={iconMail} alt="" />{storeInfo.web_page}</a>
                             </div>
                             <div className="col-sm-6">
-                                <a href="https://www.google.es/maps/?hl=es" className=" d-flex flex-column align-items-center" target="_blank"><img src={iconMapa} alt="" />{storeInfo.address} <span className="d-block text-center" style={{ lineHeight: "15px" }}>{storeInfo.postcode} - {storeInfo.city}</span> </a>
+                                <a href={storeInfo.maps_url} className=" d-flex flex-column align-items-center" target="_blank"><img src={iconMapa} alt="" />{storeInfo.address} <span className="d-block text-center" style={{ lineHeight: "15px" }}>{storeInfo.postcode} - {storeInfo.city}</span> </a>
                             </div>
                         </div>
                     </div>

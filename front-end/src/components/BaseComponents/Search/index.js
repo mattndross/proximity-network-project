@@ -8,10 +8,11 @@ const Search = ({ setSearchGlobal, searchGlobal }) => {
 
     const [searchLocalValue, setSearchLocalValue] = useState("");
 
+
     const handleSearchLocalValue = (event) => {
         setSearchLocalValue(event.target.value)
         setSearchContextGlobal(event.target.value)
-        console.log(searchLocalValue)
+
     }
 
     const handleSearch = (event) => {

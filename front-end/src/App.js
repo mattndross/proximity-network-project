@@ -20,7 +20,7 @@ function App() {
   // Variable global que se modificara en el componente search de la landing !
   const [searchGlobal, setSearchGlobal] = useState('')
   // variable global para mandar los datos de una tienda!
-  const [storeProfileId, setStoreProfileId] = useState('hola')
+  const [storeProfileId, setStoreProfileId] = useState('')
 
 
   return (
