@@ -12,9 +12,6 @@ export default function StoresList() {
         <div>
             <StoresListBanner></StoresListBanner>
             <CardListStores></CardListStores>
-            <Link to="/">
-                <Button color="gray-bg" textColor="white-txt" text="Go Home"></Button>
-            </Link>
         </div>
 
     )

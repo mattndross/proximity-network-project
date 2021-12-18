@@ -15,7 +15,7 @@
     color: #575757;
 }
 .card-list-content{
-    max-height: 850px;
+    max-height: 580px;
     overflow-y: scroll;
 }
 #cardListStore .section-header img{
