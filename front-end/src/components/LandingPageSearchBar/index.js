@@ -6,13 +6,13 @@ import imagenSearch from "../../assets/img/search-landing/imagen-search.png"
 import { useState, useContext } from "react"
 import { useNavigate } from 'react-router-dom'
 
-import { Context } from '../../context/SearchContext'
+import { SearchContext } from '../../context/SearchContext'
 
 
 const LandingPageSearchBar = () => {
   let navigate = useNavigate();
   // Haciendo uso del context para modificarlo, con la data del search!!
-  const [searchGlobal, setSearchGlobal] = useContext(Context)
+  const [searchGlobal, setSearchGlobal] = useContext(SearchContext)
   const [searchType, setSearchType] = useState("");
   const [searchLocalValue, setSearchLocalValue] = useState("");
   // Método para obtener el search Value

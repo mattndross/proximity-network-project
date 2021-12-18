@@ -6,14 +6,17 @@ import iconTienda from '../../assets/img/stores-list-banner/icon-tienda.svg'
 import iconError from '../../assets/img/menssage-error/error.png'
 import SearchStoresList from '../SearchStoresList'
 // importar el contexto
-import { Context } from '../../context/SearchContext.js'
+import { SearchContext } from '../../context/SearchContext.js'
+import { ProfileContext } from "../../context/ProfileContext"
 
 const CardListStores = () => {
 
-    const searchValueGlobal = useContext(Context);
+    const searchValueGlobal = useContext(SearchContext);
 
     // Estado necesario para la reactividad del componente.
     const [searchGlobal, setSearchGlobal] = useState(searchValueGlobal[0])
+    const [storeProfileId, setStoreProfileId] = useContext(ProfileContext);
+
 
     const [stores, setStores] = useState([]);
     const [message, setMessage] = useState("")
@@ -65,7 +68,7 @@ const CardListStores = () => {
                         <div className="col-lg-8 col-xl-6">
 
                             {
-                                stores.length > 0 && stores.map((cardInfo) => <CardStore cardInfo={cardInfo} />)
+                                stores.length > 0 && stores.map((cardInfo) => <CardStore setStoreProfileId={setStoreProfileId} cardInfo={cardInfo} />)
                             }
                         </div>
                         {
