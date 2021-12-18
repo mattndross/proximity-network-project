@@ -1,0 +1,90 @@
+.title-content-profile{
+    gap: 30px;
+    align-items: center;
+}
+
+.title-content-profile h2{
+    font-size: clamp(16px,3vw,22px);
+    font-weight: 700; 
+    transition: all ease .8s;
+    cursor: pointer;
+}
+.title-content-profile a{
+    text-decoration: none;
+    color: #333333;
+}
+.title-content-profile span{
+    font-size: 22px;
+    font-weight: 700;
+}
+.title-content-profile h2:hover{
+    color: #607D33;
+    border-bottom: 3px solid #607D33;
+}
+.from-profile{
+    background-color: #ffff;
+    margin-top: 30px;
+    padding:40px;
+    box-shadow: rgb(196 196 196 / 8%) 1px 1px 4px 3px, rgb(0 0 0 / 25%) 0px 2px 7px 0px;
+}
+.from-profile .formulario-usuario input{
+    border-radius: 5px;
+    border: 2px solid #cac9c9;
+}
+.from-profile .formulario-usuario label{
+    font-size: clamp(16px,3vw,20px);
+    font-weight: 600;
+}
+.from-profile .formulario-usuario span{
+    font-size: clamp(18px, 5vw,24px);
+    color:#FF0000;
+}
+.text-from-description{
+    border-radius: 5px;
+    border: 2px solid #cac9c9;
+}
+.btn-formulario{
+    background: #81B03E;
+    border: unset;
+    border-radius: 22px;
+    font-size: clamp(14px,3vw,20px);
+    font-weight: 700;
+    width: clamp(120px,10vw,200px);
+    transition: all ease .8s;
+    margin-top: 20px;
+}
+button:focus:not(:focus-visible) {
+    outline: unset;
+}
+.btn-check:active+.btn-primary:focus, .btn-check:checked+.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show>.btn-primary.dropdown-toggle:focus{
+    box-shadow: unset;
+}
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #81B03E;
+    border-color: unset;
+    box-shadow: unset;
+}
+.btn-formulario:hover{
+    background: #648536;
+}
+@media(min-width:992px){
+
+    .title-content-profile{
+        margin-top: 80px;
+    }
+    .from-profile{
+        padding:100px;
+        margin-top: 50px;
+    }
+.from-profile .formulario-usuario input{
+    height: 55px;
+}
+.form-control{
+    width: 100%;
+}
+.formulario-usuario .form-label{
+    text-align: end;
+    padding-right: 50px;
+}
+}

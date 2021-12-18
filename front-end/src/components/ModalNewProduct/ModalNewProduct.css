@@ -1,0 +1,89 @@
+.model-content{
+    border-radius: 15px;
+}
+.modal-new-product-body{
+    padding-left:clamp(20px,5vw,50px);
+    padding-right: clamp(20px,5vw,50px);
+}
+.modal-new-product-body h2{
+    font-size: clamp(20px,3vw,24px);
+    color: #333333;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.modal-new-product-body p{
+    font-size: clamp(12px,3vw,16px);
+    color: #656161;
+    text-align: center;
+
+}
+.modal-product-h5{
+    font-size: clamp(16px,3vw,20px);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.form-new-product{
+    margin-top:30px;
+}
+.form-new-product label {
+    font-size: clamp(12px,3vw,15px);
+    font-weight: 600;
+}
+.form-new-product label span,.modal-new-product-body span{
+    font-size: clamp(14px, 5vw,20px);
+    color:#FF0000;
+}
+.form-new-product .input-product-user{
+    border-radius: unset;
+    padding: 4px;
+    border: unset;
+    border-bottom: 1px solid #999898;
+    background: #E8FEE8;
+    width: 98%;
+}
+textarea.form-control {
+    height: clamp(70px,5vw,100px);
+}
+.icon-product-modal i{
+    font-size: clamp(50px,5vw,80px);
+    color: #81B03E;
+    display: inline-block;
+    background: #e8fee8;
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+.btn-modal-product{
+    background-color:#4D711A;
+    border-color: #4D711A;
+    color: #ffff;
+    border:unset;
+    font-size: clamp(14px,3vw,18px);
+    font-weight: 600;
+    border-radius: 22px;
+    transition: all ease .8s;
+    padding:unset;
+    padding-top: clamp(8px,1vw,12px);
+    padding-bottom: clamp(8px,1vw,12px);;
+    padding-left: clamp(50px,5vw,60px);
+    padding-right: clamp(50px,5vw,60px);
+}
+
+.btn-modal-product:hover{
+    color: #80b03d;
+    border:3px solid #80b03d;
+}
+.btn-check:focus+.btn-outline-success, .btn-outline-success:focus {
+    box-shadow: unset;
+}
+
+.btn-modal-product:focus{
+    outline: unset;
+    box-shadow: unset;
+}
+ .btn-outline-success:focus{
+    box-shadow: unset;
+}
+.btn-outline-success:hover {
+    background-color: unset;
+}

@@ -9,6 +9,8 @@ import Header from "./components/Header"
 import StoreProfile from "./pages/StoreProfile";
 import LoginModal from './components/LoginModal'
 import Modalregister from './components/ModalRegister';
+import ProfileUserStore from './pages/ProfileUserStore';
+import ProfileUserProduct from './pages/ProfileUserProduct';
 
 // import global context
 import { Context } from './context/SearchContext.js'
@@ -29,8 +31,9 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/stores-list" element={<StoresList />} />
-            <Route path="/store-profile" element={
-              <StoreProfile />} />
+            <Route path="/store-profile" element={<StoreProfile />} />
+            <Route path="/profile-user" element={<ProfileUserStore />} />
+            <Route path="/profile-product" element={<ProfileUserProduct />} />
           </Routes>
         </Context.Provider>
 

@@ -12,9 +12,9 @@ const Header = () => {
                 <img src={logo} className="img-fluid" width="150px" alt="..." className="logo" />
             </Link>
 
-            <input type="checkbox" id="check" onChange={handleChange}></input>
+            <input type="checkbox" id="check" ></input>
             <label for="check" className="checkbtn">
-            <i class="bi bi-list"></i>
+                <i class="bi bi-list"></i>
             </label>
             <ul className="main-menu">
 

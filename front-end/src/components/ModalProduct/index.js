@@ -1,8 +1,8 @@
 import './ModalProduct.css'
 import imagenModal from '../../assets/img/fake-img/product.jpg'
-const ModalProduct = () => {
+const ModalProduct = ({ id }) => {
     return (
-        <div className="modal fade" id="modalProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
