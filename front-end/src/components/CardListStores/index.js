@@ -39,10 +39,10 @@ const CardListStores = () => {
         } catch (error) {
             console.log(error)
         }
-    });
+    }, [searchGlobal]);
 
     const alert = <div className={`${stores.message || stores.length == 0 ? 'd-block' : 'd-none'} col-lg-12 text-center `} >
-        {searchGlobal}
+
         <div><img src={iconError} alt="icon-error" className="img-fluid" /></div>
         <p className='parrafo-error'>Opps!.. {stores.message}</p>
     </div>
@@ -51,7 +51,7 @@ const CardListStores = () => {
 
         <>
 
-            <SearchStoresList></SearchStoresList>
+            <SearchStoresList searchGlobal={searchGlobal} setSearchGlobal={setSearchGlobal}></SearchStoresList>
             <section id="cardListStore">
                 <div className="section-header d-flex justify-content-center align-items-baseline text-center">
                     <img src={iconTienda} alt="" />

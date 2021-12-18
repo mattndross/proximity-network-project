@@ -2,11 +2,10 @@
 import React, { useState, useContext } from "react"
 import { Context } from '../../../context/SearchContext'
 import './Search.css'
-const Search = () => {
+const Search = ({ setSearchGlobal, searchGlobal }) => {
 
 
-    const [searchGlobal, setSearchGlobal] = useContext(Context)
-    console.log(searchGlobal)
+
     const [searchLocalValue, setSearchLocalValue] = useState("");
 
     const handleSearchLocalValue = (event) => {
