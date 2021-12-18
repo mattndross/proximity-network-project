@@ -24,6 +24,18 @@ exports.checkDuplicatedEmail = (req, res, next) => {
     .catch((error) => console.log(error));
 };
 
+exports.veryfyJwt = (req, res, next) => {
+  const auth = request.header("Authorization");
+  const token = auth.split(" ")[1]; //separa "bearer t0k3n" y se queda con el segundo elemnto
+  try {
+    const decodedToken = jwt.verify(token, secret);
+    req.user = decodedToken; //asigna al obj req la propiedad user que tiene la info del token
+    next();
+  } catch (err) {
+    response.status(401).json({ message: "You shall not pass!!" });
+  }
+}
+
 
 //Controllers
 exports.register = (req, res) => {
@@ -67,3 +79,4 @@ exports.register = (req, res) => {
         }
       });
   };
+

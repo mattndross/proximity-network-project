@@ -48,7 +48,7 @@ app.get("/stores/search/:storeName", publicController.findStoreByName); //devuel
 app.get("/products/:productId", publicController.findProductById);//devuelve los datos del producto con ese id
 
 
-app.post("/stores/profile/:idStore/addproducts", privilegeController.addProduct);//la tienda puede subir un nuevo producto
+app.post("/stores/profile/:idStore/addproducts", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
 app.put("/products/:productId", privilegeController.editProduct);//la tienda puede editar un determinado producto
 app.delete("/products/:productId", privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
 
