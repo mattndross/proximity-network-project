@@ -21,14 +21,21 @@ export default function StoreProfile() {
                     <div className='row'>
                         {
                             dataFake.map((el) => {
-                                return <CardProductStore></CardProductStore>
+
+                                return (
+
+                                    <>
+                                        <CardProductStore id={`product-${el}`}></CardProductStore>
+                                        <ModalProduct id={`product-${el}`}></ModalProduct>
+                                    </>
+                                )
 
                             })
                         }
                     </div>
                 </div>
             </section>
-            <ModalProduct></ModalProduct>
+
             <StoreProductBanner></StoreProductBanner>
         </div>
     )
