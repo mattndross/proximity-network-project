@@ -8,19 +8,14 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-//const { searchController } = require("./controllers/search.controller");
-
-
 const { pool } = require("./pool");
 const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
-
-const { deleteProduct } = require("./controllers/privilege.controller");
-const { nextTick } = require("process");
-
 const privilegeController = require("./controllers/privilege.controller");
 
-//FUNCTION
+const { nextTick } = require("process");
+
+
 
 //AUTH ENDPOINTS
 app.post(
