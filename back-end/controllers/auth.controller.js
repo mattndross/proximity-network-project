@@ -26,7 +26,7 @@ exports.checkDuplicatedEmail = (req, res, next) => {
 
 exports.veryfyJwt = (req, res, next) => {
   const auth = req.header("Authorization");
-  const token = auth.split(" ")[1]; //separa "bearer t0k3n" y se queda con el segundo elemnto
+  const token = auth.split(" ")[1]; //separa "bearer" de  "token" y se queda con el segundo elemento
   try {
     const decodedToken = jwt.verify(token, secret);
     req.user = decodedToken; //asigna al obj req la propiedad user que tiene la info del token

@@ -59,53 +59,7 @@ app.get('/stores/search/:storeName', (req, res) => { //return list of stores if 
     .catch((e) => console.log(e));
 });
 
-app.get('/stores/postcode/:postCode', (req, res) => { // return list of stores that have the given post code.
-  const postCode = req.params.postCode;
-  pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE postcode = $1", [postCode])
-    .then((result) => {
-      if (result.rowCount == 0) {
-        console.log(result);
-        res.send({ message: "there are not stores in this area" })
-      } else {
-        return res.json(result.rows)
-      }
-    })
-    .catch((error) => console.log(error));
-})
-app.get('/stores/profile/:storeId', (req, res) => { //return data of given store
-  const storeId = req.params.storeId;
-  pool.query('SELECT * FROM stores WHERE store_id = $1', [storeId])
-    .then((result) => res.json(result.rows))
-    .catch((e) => console.log(e));
-});
-app.post("/stores/profile/:idStore/addproducts", (req, res) => {
-  // the store add a product
-  const idStore = req.params.idStore;
-  const { type, brand, category, description, unit, price, producer, origin } =
-    req.body;
-  const query =
-    "INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
 
-  pool
-    .query(query, [
-      idStore,
-      type,
-      brand,
-      category,
-      description,
-      unit,
-      price,
-      producer,
-      origin,
-    ])
-    .then(() =>
-      res
-        .status(200)
-        .send({ message: `Product ${brand} was added succesfully` })
-    )
-    .catch((error) => console.log(error));
-  //res.send(console.log(req.body))
-});
 //PUT/products/:productId |-- la tienda edita los datos de un producto en particular
 app.put('/products/:productId', (req, res) => {
   const idProduct = req.params.productId;
