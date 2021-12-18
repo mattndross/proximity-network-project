@@ -1,6 +1,7 @@
 /*search predeterminado*/
 .has-search .form-control {
     padding-left: 3.375rem;
+    
 }
 .has-search .form-control-feedback {
     position: absolute;
@@ -18,7 +19,15 @@
     max-width: 100%;
     border-radius: 30px;
     padding:8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
+#searchButton{
+    border: 30px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
 .form-control:focus{
    box-shadow:  0px 0px 1px 2px #80b03d;
 }

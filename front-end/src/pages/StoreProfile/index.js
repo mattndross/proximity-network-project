@@ -8,9 +8,27 @@ import SearchListProduct from '../../components/SearchListProduct';
 import CardProductStore from '../../components/CardProductStore';
 import StoreProductBanner from '../../components/StoreProductBanner';
 import ModalProduct from '../../components/ModalProduct';
+import { ProfileContext } from '../../context/ProfileContext';
+import { useContext, useEffect, useState } from 'react';
 
 export default function StoreProfile() {
+    const storeId = useContext(ProfileContext)[0].store_id;
+
+    const [productsStore, setProductsStore] = useState([]);
     const dataFake = [1, 2, 3, 4, 5, 6]
+
+    useEffect(() => {
+        const getData = () => {
+            fetch(`http://localhost:4000/products/storeProducts/${storeId}`)
+                .then(response => response.json())
+                .then(data => {
+                    setProductsStore(data);
+                    console.log(productsStore)
+                })
+        }
+        getData()
+    }, [])
+
     return (
         <div>
             <StoreProfileBanner></StoreProfileBanner>
@@ -20,13 +38,13 @@ export default function StoreProfile() {
                 <div className='container px-4 container-products'>
                     <div className='row'>
                         {
-                            dataFake.map((el) => {
+                            productsStore.map((product) => {
 
                                 return (
 
                                     <>
-                                        <CardProductStore id={`product-${el}`}></CardProductStore>
-                                        <ModalProduct id={`product-${el}`}></ModalProduct>
+                                        <CardProductStore product={product}></CardProductStore>
+                                        <ModalProduct product={product} id={`product-${product.id}`}></ModalProduct>
                                     </>
                                 )
 

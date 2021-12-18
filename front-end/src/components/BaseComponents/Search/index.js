@@ -25,10 +25,17 @@ const Search = ({ setSearchGlobal, searchGlobal }) => {
 
         <div className="form-group has-search">
             <form onSubmit={handleSearch}>
+                <div className="row">
+                    <div className="col-6">
+                        <span className="form-control-feedback"><i className="bi bi-search"></i></span>
+                        <input type="text" className="form-control" placeholder="Search" value={searchLocalValue} onChange={handleSearchLocalValue} />
+                    </div>
+                    <div className="col-6">
+                        <button type="submit" class="btn btn-primary" id="searchButton">Perform a search</button>
+                    </div>
+                </div>
 
-                <span className="form-control-feedback"><i className="bi bi-search"></i></span>
-                <input type="text" className="form-control" placeholder="Search" value={searchLocalValue} onChange={handleSearchLocalValue} />
-                <button type="submit" class="search-domain btn btn-primary px-5">Perform a search</button>
+
             </form>
         </div>
 
