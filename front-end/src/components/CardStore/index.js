@@ -10,6 +10,12 @@ const CardStore = ({ cardInfo, setStoreProfileId }) => {
         navigate('/store-profile')
 
     }
+
+    // funcion para capitalizar la primera letra
+
+    function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+    }
     return (
 
         <div id={`store-${cardInfo.store_id}`} className="row align-items-center mb-5">
@@ -19,8 +25,8 @@ const CardStore = ({ cardInfo, setStoreProfileId }) => {
                 </div>
             </div>
             <div className="col-6 card-store-text">
-                <h1>{cardInfo.name}</h1>
-                <p>{cardInfo.store_category}</p>
+                <h1>{capitalizeFirstLetter(cardInfo.name)}</h1>
+                <p style={{ fontStyle: "italic" }}>{capitalizeFirstLetter(cardInfo.store_category)}</p>
                 <div className="card-direction">
                     <a href="https://www.google.es/maps/?hl=es" target="_blank"><img src={icon} className="img-fluid icon-direction" alt="icon" /></a>
                     <p>{cardInfo.address}<span className="d-block">{cardInfo.postcode} - {cardInfo.city}</span></p>

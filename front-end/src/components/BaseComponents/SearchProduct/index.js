@@ -38,17 +38,9 @@ const Search = ({ productsStore, setProductsStore, allProducts }) => {
     return (
 
         <div className="form-group has-search">
-
-            <div className="row">
-                <div className="col-6">
-                    <span className="form-control-feedback"><i className="bi bi-search"></i></span>
-                    <input type="text" className="form-control" placeholder="Search" value={searchLocalValue} onChange={handleSearchLocalValue} />
-                </div>
-
-            </div>
-
-
-
+            <span className="form-control-feedback"><i className="bi bi-search"></i></span>
+            <input type="text" className="form-control-product" placeholder="Search for a product" id="" value={searchLocalValue}
+                onChange={handleSearchLocalValue} />
         </div>
 
     )

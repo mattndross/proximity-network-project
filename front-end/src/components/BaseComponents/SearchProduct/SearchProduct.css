@@ -1,5 +1,8 @@
 /*search predeterminado*/
-.has-search .form-control {
+ .form-group{
+    width: 100%;
+}
+.has-search .form-control-product {
     padding-left: 3.375rem;
     
 }
@@ -15,19 +18,22 @@
     pointer-events: none;
     color: #AFAEAE;
 }
-.form-control {
-    max-width: 100%;
+.form-control-product {
+    width: 100%;
     border-radius: 30px;
     padding:8px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border: 1px solid #d0d5d9;
 }
-#searchButton{
-    border: 30px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+.form-control-product:focus-visible {
+    outline: unset;
 }
 
-.form-control:focus{
+
+.form-control-product:focus{
    box-shadow:  0px 0px 1px 2px #80b03d;
+}
+@media(min-width:992px){
+    .form-group{
+        width: 80%;
+    }
 }

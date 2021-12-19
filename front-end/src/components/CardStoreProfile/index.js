@@ -24,7 +24,7 @@ const CardStoreProfile = () => {
                     </div>
                     <div className="col-lg-6 card-text-store">
                         <h2>{storeInfo.name}</h2>
-                        <p>We offer you a list of stores that only offer healthy and organic products. The goal is that you can enjoy the authentic taste of the products, at the same time, that you take care of your health. </p>
+                        <p>{storeInfo["store_description"]} </p>
                         <h3>Opening hours</h3>
                         <p className="text-horario">Monday to Friday: 10h to 13:30h / 17h to 20h.Saturday: 10h to 14h</p>
                         <h3>Where we are :</h3>
