@@ -1,0 +1,125 @@
+.model-content{
+    border-radius: 15px;
+}
+.modal-update-product-body{
+    padding-left:clamp(20px,5vw,50px);
+    padding-right: clamp(20px,5vw,50px);
+}
+.modal-update-product-body h2{
+    font-size: clamp(18px,3vw,24px);
+    color: #333333;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+.container-icon-update{
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.icon-update-product{
+    color: #91BA56;
+    font-size: clamp(28px,3vw,32px);
+    border: 2px solid #91BA56;
+    padding-top: clamp(5px,1vw,1px);
+    padding-bottom: clamp(5px,1vw,1px);
+    padding-left: clamp(8px,1vw,8px);
+    padding-right: clamp(8px,1vw,8px);
+    border-radius: 10px;
+    transition: all ease .8s;
+    cursor: pointer;
+}
+.icon-update-product:hover{
+    background-color: #81B03E;
+    color: #fff;
+}
+.modal-update-product-body p{
+    font-size: clamp(14px,3vw,18px);
+    color: #656161;
+
+}
+.modal-update-product-h5{
+    font-size: clamp(16px,3vw,20px);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.form-update-product{
+    margin-top:20px;
+}
+.form-update-product label {
+    font-size: clamp(12px,3vw,15px);
+    font-weight: 600;
+}
+.form-update-product label span, .modal-update-product-body span{
+    font-size: clamp(18px, 5vw,24px);
+    color:#FF0000;
+}
+.form-update-product .input-update-product{
+    border-radius: unset;
+    padding: 4px;
+    border: unset;
+    border-bottom: 1px solid #999898;
+    background: #E8FEE8;
+}
+textarea.form-control {
+    height: clamp(70px,5vw,100px);
+    width: 95%;
+}
+.input-update{
+    width: 90%;
+}
+.icon-update-modal i{
+    font-size: clamp(50px,5vw,80px);
+    color: #81B03E;
+    display: inline-block;
+    background: #e8fee8;
+    padding: 20px 40px;
+    border-radius: 10px;
+    transition: all ease .8s;
+    cursor: pointer;
+}
+.icon-update-modal i:hover{
+    background-color: #81B03E;
+    color: #fff;
+}
+.btn-modal-update{
+    background-color:#4D711A;
+    border-color: #4D711A;
+    color: #ffff;
+    border:unset;
+    font-size: clamp(14px,3vw,18px);
+    font-weight: 600;
+    border-radius: 22px;
+    transition: all ease .8s;
+    padding:unset;
+    padding-top: clamp(8px,1vw,10px);
+    padding-bottom: clamp(8px,1vw,10px);;
+    padding-left: clamp(80px,5vw,100px);
+    padding-right: clamp(80px,5vw,100px);
+}
+
+.btn-modal-update:hover{
+    color: #80b03d;
+    border:3px solid #80b03d;
+}
+.btn-check:focus+.btn-outline-success, .btn-outline-success:focus {
+    box-shadow: unset;
+}
+
+.btn-modal-update:focus{
+    outline: unset;
+    box-shadow: unset;
+}
+ .btn-outline-success:focus{
+    box-shadow: unset;
+}
+.btn-outline-success:hover {
+    background-color: unset;
+}
+@media(min-width:992px){
+    textarea.form-control {
+        width: 98%;
+    }
+    .input-update{
+        width: 95%;
+    }
+}

@@ -1,4 +1,6 @@
 import './ModalRegister.css'
+import { Link } from 'react-router-dom'
+
 const Modalregister = () => {
     return (
         <div className="modal fade" id="modalRegister" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -17,59 +19,24 @@ const Modalregister = () => {
                                 <h5>Store manager:</h5>
                             </div>
                             <form className="form-register">
-                                <div className="row mb-3">
-                                    <div className="col-6">
-                                        <label htmlFor="exampleInputEmail1" className="form-label">Firstname<span>* </span></label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                    <div className="col-6">
-                                        <label htmlFor="exampleInputEmail1" className="form-label">Lastname<span>* </span></label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputName1" className="form-label">Fullname<span>* </span></label>
+                                    <input type="text" className="form-control input-register" aria-label="FullName" />
 
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address<span>* </span></label>
-                                    <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    <input type="email" className="form-control input-register" id="inputEmail" aria-describedby="emailHelp" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
                                     <input type="password" className="form-control input-register" id="exampleInputPassword1" />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">Store name<span>* </span></label>
-                                    <input type="password" className="form-control input-register" id="exampleInputPassword1" />
+                                    <label htmlFor="exampleInputStore1" className="form-label">Store name<span>* </span></label>
+                                    <input type="text" className="form-control input-register" id="inputStore" />
                                 </div>
-                                <div className="row mb-3">
-                                    <label htmlFor="exampleInputEmail1" className="form-label">Store address<span>* </span></label>
-                                    <div className="col-4">
-                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">street</label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                    <div className="col-4">
-                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">store number</label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                    <div className="col-4">
-                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">postal code</label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                </div>
-                                <div className="row mb-3">
-                                    <div className="col-6">
-                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">City</label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                    <div className="col-6">
-                                        <label htmlFor="exampleInputEmail1" className="form-label form-alternative">Country</label>
-                                        <input type="email" className="form-control input-register" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                    </div>
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">Store web</label>
-                                    <input type="password" className="form-control input-register" id="exampleInputPassword1" />
-                                </div>
-                                <button type="submit" className="btn btn-primary btn-register">Create an account</button>
+                                <butto type="submit" className="btn btn-primary btn-register">Create an account</butto>
                             </form>
                             <div className='text-center mt-2 mb-5'>
                                 <a className="enlace-login" data-bs-toggle="modal" data-bs-target="#loginModal">Login </a>
