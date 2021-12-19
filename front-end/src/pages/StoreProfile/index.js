@@ -40,13 +40,20 @@ export default function StoreProfile() {
             <section id="product-grid">
                 <SearchListProduct filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts} productsStore={productsStore} setProductsStore={setProductsStore}></SearchListProduct>
                 <div className='container px-4 container-products'>
+                    {
+                        filteredProducts.length < 1 && (
+                            <div className='text-center'>
+
+                                <i className="bi bi-emoji-frown" style={{ fontSize: "2.5rem", color: "#a1a1a1" }}></i>
+                                <p className="text-center fs-4" style={{ color: "#a1a1a1" }} > Nothing found, try searching again.</p>
+                            </div>
+                        )
+                    }
                     <div className='row'>
                         {
                             !storeId && <Navigate to="/stores-list"></Navigate>
                         }
-                        {
-                            productsStore.length < 1 && <h1>No hay coincidencias</h1>
-                        }
+
                         {
                             filteredProducts && filteredProducts.map((product) => {
 
