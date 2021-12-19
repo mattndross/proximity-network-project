@@ -8,19 +8,14 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-//const { searchController } = require("./controllers/search.controller");
-
-
 const { pool } = require("./pool");
 const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
-
-const { deleteProduct } = require("./controllers/privilege.controller");
-const { nextTick } = require("process");
-
 const privilegeController = require("./controllers/privilege.controller");
 
-//FUNCTION
+const { nextTick } = require("process");
+
+
 
 //AUTH ENDPOINTS
 app.post(
@@ -39,16 +34,16 @@ app.get("/", (req, res) => {
 });
 
 app.get("/search/:zone", publicController.search); //devuelve lista de tiendas fitradas por codigo postal o ciudad
-app.get('/store-profile/:storeName', publicController.getProfile);//devuelve los datos de perfil de la tienda indicada
-app.get("/stores/profile/:storeId", publicController.getStoreById); //devuleve los datos de la tienda con ese id
+app.get("/stores/profiles/:storeId", publicController.getStoreById); //devuleve los datos de la tienda con ese id
+app.get('/stores/:storeName', publicController.getProfile);//devuelve los datos de perfil de la tienda indicada
 
 app.get("/products/storeProducts/:storeId", publicController.getAllStoreProducts);//devuelve todos los productos de una tienda
 app.get("/stores", publicController.findAllStores); //devuelve lista de todas las tiendas
 app.get("/stores/search/:storeName", publicController.findStoreByName); //devuelve los datos publicos de las tienda que coinciden con la busqueda
 app.get("/products/:productId", publicController.findProductById);//devuelve los datos del producto con ese id
 
+app.post("/stores/products", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
 
-app.post("/stores/profile/:idStore/addproducts", privilegeController.addProduct);//la tienda puede subir un nuevo producto
 app.put("/products/:productId", privilegeController.editProduct);//la tienda puede editar un determinado producto
 app.delete("/products/:productId", privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
 
@@ -59,53 +54,7 @@ app.get('/stores/search/:storeName', (req, res) => { //return list of stores if 
     .catch((e) => console.log(e));
 });
 
-app.get('/stores/postcode/:postCode', (req, res) => { // return list of stores that have the given post code.
-  const postCode = req.params.postCode;
-  pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id WHERE postcode = $1", [postCode])
-    .then((result) => {
-      if (result.rowCount == 0) {
-        console.log(result);
-        res.send({ message: "there are not stores in this area" })
-      } else {
-        return res.json(result.rows)
-      }
-    })
-    .catch((error) => console.log(error));
-})
-app.get('/stores/profile/:storeId', (req, res) => { //return data of given store
-  const storeId = req.params.storeId;
-  pool.query('SELECT * FROM stores WHERE store_id = $1', [storeId])
-    .then((result) => res.json(result.rows))
-    .catch((e) => console.log(e));
-});
-app.post("/stores/profile/:idStore/addproducts", (req, res) => {
-  // the store add a product
-  const idStore = req.params.idStore;
-  const { type, brand, category, description, unit, price, producer, origin } =
-    req.body;
-  const query =
-    "INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
 
-  pool
-    .query(query, [
-      idStore,
-      type,
-      brand,
-      category,
-      description,
-      unit,
-      price,
-      producer,
-      origin,
-    ])
-    .then(() =>
-      res
-        .status(200)
-        .send({ message: `Product ${brand} was added succesfully` })
-    )
-    .catch((error) => console.log(error));
-  //res.send(console.log(req.body))
-});
 //PUT/products/:productId |-- la tienda edita los datos de un producto en particular
 app.put('/products/:productId', (req, res) => {
   const idProduct = req.params.productId;
