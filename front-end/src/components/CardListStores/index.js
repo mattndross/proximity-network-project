@@ -77,9 +77,9 @@ const CardListStores = () => {
                             </div>
 
                         }
-
                     </div>
                 </div>
+
             </section>
         </>
     )

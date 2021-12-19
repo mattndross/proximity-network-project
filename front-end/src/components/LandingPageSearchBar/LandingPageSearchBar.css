@@ -124,8 +124,8 @@
 }
 @media (min-width:992px) {
   
- .content-search-city-postal .search-city i {
-    top: 13px;
+ .content-search-city-postal .search-city-postal i {
+    top: 16px;
   }
 }
 

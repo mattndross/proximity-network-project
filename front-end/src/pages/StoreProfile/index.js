@@ -18,7 +18,7 @@ export default function StoreProfile() {
     const storeId = useContext(ProfileContext)[0].store_id;
 
     const [productsStore, setProductsStore] = useState([]);
-    const [allProducts, setAllProducts] = useState([])
+    const [filteredProducts, setFilteredProducts] = useState([])
 
     useEffect(() => {
         const getData = () => {
@@ -26,19 +26,19 @@ export default function StoreProfile() {
                 .then(response => response.json())
                 .then(data => {
                     setProductsStore(data);
-                    setAllProducts(data);
+                    setFilteredProducts(data);
 
                 })
         }
         getData()
     }, [])
-
+    console.log("ERORRR ===>>>>>", filteredProducts)
     return (
         <div>
             <StoreProfileBanner></StoreProfileBanner>
             <CardStoreProfile></CardStoreProfile>
             <section id="product-grid">
-                <SearchListProduct allProducts={allProducts} productsStore={productsStore} setProductsStore={setProductsStore}></SearchListProduct>
+                <SearchListProduct filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts} productsStore={productsStore} setProductsStore={setProductsStore}></SearchListProduct>
                 <div className='container px-4 container-products'>
                     <div className='row'>
                         {
@@ -48,7 +48,7 @@ export default function StoreProfile() {
                             productsStore.length < 1 && <h1>No hay coincidencias</h1>
                         }
                         {
-                            productsStore.map((product) => {
+                            filteredProducts && filteredProducts.map((product) => {
 
                                 return (
 

@@ -28,7 +28,7 @@ const CardStore = ({ cardInfo, setStoreProfileId }) => {
                 <h1>{capitalizeFirstLetter(cardInfo.name)}</h1>
                 <p style={{ fontStyle: "italic" }}>{capitalizeFirstLetter(cardInfo.store_category)}</p>
                 <div className="card-direction">
-                    <a href="https://www.google.es/maps/?hl=es" target="_blank"><img src={icon} className="img-fluid icon-direction" alt="icon" /></a>
+                    <a href={cardInfo.maps_url} target="_blank"><img src={icon} className="img-fluid icon-direction" alt="icon" /></a>
                     <p>{cardInfo.address}<span className="d-block">{cardInfo.postcode} - {cardInfo.city}</span></p>
                 </div>
                 <button className="btn btn-primary btn-card-store" onClick={() => handleOnClick(cardInfo)}>view profile</button>

@@ -1,36 +1,40 @@
 
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 
 import './SearchProduct.css'
-const Search = ({ productsStore, setProductsStore, allProducts }) => {
-    const productStoreCopy = [...productsStore];
+const Search = ({ productsStore, setProductsStore, filteredProducts, setFilteredProducts }) => {
 
+    // Copia del estado productStore con toda la data.
+    let productStoreCopy = [...productsStore];
+    let productStoreFiltered = []  // Almacenara los datos filtrados.
 
 
     const [searchLocalValue, setSearchLocalValue] = useState("");
 
-
+    // MEtodo para buscar coincidencias mientras tipeamos.
     const handleSearchLocalValue = (event) => {
+
+
+
         const inputValue = event.target.value.toLowerCase();
         setSearchLocalValue(event.target.value)
-        console.log(typeof inputValue)
         if (inputValue === "") {
 
-            setProductsStore(allProducts)
+
+            setFilteredProducts([...productsStore])
             return;
         }
 
-        const productStoreFiltered = productStoreCopy.filter((product) => {
+
+        productStoreFiltered = productStoreCopy.filter((product) => {
             // console.log(product.category)
-            return product.category.toLowerCase().includes(inputValue)
+            return product.category.toLowerCase().search(inputValue) !== -1 || product["product_type"].toLowerCase().search(inputValue) !== -1 || product.brand.toLowerCase().search(inputValue) !== -1
         })
 
-        // console.log(productStoreFiltered)
-        setProductsStore(productStoreFiltered)
+        console.log("FILTRADOS", productStoreFiltered)
+        console.log("REAL", productStoreCopy)
 
-        console.log(allProducts)
-
-
+        setFilteredProducts(productStoreFiltered)
     }
 
 
