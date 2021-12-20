@@ -46,9 +46,9 @@ const LoginModal = () => {
                                 <button type="submit" className="btn btn-primary btn-login" onSubmit={submitLoginData} onChange={handleSubmitLoginData}>Sign in</button>
                             </form>
                             <div className="modal-login-link d-flex">
-                                <a href="">Lost your password? </a>
-                                <span>|</span>
-                                <a className="modal-link" data-bs-toggle="modal" data-bs-target="#modalRegister">Regístrate</a>
+                               {/*  <a href="">Lost your password? </a>
+                                <span>|</span> */}
+                                <a className="modal-link" data-bs-toggle="modal" data-bs-target="#modalRegister">Register here</a>
                             </div>
                         </div>
                     </div>
