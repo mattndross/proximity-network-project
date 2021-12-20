@@ -47,11 +47,11 @@ create table products (
 
 
 INSERT INTO public.stores_authentications (id,store_manager,manager_email,"password") VALUES
-	 (1,'Juan Perez','ecoalimentaria@mail.com','pepe93'),
-	 (2,'Marta Navarra','lodemarta@gmail.com','martitaveni'),
-	 (3,'Dario Mercado','dario@gmail.com','mima12'),
-	 (4,'Luisa Delfo','luisa@gmail.com','saran98'),
-	 (5,'Mauro Talasi','mauro@gmail.com','maurin245'),
+	 (1,'Juan Perez','ecoalimentaria@mail.com','$2b$06$vvA/RFJp39jbufgfZNr3FuPW2cor/Ns0sttmlBo1naSNQ/jT3RNl6'),
+	 (2,'Marta Navarra','lodemarta@gmail.com','$2b$06$pgWIHM7jCmqUoZeeY.ovZ.XJSBEXWp3TP/kykJ5hkaeibkh8ue8i.'),
+	 (3,'Dario Mercado','dario@gmail.com','$2b$06$6HcTn7KOVWqCS4qxGzMwfuhyYCqZvIrio00S7rnOBdt/RoR1npxyu'),
+	 (4,'Luisa Delfo','luisa@gmail.com','$2b$06$KB/oFRC7XPCPyN/UkjwznuZJFNssZRX55ZbDbqExevSV1U6qr/PaW'),
+	 (5,'Mauro Talasi','mauro@gmail.com','$2b$06$Idx5DfgQ2Y4nev0XuQGrSupK5L87Kamf.zLJ2v/FMlXoAwBeJYkkK'),
 	 (6,'Pedro Sosa','pedros@gmail.com','$2b$06$5HroktstePkjA/GvcbdLE.er2Gef8gmN3NWLpaqfPfDSf7wcL4Fda');
 	 
 INSERT INTO public.stores (store_id,"name",store_description,store_category,web_page,store_email,phone_number,image) VALUES
