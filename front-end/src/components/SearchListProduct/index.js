@@ -1,7 +1,7 @@
 import './SearchListProduct.css'
-import Search from '../BaseComponents/Search';
+import SearchProduct from '../BaseComponents/SearchProduct';
 
-const SearchListProduct = () => {
+const SearchListProduct = ({ productsStore, setProductsStore, filteredProducts, setFilteredProducts }) => {
     return (
         <div className="container search-list-product">
             <div className="row align-items-center">
@@ -10,7 +10,7 @@ const SearchListProduct = () => {
                 </div>
                 <div className="col-md-7 px-4">
                     <div className='container-search'>
-                        <Search></Search>
+                        <SearchProduct productsStore={productsStore} setProductsStore={setProductsStore} filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts} ></SearchProduct>
                     </div>
                 </div>
             </div>

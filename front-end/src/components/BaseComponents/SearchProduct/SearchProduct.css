@@ -1,0 +1,39 @@
+/*search predeterminado*/
+ .form-group{
+    width: 100%;
+}
+.has-search .form-control-product {
+    padding-left: 3.375rem;
+    
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    font-size: 22px;
+    width: 3.375rem;
+    height: 3.375rem;
+    line-height: 2.7rem;
+    text-align: center;
+    pointer-events: none;
+    color: #AFAEAE;
+}
+.form-control-product {
+    width: 100%;
+    border-radius: 30px;
+    padding:8px;
+    border: 1px solid #d0d5d9;
+}
+.form-control-product:focus-visible {
+    outline: unset;
+}
+
+
+.form-control-product:focus{
+   box-shadow:  0px 0px 1px 2px #80b03d;
+}
+@media(min-width:992px){
+    .form-group{
+        width: 80%;
+    }
+}

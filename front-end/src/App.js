@@ -13,13 +13,15 @@ import ProfileUserStore from './pages/ProfileUserStore';
 import ProfileUserProduct from './pages/ProfileUserProduct';
 
 // import global context
-import { Context } from './context/SearchContext.js'
+import { SearchContext } from './context/SearchContext.js'
+import { ProfileContext } from './context/ProfileContext'
 
 function App() {
   // Variable global que se modificara en el componente search de la landing !
-
-
   const [searchGlobal, setSearchGlobal] = useState('')
+  // variable global para mandar los datos de una tienda!
+  const [storeProfileId, setStoreProfileId] = useState('')
+
 
   return (
     <div className="wrapper">
@@ -27,15 +29,17 @@ function App() {
         {<Header />}
         <Modalregister></Modalregister>
         <LoginModal></LoginModal>
-        <Context.Provider value={[searchGlobal, setSearchGlobal]}>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/stores-list" element={<StoresList />} />
-            <Route path="/store-profile" element={<StoreProfile />} />
-            <Route path="/profile-user" element={<ProfileUserStore />} />
-            <Route path="/profile-product" element={<ProfileUserProduct />} />
-          </Routes>
-        </Context.Provider>
+        <SearchContext.Provider value={[searchGlobal, setSearchGlobal]}>
+          <ProfileContext.Provider value={[storeProfileId, setStoreProfileId]}>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/stores-list" element={<StoresList />} />
+              <Route path="/store-profile" element={<StoreProfile />} />
+              <Route path="/profile-user" element={<ProfileUserStore />} />
+              <Route path="/profile-product" element={<ProfileUserProduct />} />
+            </Routes>
+          </ProfileContext.Provider>
+        </SearchContext.Provider>
 
         <Footer />
       </BrowserRouter>

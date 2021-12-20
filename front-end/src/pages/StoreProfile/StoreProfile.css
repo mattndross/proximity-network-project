@@ -5,9 +5,20 @@
 #product-grid .container-products{
     padding-top: 50px;
 }
+.product-icon-error{
+     color: #a1a1a1;
+      width: clamp(100px,30vw,200px);
+      margin-bottom: 20px;
+}
+.product-font-error{
+    color: #a1a1a1;
+    font-size: clamp(16px, 3vw,30px);
+    margin-bottom: 20px;
+}
 
 @media (min-width:768px){
     #product-grid .container-products{
-        padding-top: 100px;
+        padding: 100px 0 ;
+
     }
 }

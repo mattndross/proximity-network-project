@@ -32,11 +32,7 @@ const Modalregister = () => {
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
                                     <input type="password" className="form-control input-register" id="exampleInputPassword1" />
                                 </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputStore1" className="form-label">Store name<span>* </span></label>
-                                    <input type="text" className="form-control input-register" id="inputStore" />
-                                </div>
-                                <butto type="submit" className="btn btn-primary btn-register">Create an account</butto>
+                                <button type="submit" className="btn btn-primary btn-register">Create an account</button>
                             </form>
                             <div className='text-center mt-2 mb-5'>
                                 <a className="enlace-login" data-bs-toggle="modal" data-bs-target="#loginModal">Login </a>

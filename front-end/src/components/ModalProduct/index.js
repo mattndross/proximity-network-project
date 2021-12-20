@@ -1,6 +1,6 @@
 import './ModalProduct.css'
 import imagenModal from '../../assets/img/fake-img/product.jpg'
-const ModalProduct = ({ id }) => {
+const ModalProduct = ({ id, product }) => {
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg modal-dialog-centered">
@@ -19,11 +19,11 @@ const ModalProduct = ({ id }) => {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="text-modal-product">
-                                        <h2>Yogur Orgánico -Arándalos</h2>
-                                        <p>Bote 1 kg | 1,90 €/kg</p>
-                                        <p className="text-precio">1,90 € /ud</p>
+                                        <h2>{product["product_type"]} - {product.brand}</h2>
+                                        <p>{product.unit}| 1,90 €/kg</p>
+                                        <p className="text-precio">{product.price} € /ud</p>
                                         <h3>Origen:</h3>
-                                        <p> <i className="bi bi-geo-alt icon-modal"></i>Cataluña-Gerona</p>
+                                        <p> <i className="bi bi-geo-alt icon-modal"></i>{product.origin} - España</p>
                                     </div>
                                 </div>
                             </div>

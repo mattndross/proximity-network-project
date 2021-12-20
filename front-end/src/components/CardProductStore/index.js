@@ -1,15 +1,15 @@
+import imgProduct from '../../assets/img/fake-img/product.jpg'
 import './CardProductStore.css'
-import product from '../../assets/img/fake-img/product.jpg'
-const CardProductStore = ({ id }) => {
+const CardProductStore = ({ product }) => {
+    const brandName = `${product["product_type"].toUpperCase()} - ${product.brand.toUpperCase()}`;
     return (
-
-        <div className="col-6 col-lg-3 pb-4" data-bs-toggle="modal" data-bs-target={`#${id}`}>
+        <div className="col-6 col-lg-3 pb-4" data-bs-toggle="modal" data-bs-target={`#product-${product.id}`}>
             <div class="card-content">
                 <div className="container-img">
-                    <img src={product} className="img-fluid img-product" alt="product store" />
+                    <img src={imgProduct} className="img-fluid img-product" alt="product store" />
                 </div>
                 <div className="container-text">
-                    <h2>Yogur Orgánico Arándalos</h2>
+                    <h2>{brandName}</h2>
                 </div>
             </div>
         </div>
