@@ -1,6 +1,6 @@
 import React from 'react';
 import './StoreProfile.css';
-
+import productIcon from '../../assets/img/icon-product.png'
 import Button from '../../components/Button'
 import StoreProfileBanner from '../../components/StoreProfileBanner';
 import CardStoreProfile from '../../components/CardStoreProfile';
@@ -44,8 +44,8 @@ export default function StoreProfile() {
                         filteredProducts.length < 1 && (
                             <div className='text-center'>
 
-                                <i className="bi bi-emoji-frown" style={{ fontSize: "2.5rem", color: "#a1a1a1" }}></i>
-                                <p className="text-center fs-4" style={{ color: "#a1a1a1" }} > Nothing found, try searching again.</p>
+                                <img src={productIcon} className='img-fluid product-icon-error' />
+                                <p className="text-center product-font-error " > Nothing found, try searching again.</p>
                             </div>
                         )
                     }
