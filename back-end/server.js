@@ -55,24 +55,7 @@ app.get('/stores/search/:storeName', (req, res) => { //return list of stores if 
 });
 
 
-//PUT/products/:productId |-- la tienda edita los datos de un producto en particular
-app.put('/products/:productId', (req, res) => {
-  const idProduct = req.params.productId;
-  const { type, brand, category, description, unit, price, producer, origin } = req.body;
-  const query = 'UPDATE products SET product_type = $1, brand = $2, category = $3, product_description = $4, unit = $5, price = $6, producer = $7, origin = $8 WHERE id = $9'
-  pool.query(query, [type, brand, category, description, unit, price, producer, origin, idProduct])
-    .then((result) => {
-      if (result.rowCount === 0) {
-        return res.send({ message: `id number ${idProduct} does not exist` })
-      }
-      else {
-        // console.log(result);
-        return res.send({ message: "your change was submitted" })
-      }
-    })
-    .catch((e) => console.log(e))
 
-})
 //PUT/stores/:storeId?section |-- la tienda puede editar una sección(columna) específica de su perfil.
 app.put('/stores/location/:storeId', (req, res) => { // aqui solo cambia de las tablas stores y stores_locations
   const idStore = req.params.storeId;
