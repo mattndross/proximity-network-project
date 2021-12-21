@@ -24,6 +24,10 @@ export default function StoreProfile() {
     const [filteredProducts, setFilteredProducts] = useState([])
 
     useEffect(async () => {
+
+
+
+
         const getDataStores = async () => {
             await fetch(`http://localhost:4000/stores/${storeName}`)
                 .then(response => response.json())
@@ -41,8 +45,14 @@ export default function StoreProfile() {
 
                 })
         }
+
+
+
+
         getDataStores()
         getDataProducts()
+
+
     }, [])
 
 
@@ -63,7 +73,9 @@ export default function StoreProfile() {
                         )
                     }
                     <div className='row'>
-                        {store && <h4>Productos disponibles en la tienda "{store[0].name}"</h4>}
+                        {store &&
+                            <h4 className="text-store-disponible"><i className="bi bi-basket"></i>Products available in the store "{store[0].name}"</h4>
+                        }
 
                         {
                             filteredProducts && filteredProducts.map((product) => {

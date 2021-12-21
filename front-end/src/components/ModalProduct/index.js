@@ -14,7 +14,7 @@ const ModalProduct = ({ id, product }) => {
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="modal-img-product">
-                                        <img src={imagenModal} className="" alt="modal imagen" />
+                                        <img src={product["product_image"]} className="" alt="modal imagen" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
