@@ -81,12 +81,12 @@ exports.logIn = (req, res) => {
     ])
     .then((result) => {
       if (result.rows.length < 1) {
-        return res.status(400).json({ messege: "email not found" });
+        return res.status(401).json({ "messege": "not valid email" });
       }
       const data = result.rows[0];
       const passwordIsValid = bcrypt.compareSync(user.password, data.password);
       if (!passwordIsValid) {
-        return res.status(404).send(`not valid email or password.`);
+        return res.status(401).json({"messege":"not valid email or password"});
       } else {
         let token = jwt.sign({ id: result.rows[0].id }, secret, {
           expiresIn: 86400,

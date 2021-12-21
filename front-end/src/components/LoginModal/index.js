@@ -2,24 +2,44 @@ import { useState } from 'react';
 import './LoginModal.css'
 
 const LoginModal = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const [loginInputValue, setLoginInputValue] = useState("")
-    const handleLoginInputValue = (event) => {
-        setLoginInputValue(event.target.value)
-        // console.log(loginInputValue)
-    }
+    const fetchSignIn = async () => {
+        const user = { email, password };
+        console.log(user);
+        const url = "http://localhost:4000/login";
+        const config = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        };
 
-    const [loginPassword, setLoginPassword] = useState("")
-    const handleLoginPassword = (event) => {
-        setLoginPassword(event.target.value)
-        // console.log(loginPassword)
-    }
+        
+        try{
+            localStorage.removeItem("token")
+            const response = await fetch(url, config);
+            if(!response.ok){
+                console.log("response.status", response.status);                
+            } else {
+                const data = await response.json();
+                console.log("data", data);
+                localStorage.setItem("token", data.token);
+                
+            }
 
-    const [submitLoginData, setSubmitLoginData] = useState(null)
+            
+        } catch(e) {
+            console.log("oh no,"+ e);
+        }
+        console.log("localStorage token", localStorage.getItem("token"));
+        
+        
+      };
+   
     const handleSubmitLoginData = (event) => {
         event.preventDefault()
-        setSubmitLoginData(event.target.value)
-        console.log(submitLoginData)
+        fetchSignIn();
     }
     return (
         <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,14 +56,14 @@ const LoginModal = () => {
                             <form>
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address <span>* </span></label>
-                                    <input type="email" className="form-control input-login" id="exampleInputEmail1" aria-describedby="emailHelp" value={loginInputValue} onChange={handleLoginInputValue} />
+                                    <input type="email" className="form-control input-login" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                                 </div>
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
-                                    <input type="password" className="form-control input-login" id="exampleInputPassword1" value={loginPassword} onChange={handleLoginPassword}/>
+                                    <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e)=> setPassword(e.target.value)}/>
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-login" onSubmit={submitLoginData} onChange={handleSubmitLoginData}>Sign in</button>
+                                <button type="submit" className="btn btn-primary btn-login" onClick={handleSubmitLoginData}>Sign in</button>
                             </form>
                             <div className="modal-login-link d-flex">
                                {/*  <a href="">Lost your password? </a>
