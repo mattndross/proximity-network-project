@@ -1,13 +1,13 @@
 import "./CardStore.css"
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import icon from "../../assets/img/stores-list-banner/icon-direction.png"
 const CardStore = ({ cardInfo, setStoreProfileId }) => {
-    let navigate = useNavigate();
+
 
     const handleOnClick = (objCard) => {
 
         setStoreProfileId(objCard)
-        navigate('/store-profile')
+
 
     }
 
@@ -15,6 +15,10 @@ const CardStore = ({ cardInfo, setStoreProfileId }) => {
 
     function capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1)
+    }
+
+    function slugName(name) {
+        return name.trim().split(" ").join("-").toLowerCase();
     }
     return (
 
@@ -31,8 +35,8 @@ const CardStore = ({ cardInfo, setStoreProfileId }) => {
                     <a href={cardInfo.maps_url} target="_blank"><img src={icon} className="img-fluid icon-direction" alt="icon" /></a>
                     <p>{cardInfo.address}<span className="d-block">{cardInfo.postcode} - {cardInfo.city}</span></p>
                 </div>
-                <button className="btn btn-primary btn-card-store" onClick={() => handleOnClick(cardInfo)}>view profile</button>
 
+                <Link onClick={() => handleOnClick(cardInfo)} className="btn btn-primary btn-card-store" to={`/store-profile/${slugName(cardInfo.name)}`}>view profile</Link>
             </div>
         </div>
 

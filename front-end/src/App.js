@@ -34,7 +34,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/stores-list" element={<StoresList />} />
-              <Route path="/store-profile" element={<StoreProfile />} />
+              <Route path="/store-profile/:storeName" element={<StoreProfile />} />
               <Route path="/profile-user" element={<ProfileUserStore />} />
               <Route path="/profile-product" element={<ProfileUserProduct />} />
             </Routes>

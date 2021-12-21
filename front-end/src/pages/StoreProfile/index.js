@@ -10,19 +10,30 @@ import StoreProductBanner from '../../components/StoreProductBanner';
 import ModalProduct from '../../components/ModalProduct';
 import { ProfileContext } from '../../context/ProfileContext';
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 export default function StoreProfile() {
 
-    let navigate = useNavigate();
 
+
+    let { storeName } = useParams();
+    const [store, setStores] = useState(null)
     const storeId = useContext(ProfileContext)[0].store_id;
+
 
     const [productsStore, setProductsStore] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([])
 
-    useEffect(() => {
-        const getData = () => {
-            fetch(`http://localhost:4000/products/storeProducts/${storeId}`)
+    useEffect(async () => {
+        const getDataStores = async () => {
+            await fetch(`http://localhost:4000/stores/${storeName}`)
+                .then(response => response.json())
+                .then(data => {
+                    setStores(data)
+                })
+        }
+
+        const getDataProducts = async () => {
+            await fetch(`http://localhost:4000/products/storeProducts/${storeId}`)
                 .then(response => response.json())
                 .then(data => {
                     setProductsStore(data);
@@ -30,13 +41,15 @@ export default function StoreProfile() {
 
                 })
         }
-        getData()
+        getDataStores()
+        getDataProducts()
     }, [])
-    console.log("ERORRR ===>>>>>", filteredProducts)
+
+
     return (
         <div>
-            <StoreProfileBanner></StoreProfileBanner>
-            <CardStoreProfile></CardStoreProfile>
+            <StoreProfileBanner ></StoreProfileBanner>
+            {store && <CardStoreProfile store={store}></CardStoreProfile>}
             <section id="product-grid">
                 <SearchListProduct filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts} productsStore={productsStore} setProductsStore={setProductsStore}></SearchListProduct>
                 <div className='container px-4 container-products'>
@@ -50,9 +63,7 @@ export default function StoreProfile() {
                         )
                     }
                     <div className='row'>
-                        {
-                            !storeId && <Navigate to="/stores-list"></Navigate>
-                        }
+                        {store && <h4>Productos disponibles en la tienda "{store[0].name}"</h4>}
 
                         {
                             filteredProducts && filteredProducts.map((product) => {
