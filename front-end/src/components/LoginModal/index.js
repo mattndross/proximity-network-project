@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router';
 import './LoginModal.css'
 
 const LoginModal = () => {
+    let navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -25,7 +27,7 @@ const LoginModal = () => {
                 const data = await response.json();
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
-                
+                navigate("/profile-user", {"replace": true});
             }
 
             
@@ -53,7 +55,7 @@ const LoginModal = () => {
                         <div className='container modal-body-login'>
                             <h2>¡Welcome back!</h2>
                             <p>Enter your data below</p>
-                            <form>
+                            <form onSubmit={handleSubmitLoginData}>
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address <span>* </span></label>
                                     <input type="email" className="form-control input-login" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -63,7 +65,7 @@ const LoginModal = () => {
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
                                     <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e)=> setPassword(e.target.value)}/>
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-login" onClick={handleSubmitLoginData}>Sign in</button>
+                                <button type="submit" className="btn btn-primary btn-login" >Sign in</button>
                             </form>
                             <div className="modal-login-link d-flex">
                                {/*  <a href="">Lost your password? </a>
