@@ -6,6 +6,7 @@ const LoginModal = () => {
     let navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [invalidUser, setInvalidUser] = useState(false);
 
     const fetchSignIn = async () => {
         const user = { email, password };
@@ -22,11 +23,16 @@ const LoginModal = () => {
             localStorage.removeItem("token")
             const response = await fetch(url, config);
             if(!response.ok){
+                if (response.status===401) {
+                    setInvalidUser(true);
+                    console.log("invalidUser", invalidUser)
+                }
                 console.log("response.status", response.status);                
             } else {
                 const data = await response.json();
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
+                setInvalidUser(false);
                 navigate("/profile-user", {"replace": true});
             }
 
@@ -55,6 +61,7 @@ const LoginModal = () => {
                         <div className='container modal-body-login'>
                             <h2>¡Welcome back!</h2>
                             <p>Enter your data below</p>
+                            {invalidUser && <h6 id='modal-alert-invalid-input'>invalid email or password</h6>}
                             <form onSubmit={handleSubmitLoginData}>
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address <span>* </span></label>
