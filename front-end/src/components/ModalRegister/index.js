@@ -1,42 +1,14 @@
 import './ModalRegister.css'
 import { Link } from 'react-router-dom'
 import React,{ useState } from 'react'
-import { useNavigate } from 'react-router'
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Modalregister = () => {
-    let navigate  = useNavigate();
+let navigate  = useNavigate();
+
 const [storeManager, setStoreManager] = useState("")
 const [managerEmail, setManagerEmail] = useState("")
 const [password, setPassword] = useState("")
-
-// const fetchSignIn = async () => {
-//     const user = { email, password };
-//     console.log(user);
-//     const url = "http://localhost:4000/login";
-//     const config = {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(user),
-//     };
-
-    
-//     try{
-//         localStorage.removeItem("token")
-//         const response = await fetch(url, config);
-//         if(!response.ok){
-//             console.log("response.status", response.status);                
-//         } else {
-//             const data = await response.json();
-//             console.log("data", data);
-//             localStorage.setItem("token", data.token);
-//             navigate("/profile-user", {"replace": true});
-//         }
-//     } catch(e) {
-//         console.log("oh no,"+ e);
-//     }
-//     console.log("localStorage token", localStorage.getItem("token"));
-//   };
 
 //  al registrarse se redirigira a esta pagina--> /profile-user
 const fetchRegister =  async () => {
@@ -49,15 +21,16 @@ const fetchRegister =  async () => {
         }
         try{
         const response = await fetch(url, config)
+        console.log("response", response);
         const data = await response.json()
-            console.log("response.json", data.message);
-        // .then((result) => console.log("result", result))
-        //; navigate("/profile-user", {"replace": true}
+            console.log("data", data);
+            localStorage.setItem("token", data.token)
+            navigate("/profile-user", {replace: false})
+           
     } catch(e) {
         console.log("error", e);
     }
 }
-    //useNavigate('/profile-user')
 
 const registerDone = (e) => {
     e.preventDefault();
@@ -80,7 +53,7 @@ const registerDone = (e) => {
                                 <i className="bi bi-person-bounding-box"></i>
                                 <h5>Store manager:</h5>
                             </div>
-                            <form className="form-register" >
+                            <form className="form-register" onSubmit={registerDone} >
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputName1" className="form-label">Fullname<span>* </span></label>
                                     <input 
@@ -115,7 +88,7 @@ const registerDone = (e) => {
                                         required
                                     />
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-register" onClick={registerDone}>Create an account</button>
+                                <button type="submit" className="btn btn-primary btn-register" >Create an account</button>
                             </form>
                             <div className='text-center mt-2 mb-5'>
                                 <a  className="enlace-login" data-bs-toggle="modal" data-bs-target="#loginModal">Login </a>
