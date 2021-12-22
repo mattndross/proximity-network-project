@@ -65,7 +65,7 @@ const LoginModal = () => {
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
                                     <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e)=> setPassword(e.target.value)}/>
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-login" >Sign in</button>
+                                <button type="submit" className="btn btn-primary btn-login" data-bs-dismiss="modal" >Login</button>
                             </form>
                             <div className="modal-login-link d-flex">
                                {/*  <a href="">Lost your password? </a>
