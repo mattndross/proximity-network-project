@@ -14,44 +14,28 @@ import { useParams } from 'react-router-dom'
 export default function StoreProfile() {
 
 
-
+    // Obtengo la url dinamica con useParams.
     let { storeName } = useParams();
-    const [store, setStores] = useState(null)
-    const storeId = useContext(ProfileContext)[0].store_id;
-
-
+    // Estados para el storeProfile
+    const [storeProfile, setStoreProfile] = useState(null)
     const [productsStore, setProductsStore] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([])
 
     useEffect(async () => {
 
+        // Llamo al endpoint /stores/:storeName
+        const response1 = await fetch(`http://localhost:4000/stores/${storeName}`);
+        const data1 = await response1.json();
 
+        const storeId = await data1[0].store_id;
 
+        // Llamo al endpoint /products/storeProducts/:storeId
+        const response2 = await fetch(`http://localhost:4000/products/storeProducts/${storeId}`)
+        const data2 = await response2.json();
 
-        const getDataStores = async () => {
-            await fetch(`http://localhost:4000/stores/${storeName}`)
-                .then(response => response.json())
-                .then(data => {
-                    setStores(data)
-                })
-        }
-
-        const getDataProducts = async () => {
-            await fetch(`http://localhost:4000/products/storeProducts/${storeId}`)
-                .then(response => response.json())
-                .then(data => {
-                    setProductsStore(data);
-                    setFilteredProducts(data);
-
-                })
-        }
-
-
-
-
-        getDataStores()
-        getDataProducts()
-
+        setFilteredProducts(data2);
+        setProductsStore(data2);
+        setStoreProfile(data1);
 
     }, [])
 
@@ -59,7 +43,7 @@ export default function StoreProfile() {
     return (
         <div>
             <StoreProfileBanner ></StoreProfileBanner>
-            {store && <CardStoreProfile store={store}></CardStoreProfile>}
+            {storeProfile && <CardStoreProfile store={storeProfile}></CardStoreProfile>}
             <section id="product-grid">
                 <SearchListProduct filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts} productsStore={productsStore} setProductsStore={setProductsStore}></SearchListProduct>
                 <div className='container px-4 container-products'>
@@ -73,8 +57,8 @@ export default function StoreProfile() {
                         )
                     }
                     <div className='row'>
-                        {store &&
-                            <h4 className="text-store-disponible"><i className="bi bi-basket"></i>Products available in the store "{store[0].name}"</h4>
+                        {(storeProfile && filteredProducts.length > 0) &&
+                            <h4 className="text-store-disponible"><i className="bi bi-basket"></i>Products available in the store "{storeProfile[0].name}"</h4>
                         }
 
                         {
