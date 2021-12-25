@@ -6,7 +6,11 @@ const LoginModal = () => {
     let navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [invalidUser, setInvalidUser] = useState(false);
+    const [invalidUser, setInvalidUser] = useState(null);
+
+    const dismissModal= ()=> {
+        console.log('modal tiene que cerrarse')
+    }
 
     const fetchSignIn = async () => {
         const user = { email, password };
@@ -32,6 +36,7 @@ const LoginModal = () => {
                 const data = await response.json();
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
+                dismissModal();
                 setInvalidUser(false);
                 navigate("/profile-user", {"replace": true});
             }
@@ -55,7 +60,7 @@ const LoginModal = () => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h6 className="modal-title" id="exampleModalLabel">Login</h6>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" className="btn-close" active="true" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body pb-4">
                         <div className='container modal-body-login'>
@@ -72,7 +77,7 @@ const LoginModal = () => {
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
                                     <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e)=> setPassword(e.target.value)}/>
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-login" data-bs-dismiss="modal" >Login</button>
+                                <button type="submit" className="btn btn-primary btn-login" data-bs-dismiss={ !invalidUser && "modal"} >Login</button>
                             </form>
                             <div className="modal-login-link d-flex">
                                {/*  <a href="">Lost your password? </a>
