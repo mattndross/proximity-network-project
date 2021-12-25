@@ -42,31 +42,18 @@ app.get("/stores", publicController.findAllStores); //devuelve lista de todas la
 app.get("/stores/search/:storeName", publicController.findStoreByName); //devuelve los datos publicos de las tienda que coinciden con la busqueda
 app.get("/products/:productId", publicController.findProductById);//devuelve los datos del producto con ese id
 
+
+//privilege endpoints
+
 app.post("/stores/profiles",authController.veryfyJwt, privilegeController.insertProfileData);//la tienda completa los datos por primera vez
 
 app.post("/stores/products", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
 app.put("/products/:productId", privilegeController.editProduct);//la tienda puede editar un determinado producto
 app.delete("/products/:productId", privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
 
-app.get('/stores/search/:storeName', (req, res) => { //return list of stores if the given  filtered by name
-  const storeName = `%${req.params.storeName}%`;
-  pool.query("SELECT name, store_description as Description, store_category as Category, web_page as Web, store_email as email, phone_number, image FROM stores as s WHERE UPPER(name) LIKE UPPER($1) ORDER BY name", [storeName])
-    .then((result) => res.json(result.rows))
-    .catch((e) => console.log(e));
-});
 
 
 
-//PUT/stores/:storeId?section |-- la tienda puede editar una sección(columna) específica de su perfil.
-app.put('/stores/location/:storeId', (req, res) => { // aqui solo cambia de las tablas stores y stores_locations
-  const idStore = req.params.storeId;
-  const { address, city, postcode, country } = req.body;
-  const query = 'UPDATE stores_locations SET  address = $1, city = $2, postcode = $3, country = $4 where store_id = $5';
-  console.log(address);
-  pool.query(query, [address, city, postcode, country, idStore])
-    .then((result) => { console.log(result.rows); res.send(result) })
-
-})
 
 
 
