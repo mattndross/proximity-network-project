@@ -53,15 +53,7 @@ exports.register = (req, res) => {
         )
         .then((results) => {
           const storeId = results.rows[0].id;
-          try {
-            pool.query("INSERT INTO stores (store_id, name) VALUES ($1, $2)", [
-              storeId,
-              newUser.storeName,
-            ]);
-          } catch (error) {
-            console.log(error);
-            res.status(400).json({ message: "bad request" });
-          }
+          console.log(storeId);
         })
         .catch((error)=>{console.log(error);});
     })
