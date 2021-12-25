@@ -46,6 +46,7 @@ app.get("/products/:productId", publicController.findProductById);//devuelve los
 //privilege endpoints
 
 app.post("/stores/profiles",authController.veryfyJwt, privilegeController.insertProfileData);//la tienda completa los datos por primera vez
+app.put("/stores/profiles", authController.veryfyJwt, privilegeController.editProfile);//la tienda puede editar los datos de su perfil
 
 app.post("/stores/products", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
 app.put("/products/:productId", privilegeController.editProduct);//la tienda puede editar un determinado producto
