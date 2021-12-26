@@ -70,7 +70,6 @@ exports.editProfile = async (req, res) => {
       storeWeb,
       phoneNumber,
       storeCategory,
-      storeEmail,
       imageUrl,
       storeStreet,
       city,
@@ -81,13 +80,12 @@ exports.editProfile = async (req, res) => {
     let response = {};
     await pool
     .query(
-      "UPDATE stores SET name=$1, store_description=$2, store_category=$3, web_page=$4, store_email=$5, phone_number=$6, image=$7 WHERE store_id = $8",
+      "UPDATE stores SET name=$1, store_description=$2, store_category=$3, web_page=$4, phone_number=$5, image=$6 WHERE store_id = $7",
       [        
         storeName,
         storeDescription,
         storeCategory,
         storeWeb,
-        storeEmail,
         phoneNumber,
         imageUrl,
         storeId
