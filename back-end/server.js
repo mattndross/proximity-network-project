@@ -13,7 +13,6 @@ const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
 const privilegeController = require("./controllers/privilege.controller");
 
-const { nextTick } = require("process");
 
 
 
@@ -47,6 +46,9 @@ app.get("/products/:productId", publicController.findProductById);//devuelve los
 
 app.post("/stores/profiles",authController.veryfyJwt, privilegeController.insertProfileData);//la tienda completa los datos por primera vez
 app.put("/stores/profiles", authController.veryfyJwt, privilegeController.editProfile);//la tienda puede editar los datos de su perfil
+app.get("/stores/managers/authentications", authController.veryfyJwt, authController.getNameAndEmail);//devuelve email y nombre del manager de la tienda loggeada
+
+
 
 app.post("/stores/products", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
 app.put("/products/:productId", privilegeController.editProduct);//la tienda puede editar un determinado producto

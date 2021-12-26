@@ -55,7 +55,9 @@ exports.register = (req, res) => {
           const storeId = results.rows[0].id;
           console.log(storeId);
         })
-        .catch((error)=>{console.log(error);});
+        .catch((error) => {
+          console.log(error);
+        });
     })
     .then(() => {
       res.status(200).json({ message: "store user created!" });
@@ -87,5 +89,23 @@ exports.logIn = (req, res) => {
           .status(200)
           .json({ id: result.rows[0].id, token: token, isAuthenticated: true });
       }
+    });
+};
+
+exports.getNameAndEmail = (req, res) => {
+  const userId = req.user.id
+  console.log({userId})
+  pool
+    .query(
+      "SELECT store_manager, manager_email FROM stores_authentications WHERE id=$1",
+      [userId]
+    )
+    .then((result) => {
+      const data = result.rows[0]
+      console.log(result.rows);
+      res.status(200).json(data);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
