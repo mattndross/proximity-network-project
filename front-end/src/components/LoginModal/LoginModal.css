@@ -17,6 +17,16 @@
     text-align: center;
     margin-bottom: 30px;
 }
+#modal-alert-invalid-input{
+    font-size: 16px;
+    color : red;
+    text-align: center;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: solid 1.5px red;
+    border-radius: 3px;
+}
 .modal-body-content label{
     font-size: 16px;
     font-weight: 600;
