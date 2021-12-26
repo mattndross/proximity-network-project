@@ -114,10 +114,10 @@ exports.editProfile = async (req, res) => {
 exports.addProduct = (req, res) => {
   // the store add a product
   const storeId = req.user.id;
-  const { type, brand, category, description, unit, price, producer, origin } =
+  const { type, brand, category, description, unit, price, producer, origin, productImage } =
     req.body;
   const query =
-    "INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+    "INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin, product_image) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
 
   pool
     .query(query, [
@@ -130,6 +130,7 @@ exports.addProduct = (req, res) => {
       price,
       producer,
       origin,
+      productImage
     ])
     .then(() =>
       res
@@ -155,11 +156,11 @@ exports.deleteProduct = (req, res) => {
 };
 
 exports.editProduct = (req, res) => {
-  const idProduct = req.params.productId;
-  const { type, brand, category, description, unit, price, producer, origin } =
+  const productId = req.params.productId;
+  const { type, brand, category, description, unit, price, producer, origin, productImage } =
     req.body;
   const query =
-    "UPDATE products SET product_type = $1, brand = $2, category = $3, product_description = $4, unit = $5, price = $6, producer = $7, origin = $8 WHERE id = $9";
+    "UPDATE products SET product_type = $1, brand = $2, category = $3, product_description = $4, unit = $5, price = $6, producer = $7, origin = $8, product_image=$9 WHERE id = $10";
   pool
     .query(query, [
       type,
@@ -170,7 +171,8 @@ exports.editProduct = (req, res) => {
       price,
       producer,
       origin,
-      idProduct,
+      productImage,
+      productId,
     ])
     .then((result) => {
       if (result.rowCount === 0) {
