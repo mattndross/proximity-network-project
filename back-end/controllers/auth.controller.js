@@ -75,14 +75,14 @@ exports.logIn = (req, res) => {
     ])
     .then((result) => {
       if (result.rows.length < 1) {
-        return res.status(400).json({ messege: "email not found" });
+        return res.status(401).json({ "messege": "not valid email" });
       }
       const dbPassword = result.rows[0].password;
       const id = result.rows[0].id;
       const passwordIsValid = bcrypt.compareSync(user.password, dbPassword);
       console.log({passwordIsValid});
       if (!passwordIsValid) {
-        return res.status(404).send(`not valid email or password.`);
+        return res.status(401).json({"messege":"not valid email or password"});
       } else {
         
         console.log(id);
