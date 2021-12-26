@@ -8,10 +8,8 @@ import { Modal } from 'bootstrap';
 
 const LoginModal = () => {
 
-    // 
+
     let myModalRef = useRef();
-
-
 
     let navigate = useNavigate();
     const [email, setEmail] = useState("");
@@ -20,15 +18,18 @@ const LoginModal = () => {
 
 
     const fetchSignIn = async () => {
+
         const dismissModal = () => {
             console.log('modal tiene que cerrarse')
             modal.hide(myModal)
             myModal.addEventListener('hidden.bs.modal', function (event) {
                 document.body.style.overflow = "unset"
                 document.body.style.paddingRight = "0";
-                document.querySelector('.modal-backdrop').remove()
+                if (document.querySelector('.modal-backdrop')) document.querySelector('.modal-backdrop').remove()
             })
         }
+
+
         const user = { email, password };
         console.log(user);
         const url = "http://localhost:4000/login";
@@ -58,12 +59,9 @@ const LoginModal = () => {
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
                 dismissModal();
-
-
                 setInvalidUser(false);
                 navigate("/profile-user", { "replace": true });
             }
-
 
         } catch (e) {
             console.log("oh no," + e);
@@ -76,19 +74,6 @@ const LoginModal = () => {
     const handleSubmitLoginData = (event) => {
         event.preventDefault()
         console.log(myModalRef.current)
-        // let myModal = myModalRef.current;
-        // let modal = Modal.getInstance(myModal)
-
-        // modal.hide(myModal)
-        // myModal.addEventListener('hidden.bs.modal', function (event) {
-        //     document.body.style.overflow = "unset"
-        //     document.body.style.paddingRight = "0";
-        //     document.querySelector('.modal-backdrop').remove()
-
-
-        // })
-
-
         fetchSignIn();
 
     }
@@ -115,7 +100,7 @@ const LoginModal = () => {
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
                                     <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} />
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-login"  >Login</button>
+                                <button type="submit" className="btn btn-primary btn-login">Login</button>
                             </form>
                             <div className="modal-login-link d-flex">
                                 {/*  <a href="">Lost your password? </a>
