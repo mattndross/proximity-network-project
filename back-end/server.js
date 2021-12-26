@@ -51,7 +51,7 @@ app.put("/stores/managers/authentications", authController.veryfyJwt, authContro
 app.put("/stores/authentications/passwords", authController.veryfyJwt, authController.editPassword);//la tienda puede cambiar la contraseña actual
 
 app.post("/stores/products", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
-app.put("/stores/products/:productId", privilegeController.editProduct);//la tienda puede editar un determinado producto
+app.put("/stores/products/:productId", authController.veryfyJwt, privilegeController.editProduct);//la tienda puede editar un determinado producto
 app.delete("/products/:productId", privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
 
 
