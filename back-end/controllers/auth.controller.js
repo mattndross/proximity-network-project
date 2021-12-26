@@ -71,41 +71,74 @@ exports.logIn = (req, res) => {
   const user = req.body;
   pool
     .query("SELECT * FROM stores_authentications where manager_email = $1", [
-      user.email,
+      user.email
     ])
     .then((result) => {
       if (result.rows.length < 1) {
         return res.status(400).json({ messege: "email not found" });
       }
-      const data = result.rows[0];
-      const passwordIsValid = bcrypt.compareSync(user.password, data.password);
+      const dbPassword = result.rows[0].password;
+      const id = result.rows[0].id;
+      const passwordIsValid = bcrypt.compareSync(user.password, dbPassword);
+      console.log({passwordIsValid});
       if (!passwordIsValid) {
         return res.status(404).send(`not valid email or password.`);
       } else {
-        let token = jwt.sign({ id: result.rows[0].id }, secret, {
+        
+        console.log(id);
+        let token = jwt.sign({ id }, secret, {
           expiresIn: 86400,
         });
         return res
           .status(200)
-          .json({ id: result.rows[0].id, token: token, isAuthenticated: true });
+          .json({id, token, "isAuthenticated": true});
       }
     });
 };
 
 exports.getNameAndEmail = (req, res) => {
   const userId = req.user.id
-  console.log({userId})
   pool
     .query(
       "SELECT store_manager, manager_email FROM stores_authentications WHERE id=$1",
       [userId]
     )
     .then((result) => {
-      const data = result.rows[0]
-      console.log(result.rows);
+      const data = result.rows[0];
       res.status(200).json(data);
     })
     .catch((error) => {
       console.log(error);
     });
 };
+
+exports.editAuthentications =  (req, res) =>{
+  const userId = req.user.id
+  const {storeManager, managerEmail} = req.body;
+  
+  pool.query("UPDATE stores_authentications SET store_manager=$1, manager_email=$2 where id=$3", [storeManager, managerEmail, userId])
+  .then(()=>res.status(200).json({"messege":"manager's name and email updated"}))
+  .catch(console.error())
+}
+
+exports.editPassword = (req, res) => {
+  const userId = req.user.id;
+  const {currentPassword, newPassword} = req.body;
+
+  pool.query("SELECT password FROM stores_authentications WHERE id =$1", [userId])
+  .then((result)=> {
+    const dbPassword = result.rows[0].password;
+    const passwordIsValid = bcrypt.compareSync(currentPassword, dbPassword);
+    if(passwordIsValid){
+      const encriptedPassword = bcrypt.hashSync(newPassword, 6)
+      pool.query("UPDATE stores_authentications SET password=$1 WHERE id=$2", [encriptedPassword, userId])
+      .then(() => {
+        res.status(200).json({"messege": "password updated"})
+      })
+      .catch(console.error());      
+    } else {
+      res.status(401).json({"messege": "password is invalid"});
+    }
+  })
+  .catch(console.error());
+}
