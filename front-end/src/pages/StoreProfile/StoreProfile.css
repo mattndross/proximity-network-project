@@ -15,6 +15,13 @@
     font-size: clamp(16px, 3vw,30px);
     margin-bottom: 20px;
 }
+.text-store-disponible{
+    margin-bottom: clamp(30px,3vw,60px);
+    font-size: clamp(12px,3vw,26px);
+}
+.text-store-disponible i{
+    margin-right: clamp(10px,3vw,20px);
+}
 
 @media (min-width:768px){
     #product-grid .container-products{

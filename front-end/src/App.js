@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import "bootstrap-icons/font/bootstrap-icons.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import LandingPage from "./pages/LandingPage";
@@ -34,7 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/stores-list" element={<StoresList />} />
-              <Route path="/store-profile" element={<StoreProfile />} />
+              <Route path="/store-profile/:storeName" element={<StoreProfile />} />
               <Route path="/profile-user" element={<ProfileUserStore />} />
               <Route path="/profile-product" element={<ProfileUserProduct />} />
             </Routes>

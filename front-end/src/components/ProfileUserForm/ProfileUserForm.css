@@ -53,6 +53,16 @@
     transition: all ease .8s;
     margin-top: 20px;
 }
+.btn-formulario-reset{
+    background: #528705;
+    border: unset;
+    border-radius: 22px;
+    font-size: clamp(14px,3vw,20px);
+    font-weight: 700;
+    width: clamp(120px,10vw,200px);
+    transition: all ease .8s;
+    margin-top: 20px;
+}
 button:focus:not(:focus-visible) {
     outline: unset;
 }
@@ -68,6 +78,10 @@ button:focus:not(:focus-visible) {
 .btn-formulario:hover{
     background: #648536;
 }
+.btn-formulario-reset:hover{
+    background-color: #648536;
+}
+
 @media(min-width:992px){
 
     .title-content-profile{

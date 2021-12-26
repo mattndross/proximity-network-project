@@ -1,12 +1,11 @@
 import './CardStoreProfile.css'
-import logoTienda from '../../assets/img/card-store-profile/bioproducts.png'
+
 import iconMapa from '../../assets/img/card-store-profile/icono-map.svg'
 import iconMail from '../../assets/img/card-store-profile/icono-mail.svg'
 import ButtonBack from '../BaseComponents/ButtonBack'
-import { useContext } from 'react'
-import { ProfileContext } from "../../context/ProfileContext"
-const CardStoreProfile = () => {
-    const storeInfo = useContext(ProfileContext)[0];
+
+const CardStoreProfile = ({ store }) => {
+    let storeInfo = store[0]
 
     return (
         <section id="cardStoreProfile" className="p-4">
@@ -18,7 +17,7 @@ const CardStoreProfile = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-6 d-flex justify-content-center justify-content-lg-end">
                         <div className="card-img-store">
-                            <img src={storeInfo.image} className="img-fluid" alt="logo tieda" />
+                            <img src={storeInfo['image']} className="img-fluid" alt="logo tieda" />
                         </div>
 
                     </div>
