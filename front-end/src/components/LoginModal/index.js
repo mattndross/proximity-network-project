@@ -1,61 +1,99 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Navigate, useNavigate } from 'react-router';
 import './LoginModal.css'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import { Modal } from 'bootstrap';
 
 const LoginModal = () => {
+
+    // 
+    let myModalRef = useRef();
+
+
+
     let navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [invalidUser, setInvalidUser] = useState(null);
+    const [invalidUser, setInvalidUser] = useState(false);
 
-    const dismissModal= ()=> {
-        console.log('modal tiene que cerrarse')
-    }
 
     const fetchSignIn = async () => {
+        const dismissModal = () => {
+            console.log('modal tiene que cerrarse')
+            modal.hide(myModal)
+            myModal.addEventListener('hidden.bs.modal', function (event) {
+                document.body.style.overflow = "unset"
+                document.body.style.paddingRight = "0";
+                document.querySelector('.modal-backdrop').remove()
+            })
+        }
         const user = { email, password };
         console.log(user);
         const url = "http://localhost:4000/login";
         const config = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
         };
 
-        
-        try{
+        let myModal = myModalRef.current;
+        let modal = Modal.getInstance(myModal)
+        try {
             localStorage.removeItem("token")
             const response = await fetch(url, config);
-            if(!response.ok){
-                if (response.status===401) {
-                    setInvalidUser(true);
+            if (!response.ok) {
+                if (response.status === 401) {
+
+
+                    modal.show(myModal)
+                    setInvalidUser(true)
                     console.log("invalidUser", invalidUser)
+
                 }
-                console.log("response.status", response.status);                
+                console.log("response.status", response.status);
             } else {
                 const data = await response.json();
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
                 dismissModal();
+
+
                 setInvalidUser(false);
-                navigate("/profile-user", {"replace": true});
+                navigate("/profile-user", { "replace": true });
             }
 
-            
-        } catch(e) {
-            console.log("oh no,"+ e);
+
+        } catch (e) {
+            console.log("oh no," + e);
         }
         console.log("localStorage token", localStorage.getItem("token"));
-        
-        
-      };
-   
+
+
+    };
+
     const handleSubmitLoginData = (event) => {
         event.preventDefault()
+        console.log(myModalRef.current)
+        // let myModal = myModalRef.current;
+        // let modal = Modal.getInstance(myModal)
+
+        // modal.hide(myModal)
+        // myModal.addEventListener('hidden.bs.modal', function (event) {
+        //     document.body.style.overflow = "unset"
+        //     document.body.style.paddingRight = "0";
+        //     document.querySelector('.modal-backdrop').remove()
+
+
+        // })
+
+
         fetchSignIn();
+
     }
     return (
-        <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="loginModal" ref={myModalRef} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered ">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -67,7 +105,7 @@ const LoginModal = () => {
                             <h2>¡Welcome back!</h2>
                             <p>Enter your data below</p>
                             {invalidUser && <h6 id='modal-alert-invalid-input'>invalid email or password</h6>}
-                            <form onSubmit={handleSubmitLoginData}>
+                            <form onSubmit={handleSubmitLoginData} >
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address <span>* </span></label>
                                     <input type="email" className="form-control input-login" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -75,12 +113,12 @@ const LoginModal = () => {
                                 </div>
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
-                                    <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e)=> setPassword(e.target.value)}/>
+                                    <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} />
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-login" data-bs-dismiss={!invalidUser && "modal"} >Login</button>
+                                <button type="submit" className="btn btn-primary btn-login"  >Login</button>
                             </form>
                             <div className="modal-login-link d-flex">
-                               {/*  <a href="">Lost your password? </a>
+                                {/*  <a href="">Lost your password? </a>
                                 <span>|</span> */}
                                 <a className="modal-link" data-bs-toggle="modal" data-bs-target="#modalRegister">Register here</a>
                             </div>
