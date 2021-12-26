@@ -32,7 +32,7 @@ exports.veryfyJwt = (req, res, next) => {
     req.user = decodedToken; //asigna al obj req la propiedad user que tiene la info del token
     next();
   } catch (err) {
-    response.status(401).json({ message: "You shall not pass!!" });
+    res.status(401).json({ message: "Not authorized token!" });
   }
 };
 
