@@ -7,6 +7,7 @@ const secret = "proximity migracode";
 //middlewares
 exports.checkDuplicatedEmail = (req, res, next) => {
   const email = req.body.managerEmail;
+
   pool
     .query(
       "SELECT  manager_email FROM stores_authentications WHERE manager_email = $1",
@@ -39,7 +40,9 @@ exports.veryfyJwt = (req, res, next) => {
 //Controllers
 exports.register = (req, res) => {
   const newUser = req.body;
-  const encriptedPass = bcrypt.hashSync(newUser.password, 6);
+  console.log("newUser", req.body)
+  const salt = bcrypt.genSaltSync(6)
+  const encriptedPass = bcrypt.hashSync(newUser.password, salt);
   pool
     .query(
       "INSERT INTO stores_authentications ( store_manager, manager_email, password) VALUES ( $1, $2, $3)",
@@ -62,9 +65,7 @@ exports.register = (req, res) => {
     .then(() => {
       res.status(200).json({ message: "store user created!" });
     })
-    .catch((error) => {
-      console.log(error);
-    });
+ 
 };
 
 exports.logIn = (req, res) => {
@@ -93,6 +94,14 @@ exports.logIn = (req, res) => {
           .status(200)
           .json({id, token, "isAuthenticated": true});
       }
+
+      let token = jwt.sign({ id: result.rows[0].id }, secret, {
+        expiresIn: 86400,
+      });
+      return res
+        .status(200)
+        .json({ id: result.rows[0].id, token: token, isAuthenticated: true });
+
     });
 };
 
