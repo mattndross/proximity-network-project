@@ -8,7 +8,7 @@ const LoginModal = () => {
     const [password, setPassword] = useState("");
     const [invalidUser, setInvalidUser] = useState(null);
 
-    const dismissModal= ()=> {
+    const dismissModal = () => {
         console.log('modal tiene que cerrarse')
     }
 
@@ -17,39 +17,39 @@ const LoginModal = () => {
         console.log(user);
         const url = "http://localhost:4000/login";
         const config = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
         };
 
-        
-        try{
+
+        try {
             localStorage.removeItem("token")
             const response = await fetch(url, config);
-            if(!response.ok){
-                if (response.status===401) {
+            if (!response.ok) {
+                if (response.status === 401) {
                     setInvalidUser(true);
                     console.log("invalidUser", invalidUser)
                 }
-                console.log("response.status", response.status);                
+                console.log("response.status", response.status);
             } else {
                 const data = await response.json();
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
                 dismissModal();
                 setInvalidUser(false);
-                navigate("/profile-user", {"replace": true});
+                navigate("/profile-user", { "replace": true });
             }
 
-            
-        } catch(e) {
-            console.log("oh no,"+ e);
+
+        } catch (e) {
+            console.log("oh no," + e);
         }
         console.log("localStorage token", localStorage.getItem("token"));
-        
-        
-      };
-   
+
+
+    };
+
     const handleSubmitLoginData = (event) => {
         event.preventDefault()
         fetchSignIn();
@@ -75,12 +75,12 @@ const LoginModal = () => {
                                 </div>
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputPassword1" className="form-label">Password<span>* </span></label>
-                                    <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e)=> setPassword(e.target.value)}/>
+                                    <input type="password" className="form-control input-login" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} />
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-login" data-bs-dismiss={!invalidUser && "modal"} >Login</button>
+                                <button type="submit" className="btn btn-primary btn-login" >Login</button>
                             </form>
                             <div className="modal-login-link d-flex">
-                               {/*  <a href="">Lost your password? </a>
+                                {/*  <a href="">Lost your password? </a>
                                 <span>|</span> */}
                                 <a className="modal-link" data-bs-toggle="modal" data-bs-target="#modalRegister">Register here</a>
                             </div>

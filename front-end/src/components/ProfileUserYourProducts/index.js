@@ -4,6 +4,7 @@ import '../../components/CardProductStore'
 import CardUserProduct from '../../components/CardUserProduct';
 import ModalNewProduct from '../ModalNewProduct';
 import ModalUpdateProduct from '../ModalUpdateProduct';
+import ModalDeleteUserProduct from '../ModalDeleteUserProduct';
 const ProfileUserYourProducts = () => {
     const dataFake = [{
         "id": 4,
@@ -67,6 +68,7 @@ const ProfileUserYourProducts = () => {
 
 
                                     <ModalUpdateProduct id={`product-${product.id}`}></ModalUpdateProduct>
+                                    <ModalDeleteUserProduct id={`productDelete-${product.id}`}></ModalDeleteUserProduct>
                                 </>
                             )
 

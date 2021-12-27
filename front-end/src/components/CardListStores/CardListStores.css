@@ -35,7 +35,6 @@
     transition: opacity .4s
 }
 .content-scroll-auto{
-    overflow-y: hidden;
     overflow-x: hidden;
     height: 100%;
   

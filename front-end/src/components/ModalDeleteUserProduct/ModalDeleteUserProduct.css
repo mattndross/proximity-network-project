@@ -1,0 +1,44 @@
+.modal-delete-body{
+    padding: 0 20px;
+}
+.modal-delete-body h3{
+    font-size: clamp(20px,5vw,25px);
+    font-weight: 700;
+}
+.modal-delete-body p{
+    font-size: clamp(14px,3vw,20px);
+}
+.modal-delete-footer {
+    border-top:unset;
+}
+.btn-delete-cancel{
+    background-color: unset;
+    border: unset;
+    transition:all ease 0.8s;
+    font-size:clamp(16px,3vw,20px);
+}
+.btn-delete-cancel:hover{
+    font-weight:700;
+    color:black;
+}
+.btn-delete{
+    background-color: unset;
+    border: unset;
+    color: rgb(253, 108, 103);
+    transition:all ease .8s;
+    font-size:clamp(16px,3vw,20px);
+}
+
+.btn-delete:hover{
+    color: red;
+    font-weight:700;
+}
+@media(min-width:992px){
+    .modal-delete-body{
+        padding:20px 40px 20px 40px;
+    }
+    
+.modal-delete-body p{
+    margin-top:20px;
+}
+}
