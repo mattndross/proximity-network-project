@@ -59,7 +59,7 @@ app.delete("/products/:productId", privilegeController.deleteProduct);//la tiend
 
 //upload and retrieve images
 app.post("/images/upload", filecontroller.upload);
-app.get("/images", filecontroller.getListFiles);
+app.get("/images", filecontroller.getListImages);
 app.get("/images/:name", filecontroller.download);
 
 
