@@ -40,18 +40,8 @@ const ModalUpdateProduct = ({ id }) => {
                     <div className="modal-body modal-update-product-body">
                         <div className='container pt-3'>
                             <div className="row">
-                                <div className="col-12">
-                                    <h2>UPDATE YOUR PRODUCT DATA</h2>
-                                    <p>All fields marked with <span> * </span>are required</p>
-                                </div>
-
-                                <div className="col-12 text-center">
-                                    <div className="w-50" style={{ margin: "0 auto" }}>
-                                        <i className="bi bi-pencil icon-update-product" style={{ marginRight: "10px" }}></i>
-                                        <i className="bi bi-trash icon-update-product"></i>
-                                    </div>
-
-                                </div>
+                                <h2>UPDATE YOUR PRODUCT DATA</h2>
+                                <p className='parrafo-modal-update'>All fields marked with <span> * </span>are required</p>
                             </div>
 
                             <form className="form-update-product" onSubmit={handleSubmit(onSubmit)}>

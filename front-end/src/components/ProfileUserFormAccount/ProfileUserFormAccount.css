@@ -1,0 +1,92 @@
+.title-content-account{
+    gap: clamp(10px,5vw,30px);
+    align-items: center;
+}
+
+.title-content-account h2{
+    font-size: clamp(12px,3vw,22px);
+    font-weight: 700; 
+    transition: all ease .8s;
+    cursor: pointer;
+}
+.text-acount-user{
+    font-size: clamp(12px, 3vw,26px);
+    margin-top: clamp(20px,5vw,50px);
+}
+.title-content-account a{
+    text-decoration: none;
+    color: #333333;
+}
+.title-content-account span{
+    font-size: 22px;
+    font-weight: 700;
+}
+.title-content-account h2:hover{
+    color: #607D33;
+    border-bottom: 3px solid #607D33;
+}
+.from-profile-account{
+    background-color: #ffff;
+    margin-top: 30px;
+    padding:40px;
+    box-shadow: rgb(196 196 196 / 8%) 1px 1px 4px 3px, rgb(0 0 0 / 25%) 0px 2px 7px 0px;
+}
+.from-profile-account .formulario-user-account input{
+    border-radius: 5px;
+    border: 2px solid #cac9c9;
+}
+.from-profile-account .formulario-user-account label{
+    font-size: clamp(16px,3vw,20px);
+    font-weight: 600;
+}
+.from-profile-account .formulario-user-account span{
+    font-size: clamp(18px, 5vw,24px);
+    color:#FF0000;
+}
+.btn-account-user{
+    background: #81B03E;
+    border: unset;
+    border-radius: 22px;
+    font-size: clamp(14px,3vw,20px);
+    font-weight: 700;
+    width: clamp(200px,50vw,300px);
+    transition: all ease .8s;
+    margin-top: 20px;
+}
+button:focus:not(:focus-visible) {
+    outline: unset;
+}
+.btn-check:active+.btn-primary:focus, .btn-check:checked+.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show>.btn-primary.dropdown-toggle:focus{
+    box-shadow: unset;
+}
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #81B03E;
+    border-color: unset;
+    box-shadow: unset;
+}
+.btn-account-user:hover{
+    background: #648536;
+}
+
+@media(min-width:992px){
+
+.title-content-account{
+        
+        margin-top: 80px;
+    }
+    .from-profile-account{
+        padding:100px;
+        margin-top: 50px;
+    }
+.from-profile-account .formulario-user-account input{
+    height: 55px;
+}
+.form-control{
+    width: 100%;
+}
+.formulario-user-account .form-label{
+    text-align: end;
+    padding-right: 50px;
+}
+}
