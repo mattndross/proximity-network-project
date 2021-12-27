@@ -1,18 +1,35 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Navigate, useNavigate } from 'react-router';
 import './LoginModal.css'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import { Modal } from 'bootstrap';
 
 const LoginModal = () => {
+
+
+    let myModalRef = useRef();
+
     let navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [invalidUser, setInvalidUser] = useState(null);
+    const [invalidUser, setInvalidUser] = useState(false);
 
-    const dismissModal = () => {
-        console.log('modal tiene que cerrarse')
-    }
 
     const fetchSignIn = async () => {
+
+        const dismissModal = () => {
+            console.log('modal tiene que cerrarse')
+            modal.hide(myModal)
+            myModal.addEventListener('hidden.bs.modal', function (event) {
+                document.body.style.overflow = "unset"
+                document.body.style.paddingRight = "0";
+                if (document.querySelector('.modal-backdrop')) document.querySelector('.modal-backdrop').remove()
+            })
+        }
+
+
         const user = { email, password };
         console.log(user);
         const url = "http://localhost:4000/login";
@@ -22,14 +39,18 @@ const LoginModal = () => {
             body: JSON.stringify(user),
         };
 
-
+        let myModal = myModalRef.current;
+        let modal = Modal.getInstance(myModal)
         try {
             localStorage.removeItem("token")
             const response = await fetch(url, config);
             if (!response.ok) {
                 if (response.status === 401) {
-                    setInvalidUser(true);
+
+                    modal.show(myModal)
+                    setInvalidUser(true)
                     console.log("invalidUser", invalidUser)
+
                 }
                 console.log("response.status", response.status);
             } else {
@@ -41,7 +62,6 @@ const LoginModal = () => {
                 navigate("/profile-user", { "replace": true });
             }
 
-
         } catch (e) {
             console.log("oh no," + e);
         }
@@ -52,10 +72,12 @@ const LoginModal = () => {
 
     const handleSubmitLoginData = (event) => {
         event.preventDefault()
+        console.log(myModalRef.current)
         fetchSignIn();
+
     }
     return (
-        <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="loginModal" ref={myModalRef} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered ">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -67,7 +89,7 @@ const LoginModal = () => {
                             <h2>¡Welcome back!</h2>
                             <p>Enter your data below</p>
                             {invalidUser && <h6 id='modal-alert-invalid-input'>invalid email or password</h6>}
-                            <form onSubmit={handleSubmitLoginData}>
+                            <form onSubmit={handleSubmitLoginData} >
                                 <div className="mb-3 modal-body-content">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address <span>* </span></label>
                                     <input type="email" className="form-control input-login" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => setEmail(e.target.value)} />
