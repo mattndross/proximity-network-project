@@ -8,7 +8,7 @@ const ProfileUserStore = () => {
     return (
         <>
             <div className="margin-profile-user">
-                <NavBarProfileUser></NavBarProfileUser>
+                {/* <NavBarProfileUser></NavBarProfileUser> */}
             </div>
             <section id="profilUserHeader">
                 <div className='container px-4 px-lg-0'>
