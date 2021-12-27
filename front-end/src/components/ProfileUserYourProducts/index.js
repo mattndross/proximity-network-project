@@ -1,7 +1,7 @@
 import './ProfileUserYourProducts.css'
 import { Link } from 'react-router-dom'
 import '../../components/CardProductStore'
-import CardProductStore from '../../components/CardProductStore';
+import CardUserProduct from '../../components/CardUserProduct';
 import ModalNewProduct from '../ModalNewProduct';
 import ModalUpdateProduct from '../ModalUpdateProduct';
 const ProfileUserYourProducts = () => {
@@ -49,18 +49,22 @@ const ProfileUserYourProducts = () => {
             <div className="d-flex title-profile-product">
                 <Link to="/profile-user"><h2>PROFILE</h2></Link>
                 <span>|</span>
+                <Link to="/profile-account"><h2>ACCOUNT</h2></Link>
+                <span>|</span>
                 <Link to="/profile-product"><h2>YOUR PRODUCTS</h2></Link>
 
             </div>
-            <div className='container px-4 container-profile-products'>
+            <div className='container container-profile-products'>
                 <div className='row'>
+
 
                     {
                         dataFake.map((product) => {
                             return (
                                 <>
+                                    <CardUserProduct product={product} ></CardUserProduct>
 
-                                    <CardProductStore product={product} ></CardProductStore>
+
 
                                     <ModalUpdateProduct id={`product-${product.id}`}></ModalUpdateProduct>
                                 </>

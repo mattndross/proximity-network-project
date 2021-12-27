@@ -1,10 +1,10 @@
 .title-content-profile{
-    gap: 30px;
+    gap: clamp(20px,5vw,30px);
     align-items: center;
 }
 
 .title-content-profile h2{
-    font-size: clamp(16px,3vw,22px);
+    font-size: clamp(10px,3vw,22px);
     font-weight: 700; 
     transition: all ease .8s;
     cursor: pointer;
@@ -49,7 +49,7 @@
     border-radius: 22px;
     font-size: clamp(14px,3vw,20px);
     font-weight: 700;
-    width: clamp(120px,10vw,200px);
+    width: clamp(200px,10vw,300px);
     transition: all ease .8s;
     margin-top: 20px;
 }
@@ -59,7 +59,7 @@
     border-radius: 22px;
     font-size: clamp(14px,3vw,20px);
     font-weight: 700;
-    width: clamp(120px,10vw,200px);
+    width: clamp(200px,10vw,300px);
     transition: all ease .8s;
     margin-top: 20px;
 }
@@ -80,6 +80,26 @@ button:focus:not(:focus-visible) {
 }
 .btn-formulario-reset:hover{
     background-color: #648536;
+}
+.icon-img-form{
+    color: #91BA56;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(80px,10vw,250px);
+    font-size: clamp(38px,3vw,50px);
+    border: 2px solid #91BA56;
+    padding-top: clamp(5px,1vw,1px);
+    padding-bottom: clamp(5px,1vw,1px);
+    padding-left: clamp(8px,1vw,8px);
+    padding-right: clamp(8px,1vw,8px);
+    border-radius: 10px;
+    transition: all ease .8s;
+    cursor: pointer;
+}
+.icon-img-form:hover{
+    background-color: #81B03E;
+    color: #fff;
 }
 
 @media(min-width:992px){

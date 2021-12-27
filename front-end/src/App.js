@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import "bootstrap-icons/font/bootstrap-icons.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import LandingPage from "./pages/LandingPage";
@@ -12,6 +11,7 @@ import LoginModal from './components/LoginModal'
 import Modalregister from './components/ModalRegister';
 import ProfileUserStore from './pages/ProfileUserStore';
 import ProfileUserProduct from './pages/ProfileUserProduct';
+import ProfileUserAccount from './pages/ProfileUserAccount';
 
 // import global context
 import { SearchContext } from './context/SearchContext.js'
@@ -38,6 +38,7 @@ function App() {
               <Route path="/store-profile/:storeName" element={<StoreProfile />} />
               <Route path="/profile-user" element={<ProfileUserStore />} />
               <Route path="/profile-product" element={<ProfileUserProduct />} />
+              <Route path="/profile-account" element={<ProfileUserAccount />} />
             </Routes>
           </ProfileContext.Provider>
         </SearchContext.Provider>

@@ -6,33 +6,19 @@
     padding-right: clamp(20px,5vw,50px);
 }
 .modal-update-product-body h2{
-    font-size: clamp(18px,3vw,24px);
+    font-size: clamp(16px,5vw,23px);
     color: #333333;
     font-weight: 700;
-    margin-bottom: 2px;
+    margin-bottom: 20px;
+
 }
 .container-icon-update{
     justify-content: space-around;
     align-items: flex-end;
 }
 
-.icon-update-product{
-    color: #91BA56;
-    font-size: clamp(28px,3vw,32px);
-    border: 2px solid #91BA56;
-    padding-top: clamp(5px,1vw,1px);
-    padding-bottom: clamp(5px,1vw,1px);
-    padding-left: clamp(8px,1vw,8px);
-    padding-right: clamp(8px,1vw,8px);
-    border-radius: 10px;
-    transition: all ease .8s;
-    cursor: pointer;
-}
-.icon-update-product:hover{
-    background-color: #81B03E;
-    color: #fff;
-}
-.modal-update-product-body p{
+
+.modal-update-product-body .parrafo-modal-update{
     font-size: clamp(14px,3vw,18px);
     color: #656161;
 
@@ -43,7 +29,6 @@
     margin-bottom: 0;
 }
 .form-update-product{
-    margin-top:20px;
 }
 .form-update-product label {
     font-size: clamp(12px,3vw,15px);
