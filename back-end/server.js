@@ -12,7 +12,9 @@ const { pool } = require("./pool");
 const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
 const privilegeController = require("./controllers/privilege.controller");
+const filecontroller= require("./controllers/file.controller");
 
+global.__basedir = __dirname;
 
 
 
@@ -55,7 +57,10 @@ app.post("/stores/products", authController.veryfyJwt, privilegeController.addPr
 app.put("/products/:productId", privilegeController.editProduct);//la tienda puede editar un determinado producto
 app.delete("/products/:productId", privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
 
-
+//upload and retrieve images
+app.post("/images/upload", filecontroller.upload);
+app.get("/images", filecontroller.getListFiles);
+app.get("/images/:name", filecontroller.download);
 
 
 
