@@ -9,6 +9,8 @@ const upload = async (req, res) => {
       return res.status(400).send({ message: "Please upload a file!" });
     }
 
+
+
     res.status(200).send({
       message: "Uploaded the file successfully: " + req.file.originalname,
     });
@@ -23,9 +25,9 @@ const upload = async (req, res) => {
     });
   }
 };
-const baseUrl = "http://localhost:8080/files/";
-const getListFiles = (req, res) => {
-  const directoryPath = __basedir + "/resources/static/assets/uploads/";
+const baseUrl = "http://localhost:4000/images/";
+const getListImages = (req, res) => {
+  const directoryPath = __basedir + "/resources/images/";
 
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
@@ -49,7 +51,7 @@ const getListFiles = (req, res) => {
 
 const download = (req, res) => {
   const fileName = req.params.name;
-  const directoryPath = __basedir + "/resources/static/assets/uploads/";
+  const directoryPath = __basedir + "/resources/images/";
 
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {
@@ -62,7 +64,7 @@ const download = (req, res) => {
 
 module.exports = {
   upload,
-  getListFiles,
+  getListImages,
   download,
 };
 
