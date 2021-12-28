@@ -17,6 +17,7 @@ const privilegeController = require("./controllers/privilege.controller");
 
 
 //AUTH ENDPOINTS
+
 app.post(
   "/register",
   authController.checkDuplicatedEmail,
