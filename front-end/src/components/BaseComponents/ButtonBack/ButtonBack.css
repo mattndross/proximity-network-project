@@ -71,6 +71,7 @@
     display: inline-block;
     color: #4c4c4c;
     font-size: 1.25em;
+    cursor:pointer;
     /* font-style: italic; */
     text-decoration: none;
     position: relative;

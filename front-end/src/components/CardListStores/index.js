@@ -3,68 +3,32 @@ import { Link } from 'react-router-dom'
 import "./CardListStores.css"
 import CardStore from '../CardStore'
 import iconTienda from '../../assets/img/stores-list-banner/icon-tienda.svg'
-import iconError from '../../assets/img/menssage-error/error.png'
-import SearchStoresList from '../SearchStoresList'
+
+
 // importar el contexto
 import { SearchContext } from '../../context/SearchContext.js'
 import { ProfileContext } from "../../context/ProfileContext"
 
-const CardListStores = () => {
-
-    const searchValueGlobal = useContext(SearchContext);
+const CardListStores = ({ stores, setStores }) => {
 
     // Estado necesario para la reactividad del componente.
-    const [searchGlobal, setSearchGlobal] = useState(searchValueGlobal[0])
     const [storeProfileId, setStoreProfileId] = useContext(ProfileContext);
 
 
-    const [stores, setStores] = useState([]);
-    const [message, setMessage] = useState("")
-
-    useEffect(() => {
-        const getData = () => {
-            fetch(`http://localhost:4000/search/${searchGlobal}`)
-                .then(response => response.json())
-                .then(data => {
-
-
-                    setStores(data);
-
-                    console.log("fetched", data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        };
-        try {
-
-            getData();
-        } catch (error) {
-            console.log(error)
-        }
-    }, [searchGlobal]);
-
-    const alert = <div className={`${stores.message || stores.length == 0 ? 'd-block' : 'd-none'} col-lg-12 text-center `} >
-
-        <div><img src={iconError} alt="icon-error" className="img-fluid" /></div>
-        <p className='parrafo-error'>Opps!.. we didn't find any store in this area</p>
-    </div>
 
     return (
 
         <>
 
-            <SearchStoresList searchGlobal={searchGlobal} setSearchGlobal={setSearchGlobal}></SearchStoresList>
+
             <section id="cardListStore">
-                <div className="section-header d-flex justify-content-center align-items-baseline text-center">
+                {stores.length > 0 && <div className="section-header d-flex justify-content-center align-items-baseline text-center">
                     <img src={iconTienda} alt="" />
                     <h1>Stores List</h1>
                 </div>
+                }
                 <div className="container">
                     <div className="row ">
-                        {
-                            alert
-                        }
 
 
                         {stores.length > 0 && (

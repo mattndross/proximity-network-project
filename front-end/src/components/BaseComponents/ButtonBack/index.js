@@ -1,9 +1,11 @@
 import './ButtonBack.css'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 const ButtonBack = (props) => {
+    const navigate = useNavigate();
     return (
 
-        <Link className='animated-arrow' to={props.path}>
+        <a className='animated-arrow' onClick={() => navigate(-1)}>
             <span className='the-arrow -left'>
                 <span className='shaft'></span>
             </span>
@@ -15,7 +17,7 @@ const ButtonBack = (props) => {
                     {props.text ? props.text : "Back"}
                 </span>
             </span>
-        </Link>
+        </a>
 
 
 

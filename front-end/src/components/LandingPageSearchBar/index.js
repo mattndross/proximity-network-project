@@ -4,7 +4,7 @@ import "./LandingPageSearchBar.css";
 import iconSearch from "../../assets/img/search-landing/icon-search.png"
 import imagenSearch from "../../assets/img/search-landing/imagen-search.png"
 import { useState, useContext } from "react"
-import { useNavigate } from 'react-router-dom'
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 import { SearchContext } from '../../context/SearchContext'
 
@@ -30,7 +30,15 @@ const LandingPageSearchBar = () => {
   const replaceSearchGlobal = (event) => {
     event.preventDefault()
     setSearchGlobal(searchLocalValue)
-    navigate('/stores-list')
+
+
+    navigate(
+      {
+        pathname: '/stores-list',
+        search: `?${createSearchParams({
+          search: searchLocalValue
+        })}`
+      })
 
   }
 
