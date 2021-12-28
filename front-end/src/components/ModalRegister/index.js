@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Modal } from 'bootstrap';
 
-
+//usando yup 
 const validationSchema = Yup.object().shape({
     storeManager: Yup.string().required('this field is required'),
     managerEmail: Yup.string().email().required('this field is required'),
