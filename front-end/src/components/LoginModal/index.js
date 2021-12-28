@@ -47,7 +47,6 @@ const LoginModal = () => {
         console.log("response.status", response.status);
       } else {
         const data = await response.json();
-        console.log(JSON.stringify(data.data));
         const user = JSON.stringify(data.data);
         localStorage.setItem("user", user);
         dismissModal();
@@ -57,8 +56,6 @@ const LoginModal = () => {
     } catch (e) {
       console.log("oh no," + e);
     }
-    const currentUser = localStorage.getItem("user");
-    console.log(currentUser);
   };
 
   const handleSubmitLoginData = (event) => {

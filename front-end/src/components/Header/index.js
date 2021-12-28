@@ -13,8 +13,9 @@ const Header = () => {
       const user = getCurrentUser();
       if(user){
           setCurrentUser(user);
+          console.log("header user", currentUser)
       }
-  }, [getCurrentUser()])
+  }, [])
 
   const handleChange = () => {
     setOpen(!open);
@@ -51,7 +52,7 @@ const Header = () => {
       ) : (
         <ul className="main-menu">
           <li className="main-menu_item" >
-            <a className="main-menu_link" style={{ cursor: "pointer" }} onClick={logout()}>Logout</a>
+            <a className="main-menu_link" style={{ cursor: "pointer" }} onClick={()=>logout()}>Logout</a>
           </li>
         </ul>
       )}
