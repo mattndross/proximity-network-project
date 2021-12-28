@@ -55,7 +55,7 @@ app.put("/stores/authentications/passwords", authController.veryfyJwt, authContr
 
 app.post("/stores/products", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
 app.put("/stores/products/:productId", authController.veryfyJwt, privilegeController.editProduct);//la tienda puede editar un determinado producto
-app.delete("/products/:productId", privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
+app.delete("/products/:productId", authController.veryfyJwt, privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
 
 //upload and retrieve images
 app.post("/images/upload", filecontroller.upload);
