@@ -62,7 +62,8 @@ app.post("/images/upload", filecontroller.upload);
 app.get("/images", filecontroller.getListImages);
 app.get("/images/:name", filecontroller.download);
 
-app.post("/images/stores/upload", authController.veryfyJwt, uploadProfile.uploadStoreImage);
+app.put("/stores/images/upload", authController.veryfyJwt, uploadProfile.uploadStoreImage);
+app.put("/products/images/upload/:productId", authController.veryfyJwt, uploadProfile.uploadProductImage);
 
 
 
