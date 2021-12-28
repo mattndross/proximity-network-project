@@ -3,9 +3,8 @@ import React, { useState, useContext } from "react"
 import { SearchContext } from '../../../context/SearchContext'
 import { createSearchParams, useNavigate } from "react-router-dom";
 import './Search.css'
-const Search = () => {
+const Search = ({ loading, setLoading }) => {
     const [searchLocalValue, setSearchLocalValue] = useState("");
-
 
     let navigate = useNavigate();
 

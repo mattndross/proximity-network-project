@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import "./CardListStores.css"
 import CardStore from '../CardStore'
 import iconTienda from '../../assets/img/stores-list-banner/icon-tienda.svg'
-import iconError from '../../assets/img/menssage-error/error.png'
-import SearchStoresList from '../SearchStoresList'
+
+
 // importar el contexto
 import { SearchContext } from '../../context/SearchContext.js'
 import { ProfileContext } from "../../context/ProfileContext"
@@ -14,27 +14,21 @@ const CardListStores = ({ stores, setStores }) => {
     // Estado necesario para la reactividad del componente.
     const [storeProfileId, setStoreProfileId] = useContext(ProfileContext);
 
-    const alert = <div className={`${stores.message || stores.length == 0 ? 'd-block' : 'd-none'} col-lg-12 text-center `} >
 
-        <div><img src={iconError} alt="icon-error" className="img-fluid" /></div>
-        <p className='parrafo-error'>Opps!.. we didn't find any store in this area</p>
-    </div>
 
     return (
 
         <>
 
-            <SearchStoresList></SearchStoresList>
+
             <section id="cardListStore">
-                <div className="section-header d-flex justify-content-center align-items-baseline text-center">
+                {stores.length > 0 && <div className="section-header d-flex justify-content-center align-items-baseline text-center">
                     <img src={iconTienda} alt="" />
                     <h1>Stores List</h1>
                 </div>
+                }
                 <div className="container">
                     <div className="row ">
-                        {
-                            alert
-                        }
 
 
                         {stores.length > 0 && (
