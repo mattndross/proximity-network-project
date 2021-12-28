@@ -11,6 +11,13 @@ const getMapsUrl = (storeStreet, city) => {
 };
 
 //profiles
+exports.getLoggedProfile =  (req,res)=>{ 
+  const storeId = req.user.id; 
+  pool.query('SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id  WHERE s.store_id = $1', [storeId])
+  .then((result) => res.json(result.rows))
+  .catch((e) => console.log(e));
+};
+
 exports.insertProfileData = async (req, res) => {
   const storeId = req.user.id;
   const {
@@ -111,6 +118,15 @@ exports.editProfile = async (req, res) => {
 };
 
 //products
+exports.getAllStoreProducts = (req, res) => {
+  const storeId = req.user.id;  
+  console.log({storeId})
+    pool
+      .query("SELECT * FROM products WHERE store_id = $1", [storeId])
+      .then((result) => res.status(200).json(result.rows))
+      .catch((e) => console.log(e));
+  
+};
 exports.addProduct = (req, res) => {
   // the store add a product
   const storeId = req.user.id;

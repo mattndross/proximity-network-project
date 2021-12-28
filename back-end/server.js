@@ -39,23 +39,24 @@ app.get("/search/:zone", publicController.search); //devuelve lista de tiendas f
 app.get("/stores/profiles/:storeId", publicController.getStoreById); //devuleve los datos de la tienda con ese id
 app.get('/stores/:storeName', publicController.getProfile);//devuelve los datos de perfil de la tienda indicada
 
-app.get("/products/storeProducts/:storeId", publicController.getAllStoreProducts);//devuelve todos los productos de una tienda
 app.get("/stores", publicController.findAllStores); //devuelve lista de todas las tiendas
 app.get("/stores/search/:storeName", publicController.findStoreByName); //devuelve los datos publicos de las tienda que coinciden con la busqueda
+app.get("/products/storeProducts/:storeId", publicController.getAllStoreProducts);//devuelve todos los productos de una tienda
 app.get("/products/:productId", publicController.findProductById);//devuelve los datos del producto con ese id
 
 
 //privilege endpoints
-
+app.get("/logged/stores", authController.veryfyJwt, privilegeController.getLoggedProfile);//devuelve los datos de la tienda loggeada
 app.post("/stores/profiles",authController.veryfyJwt, privilegeController.insertProfileData);//la tienda completa los datos por primera vez
 app.put("/stores/profiles", authController.veryfyJwt, privilegeController.editProfile);//la tienda puede editar los datos de su perfil
 app.get("/stores/managers/authentications", authController.veryfyJwt, authController.getNameAndEmail);//devuelve email y nombre del manager de la tienda loggeada
 app.put("/stores/managers/authentications", authController.veryfyJwt, authController.editAuthentications);//la tienda puede cambiar el email, contraseña o nombre del storeManager
 app.put("/stores/authentications/passwords", authController.veryfyJwt, authController.editPassword);//la tienda puede cambiar la contraseña actual
 
+app.get("/products", authController.veryfyJwt, privilegeController.getAllStoreProducts);//devuelve todos los productos que tiene la tienda logeada
 app.post("/stores/products", authController.veryfyJwt, privilegeController.addProduct);//la tienda puede subir un nuevo producto
 app.put("/stores/products/:productId", authController.veryfyJwt, privilegeController.editProduct);//la tienda puede editar un determinado producto
-app.delete("/products/:productId", privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
+app.delete("/products/:productId", authController.veryfyJwt, privilegeController.deleteProduct);//la tienda puede eliminar un determinado producto
 
 //upload and retrieve images
 app.post("/images/upload", filecontroller.upload);
