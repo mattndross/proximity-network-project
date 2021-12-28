@@ -13,7 +13,7 @@ const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
 const privilegeController = require("./controllers/privilege.controller");
 const filecontroller= require("./controllers/file.controller");
-const uploadProfile = require("./controllers/uploadProfile.controller")
+const uploadImage = require("./controllers/uploadImage.controller")
 global.__basedir = __dirname;
 
 
@@ -62,8 +62,8 @@ app.post("/images/upload", filecontroller.upload);
 app.get("/images", filecontroller.getListImages);
 app.get("/images/:name", filecontroller.download);
 
-app.put("/stores/images/upload", authController.veryfyJwt, uploadProfile.uploadStoreImage);
-app.put("/products/images/upload/:productId", authController.veryfyJwt, uploadProfile.uploadProductImage);
+app.put("/stores/images/upload", authController.veryfyJwt, uploadImage.uploadStoreImage);
+app.put("/products/images/upload/:productId", authController.veryfyJwt, uploadImage.uploadProductImage);
 
 
 
