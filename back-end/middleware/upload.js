@@ -7,8 +7,11 @@ let storage = multer.diskStorage({
     cb(null, __basedir + "/resources/images/");
   },
   filename: (req, file, cb) => {
+    
     console.log(file.originalname);
+    console.log("__basedir", __basedir + "/resources/images/")
     cb(null, file.originalname);
+    
   },
 });
 
