@@ -63,34 +63,32 @@ exports.insertProfileData = async (req, res) => {
 };
 
 exports.editProfile = async (req, res) => {
-    const storeId = req.user.id;
-    const {
-      storeName,
-      storeDescription,
-      storeWeb,
-      phoneNumber,
-      storeCategory,
-      storeEmail,
-      imageUrl,
-      storeStreet,
-      city,
-      country,
-      postcode,
-    } = req.body;
-    const mapsUrl = getMapsUrl(storeStreet, city);
-    let response = {};
-    await pool
+  const storeId = req.user.id;
+  const {
+    storeName,
+    storeDescription,
+    storeWeb,
+    phoneNumber,
+    storeCategory,
+    imageUrl,
+    storeStreet,
+    city,
+    country,
+    postcode,
+  } = req.body;
+  const mapsUrl = getMapsUrl(storeStreet, city);
+  let response = {};
+  await pool
     .query(
-      "UPDATE stores SET name=$1, store_description=$2, store_category=$3, web_page=$4, store_email=$5, phone_number=$6, image=$7 WHERE store_id = $8",
-      [        
+      "UPDATE stores SET name=$1, store_description=$2, store_category=$3, web_page=$4, phone_number=$5, image=$6 WHERE store_id = $7",
+      [
         storeName,
         storeDescription,
         storeCategory,
         storeWeb,
-        storeEmail,
         phoneNumber,
         imageUrl,
-        storeId
+        storeId,
       ]
     )
     .then(() => {
@@ -110,16 +108,25 @@ exports.editProfile = async (req, res) => {
       res.status(200).json(response);
     })
     .catch((error) => console.log(error));
-}
+};
 
 //products
 exports.addProduct = (req, res) => {
   // the store add a product
   const storeId = req.user.id;
-  const { type, brand, category, description, unit, price, producer, origin } =
-    req.body;
+  const {
+    type,
+    brand,
+    category,
+    description,
+    unit,
+    price,
+    producer,
+    origin,
+    productImage,
+  } = req.body;
   const query =
-    "INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+    "INSERT INTO products (store_id, product_type, brand, category, product_description, unit, price, producer, origin, product_image) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
 
   pool
     .query(query, [
@@ -132,6 +139,7 @@ exports.addProduct = (req, res) => {
       price,
       producer,
       origin,
+      productImage,
     ])
     .then(() =>
       res
@@ -157,30 +165,48 @@ exports.deleteProduct = (req, res) => {
 };
 
 exports.editProduct = (req, res) => {
-  const idProduct = req.params.productId;
-  const { type, brand, category, description, unit, price, producer, origin } =
-    req.body;
+  const storeId = req.user.id;
+  const productId = req.params.productId;
+  const {
+    type,
+    brand,
+    category,
+    description,
+    unit,
+    price,
+    producer,
+    origin,
+    productImage,
+  } = req.body;
   const query =
-    "UPDATE products SET product_type = $1, brand = $2, category = $3, product_description = $4, unit = $5, price = $6, producer = $7, origin = $8 WHERE id = $9";
+    "UPDATE products SET product_type = $1, brand = $2, category = $3, product_description = $4, unit = $5, price = $6, producer = $7, origin = $8, product_image=$9 WHERE id = $10";
+
   pool
-    .query(query, [
-      type,
-      brand,
-      category,
-      description,
-      unit,
-      price,
-      producer,
-      origin,
-      idProduct,
-    ])
+    .query("SELECT store_id FROM products WHERE id = $1", [productId])
     .then((result) => {
-      if (result.rowCount === 0) {
-        return res.send({ message: `id number ${idProduct} does not exist` });
+      const dbStoreId = result.rows[0].store_id;
+     
+      if (dbStoreId === storeId) {
+        pool
+          .query(query, [
+            type,
+            brand,
+            category,
+            description,
+            unit,
+            price,
+            producer,
+            origin,
+            productImage,
+            productId,
+          ])
+          .then(() => {
+            return res.send({ message: "your change was submitted" });
+          })
+          .catch((e) => console.log(e));
       } else {
-        // console.log(result);
-        return res.send({ message: "your change was submitted" });
+        res.status(401).json({message:"you are not allowed to modify this product"})
       }
     })
-    .catch((e) => console.log(e));
+    .catch((e)=>console.log(e));
 };
