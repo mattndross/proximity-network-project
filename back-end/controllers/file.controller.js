@@ -1,5 +1,6 @@
 const uploadFile = require("../middleware/upload");
-const fs = require("fs")
+const fs = require("fs");
+const baseUrl = "http://localhost:4000/images/";
 
 const upload = async (req, res) => {
   try {
@@ -9,23 +10,21 @@ const upload = async (req, res) => {
       return res.status(400).send({ message: "Please upload a file!" });
     }
 
-
-
     res.status(200).send({
       message: "Uploaded the file successfully: " + req.file.originalname,
+      imageUrl: baseUrl + req.file.originalname,
     });
   } catch (err) {
     if (err.code == "LIMIT_FILE_SIZE") {
-        return res.status(500).send({
-          message: "File size cannot be larger than 2MB!",
-        });
-      }
+      return res.status(500).send({
+        message: "File size cannot be larger than 2MB!",
+      });
+    }
     res.status(500).send({
       message: `Could not upload the file: ${req.file.originalname}. ${err}`,
     });
   }
 };
-const baseUrl = "http://localhost:4000/images/";
 const getListImages = (req, res) => {
   const directoryPath = __basedir + "/resources/images/";
 
@@ -67,4 +66,3 @@ module.exports = {
   getListImages,
   download,
 };
-
