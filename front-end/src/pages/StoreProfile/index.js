@@ -8,11 +8,10 @@ import SearchListProduct from '../../components/SearchListProduct';
 import CardProductStore from '../../components/CardProductStore';
 import StoreProductBanner from '../../components/StoreProductBanner';
 import ModalProduct from '../../components/ModalProduct';
-import { ProfileContext } from '../../context/ProfileContext';
+import { SearchContext } from '../../context/SearchContext'
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 export default function StoreProfile() {
-
 
     // Obtengo la url dinamica con useParams.
     let { storeName } = useParams();

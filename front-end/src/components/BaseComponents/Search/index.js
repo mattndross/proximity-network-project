@@ -1,26 +1,35 @@
 
 import React, { useState, useContext } from "react"
 import { SearchContext } from '../../../context/SearchContext'
+import { createSearchParams, useNavigate } from "react-router-dom";
 import './Search.css'
-const Search = ({ setSearchGlobal, searchGlobal }) => {
-
-    const [searchContextGlobal, setSearchContextGlobal] = useContext(SearchContext)
-
+const Search = () => {
     const [searchLocalValue, setSearchLocalValue] = useState("");
 
 
+    let navigate = useNavigate();
+
     const handleSearchLocalValue = (event) => {
         setSearchLocalValue(event.target.value)
-        setSearchContextGlobal(event.target.value)
+
 
     }
 
     const handleSearch = (event) => {
         event.preventDefault();
-        setSearchGlobal(searchLocalValue)
+
+        // Formando el queryParms que me llevara a /stores-list?search="....."
+        navigate(
+            {
+                pathname: '/stores-list',
+                search: `?${createSearchParams({
+                    search: searchLocalValue
+                })}`
+            })
 
 
     }
+
 
     return (
 
