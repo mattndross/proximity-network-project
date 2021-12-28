@@ -47,8 +47,8 @@ const LoginModal = () => {
         console.log("response.status", response.status);
       } else {
         const data = await response.json();
-        console.log(JSON.stringify(data));
-        const user = JSON.stringify(data);
+        console.log(JSON.stringify(data.data));
+        const user = JSON.stringify(data.data);
         localStorage.setItem("user", user);
         dismissModal();
         setInvalidUser(false);
