@@ -88,14 +88,14 @@ exports.logIn = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).json({"messege":"not valid email or password"});
       } else {
-
         console.log(id);
         let token = jwt.sign({ id }, secret, {
           expiresIn: 86400,
         });
+        const data = { id, name: result.rows[0].store_manager, token, isAuthenticated: true, message: "store user authenticated!" }
         return res
           .status(200)
-          .json({id, token, "isAuthenticated": true});
+          .json({data});
       }
     });
   };

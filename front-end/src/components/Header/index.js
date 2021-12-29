@@ -1,12 +1,13 @@
-import React, {useState} from "react";
-import logo from "../Header/img/logo.png"
-//import { FaBars, FaTimes} from "react-icons/fa"
-import { Link } from 'react-router-dom'
-import "../Header/Header.css"
+import React, { useEffect, useState } from "react";
+import logo from "../Header/img/logo.png";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import "../Header/Header.css";
+import { getCurrentUser, logout } from "../../services/authentication.service";
 
 const Header = () => {
-// <div className= "l-container"> 
-const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(()=>{
       const user = getCurrentUser();
