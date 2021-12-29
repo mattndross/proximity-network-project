@@ -13,7 +13,7 @@ const getMapsUrl = (storeStreet, city) => {
 //profiles
 exports.getLoggedProfile =  (req,res)=>{ 
   const storeId = req.user.id; 
-  pool.query('SELECT * FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id  WHERE s.store_id = $1', [storeId])
+  pool.query('SELECT s_a.store_manager, s.name, s.store_description, s.store_category, s.web_page, s.phone_number, s.image, s_l.address, s_l.city, s_l.country, s_l.postcode  FROM stores as s join stores_locations as s_l on s_l.store_id = s.store_id join stores_authentications as s_a on s_a.id = s.store_id  WHERE s.store_id = $1', [storeId])
   .then((result) => res.json(result.rows))
   .catch((e) => console.log(e));
 };
