@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 const ProfileUserForm = ({ profile }) => {
     const profileInfo = profile[0]
-    console.log(profileInfo)
+
     const validationSchema = Yup.object().shape({
         fullname: Yup.string().required('Fullname is required'),
         storeName: Yup.string().required('Store name is required'),

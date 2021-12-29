@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-const ModalUpdateProduct = ({ id }) => {
+const ModalUpdateProduct = ({ product }) => {
     const validationSchema = Yup.object().shape({
         productName: Yup.string().required('Product name is required'),
         brand: Yup.string().required('Brand is required'),
@@ -30,7 +30,7 @@ const ModalUpdateProduct = ({ id }) => {
         console.log(JSON.stringify(data, null, 2));
     };
     return (
-        <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={`product-${product.id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">

@@ -19,14 +19,6 @@ const ProfileUserStore = () => {
             ProfileUserService.getLoggedProfile().then(
                 (response) => {
                     setProfile(response.data);
-                },
-                (error) => {
-                    const _content =
-                        (error.response && error.response.data) ||
-                        error.message ||
-                        error.toString();
-
-                    setProfile(_content);
                 }
             );
         } catch (error) {
