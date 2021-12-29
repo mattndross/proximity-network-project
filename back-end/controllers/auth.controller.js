@@ -44,19 +44,24 @@ exports.register = (req, res) => {
   const encriptedPass = bcrypt.hashSync(newUser.password, salt);
   pool
     .query(
-      "INSERT INTO stores_authentications ( store_manager, manager_email, password) VALUES ( $1, $2, $3)",
+      "INSERT INTO stores_authentications ( store_manager, manager_email, password)  VALUES ( $1, $2, $3)",
       [newUser.storeManager, newUser.managerEmail, encriptedPass]
     )
     .then(() => {
-      pool
+       pool
         .query(
           "SELECT id, store_manager FROM stores_authentications WHERE manager_email = $1", [newUser.managerEmail])
-        .then((result)=>{
+        .then((result)=>{ 
           console.log("result.rows[0]", result.rows[0])
-          let token = jwt.sign({ id: result.rows[0].id }, secret, {
-            expiresIn: 86400,
-            
-          });
+          const storeId = result.rows[0].id;
+
+           pool.query("INSERT INTO stores (store_id, name) VALUES ($1, $2)", [storeId, " "])
+          .then(()=>{
+            pool.query("INSERT INTO stores_locations (store_id) VALUES ($1)", [storeId]).then(()=>console.log("todo OK")).catch((e)=>console.log(e));
+          })
+          .catch((error)=>console.log(error));
+
+          let token = jwt.sign({ id: storeId }, secret, {expiresIn: 86400,});
           console.log("token", token)
           const data = { id: result.rows[0].id, name: result.rows[0].store_manager, token: token, isAuthenticated: true, message: "store user created!" };
           res.status(200).json(data)
