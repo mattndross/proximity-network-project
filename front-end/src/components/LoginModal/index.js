@@ -1,12 +1,10 @@
-import { useState, useRef } from 'react';
-import { Navigate, useNavigate } from 'react-router';
+
+import { useNavigate } from 'react-router';
 import './LoginModal.css'
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
+import React, { useState, useRef } from "react";
 import { Modal } from 'bootstrap';
 
-const LoginModal = () => {
+const LoginModal = ({ isLogged, setIsLogged }) => {
 
 
     let myModalRef = useRef();
@@ -20,7 +18,7 @@ const LoginModal = () => {
     const fetchSignIn = async () => {
 
         const dismissModal = () => {
-            console.log('modal tiene que cerrarse')
+
             modal.hide(myModal)
             myModal.addEventListener('hidden.bs.modal', function (event) {
                 document.body.style.overflow = "unset"
@@ -31,7 +29,7 @@ const LoginModal = () => {
 
 
         const user = { email, password };
-        console.log(user);
+
         const url = "http://localhost:4000/login";
         const config = {
             method: "POST",
@@ -49,23 +47,25 @@ const LoginModal = () => {
 
                     modal.show(myModal)
                     setInvalidUser(true)
-                    console.log("invalidUser", invalidUser)
+
 
                 }
-                console.log("response.status", response.status);
+
             } else {
                 const data = await response.json();
-                console.log("data", data);
+
                 localStorage.setItem("token", data.token);
+
                 dismissModal();
                 setInvalidUser(false);
+                setIsLogged(data.token)
                 navigate("/profile-user", { "replace": true });
             }
 
         } catch (e) {
             console.log("oh no," + e);
         }
-        console.log("localStorage token", localStorage.getItem("token"));
+
 
 
     };
