@@ -49,7 +49,7 @@ const ProfileUserForm = ({ profile }) => {
                     <div className="row mb-3">
                         <label htmlFor="exampleInputStoreCategory" className="form-label col-lg-4 col-form-label">Store category<span>* </span></label>
                         <div className='col-lg-8'>
-                            <input type="text" name="storeCategory" value={profileInfo["store_category"]} className={`form-control  ${errors.storeCategory ? 'is-invalid' : ''}`} {...register('storeCategory')} id="exampleInputStoreName1" />
+                            <input type="text" name="storeCategory" defaultValue={profileInfo["store_category"]} className={`form-control  ${errors.storeCategory ? 'is-invalid' : ''}`} {...register('storeCategory')} id="exampleInputStoreName1" />
                             <div className="invalid-feedback">{errors.storeCategory?.message}</div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ const ProfileUserForm = ({ profile }) => {
                     <div className="row mb-3">
                         <label htmlFor="exampleInputStoreName" className="form-label col-lg-4 col-form-label">Store name<span>* </span></label>
                         <div className='col-lg-8'>
-                            <input type="text" name="storeName" value={profileInfo.name} className={`form-control ${errors.storeName ? 'is-invalid' : ''}`} {...register('storeName')} id="exampleInputStoreName1" />
+                            <input type="text" name="storeName" defaultValue={profileInfo.name} className={`form-control ${errors.storeName ? 'is-invalid' : ''}`} {...register('storeName')} id="exampleInputStoreName1" />
                             <div className="invalid-feedback">{errors.storeName?.message}</div>
                         </div>
 
@@ -73,7 +73,7 @@ const ProfileUserForm = ({ profile }) => {
                     <div className=" row mb-3">
                         <label htmlFor="exampleInputPDescription" className="form-label col-lg-4 col-form-label">Description<span>* </span></label>
                         <div className="form-floating col-lg-8">
-                            <textarea name="description" value={profileInfo["store_description"]} className={`form-control text-from-description ${errors.description ? 'is-invalid' : ''}`} {...register('description')} id="floatingTextarea2" style={{ height: "120px", width: "100%" }}></textarea>
+                            <textarea name="description" defaultValue={profileInfo["store_description"]} className={`form-control text-from-description ${errors.description ? 'is-invalid' : ''}`} {...register('description')} id="floatingTextarea2" style={{ height: "120px", width: "100%" }}></textarea>
                             <div className="invalid-feedback">{errors.description?.message}</div>
                         </div>
                     </div>
@@ -82,19 +82,19 @@ const ProfileUserForm = ({ profile }) => {
                         <div className="col-lg-8">
                             <div className='row'>
                                 <div className="col-6 mb-3" style={{ paddingRight: "6px" }}>
-                                    <input type="text" name="street" value={profileInfo.address} className={`form-control title-placeholder ${errors.street ? 'is-invalid' : ''}`} {...register('street')} id="exampleInputStreet1" aria-describedby="emailHelp" placeholder="street" />
+                                    <input type="text" name="street" defaultValue={profileInfo.address} className={`form-control title-placeholder ${errors.street ? 'is-invalid' : ''}`} {...register('street')} id="exampleInputStreet1" aria-describedby="emailHelp" placeholder="street" />
                                     <div className="invalid-feedback">{errors.street?.message}</div>
                                 </div>
                                 <div className="col-6 mb-3" style={{ paddingLeft: "0px" }}>
-                                    <input type="text" name="postalCode" value={profileInfo.postcode} className={`form-control title-placeholder ${errors.postalCode ? 'is-invalid' : ''}`} {...register('postalCode')} id="exampleInputCodePostal1" aria-describedby="emailHelp" placeholder="postal code" />
+                                    <input type="text" name="postalCode" defaultValue={profileInfo.postcode} className={`form-control title-placeholder ${errors.postalCode ? 'is-invalid' : ''}`} {...register('postalCode')} id="exampleInputCodePostal1" aria-describedby="emailHelp" placeholder="postal code" />
                                     <div className="invalid-feedback">{errors.postalCode?.message}</div>
                                 </div>
                                 <div className="col-6 " style={{ paddingRight: "6px" }}>
-                                    <input type="text" name="city" value={profileInfo.city} className={`form-control title-placeholder ${errors.city ? 'is-invalid' : ''}`} {...register('city')} id="inputCity" aria-describedby="emailHelp" placeholder="City" />
+                                    <input type="text" name="city" defaultValue={profileInfo.city} className={`form-control title-placeholder ${errors.city ? 'is-invalid' : ''}`} {...register('city')} id="inputCity" aria-describedby="emailHelp" placeholder="City" />
                                     <div className="invalid-feedback">{errors.city?.message}</div>
                                 </div>
                                 <div className="col-6" style={{ paddingLeft: "0px" }}>
-                                    <input type="text" name="country" value={profileInfo.country} className={`form-control title-placeholder ${errors.country ? 'is-invalid' : ''}`} {...register('country')} id="exampleInputCountry1" aria-describedby="emailHelp" placeholder="Country" />
+                                    <input type="text" name="country" defaultValue={profileInfo.country} className={`form-control title-placeholder ${errors.country ? 'is-invalid' : ''}`} {...register('country')} id="exampleInputCountry1" aria-describedby="emailHelp" placeholder="Country" />
                                     <div className="invalid-feedback">{errors.country?.message}</div>
                                 </div>
                             </div>
@@ -103,13 +103,13 @@ const ProfileUserForm = ({ profile }) => {
                     <div className="row mb-3">
                         <label htmlFor="exampleInputStoreWeb1" className="form-label col-lg-4 col-form-label">Store web</label>
                         <div className='col-lg-8'>
-                            <input type="text" value={profileInfo["web_page"]} className="form-control " id="exampleInputPassword1" />
+                            <input type="text" defaultValue={profileInfo["web_page"]} className="form-control " id="exampleInputPassword1" />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label htmlFor="exampleNumber1" className="form-label col-lg-4 col-form-label">Phone Number</label>
                         <div className='col-lg-8'>
-                            <input type="text" value={profileInfo["phone_number"]} className="form-control" id="exampleInputPassword1" />
+                            <input type="text" defaultValue={profileInfo["phone_number"]} className="form-control" id="exampleInputPassword1" />
                         </div>
                     </div>
 
