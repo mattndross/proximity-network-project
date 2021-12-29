@@ -49,12 +49,11 @@ const Modalregister = () => {
             const response = await fetch(url, config)
             console.log("response", response);
             if (!response.ok) {
-                if (response.status === 401) {
-                    modal.show(myModal);
-                }
+                const messege = await response.json();
+                console.log(messege);
                 console.log("response.status", response.status);
-
-            } else {
+                }
+             else {
                 const data = await response.json()
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
