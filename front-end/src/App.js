@@ -7,8 +7,7 @@ import StoresList from "./pages/StoresList";
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import StoreProfile from "./pages/StoreProfile";
-import LoginModal from './components/LoginModal'
-import Modalregister from './components/ModalRegister';
+
 import ProfileUserStore from './pages/ProfileUserStore';
 import ProfileUserProduct from './pages/ProfileUserProduct';
 import ProfileUserAccount from './pages/ProfileUserAccount';
@@ -27,10 +26,9 @@ function App() {
   return (
     <div className="wrapper">
       <BrowserRouter>
-        {<Header />}
-        <Modalregister></Modalregister>
-        <LoginModal></LoginModal>
         <SearchContext.Provider value={[searchGlobal, setSearchGlobal]}>
+          {<Header />}
+
           <ProfileContext.Provider value={[storeProfileId, setStoreProfileId]}>
             <Routes>
               <Route path="/" element={<LandingPage />} />

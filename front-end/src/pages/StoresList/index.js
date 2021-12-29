@@ -61,7 +61,7 @@ export default function StoresList() {
 
             {!stores && <Loading />}
 
-            {stores.length > 1 && <CardListStores stores={stores} setStores={setStores}></CardListStores>}
+            {stores.length > 0 && <CardListStores stores={stores} setStores={setStores}></CardListStores>}
         </div>
 
     )
