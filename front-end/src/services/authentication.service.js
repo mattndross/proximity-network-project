@@ -1,7 +1,8 @@
 exports.getCurrentUser = () => {
-    const currentUser = JSON.parse(localStorage.getItem("user"));
-    console.log({currentUser});
-    return currentUser;
+    const currentUserService = JSON.parse(localStorage.getItem("user"));
+    console.log({currentUserService});
+    
+    return currentUserService;
 };
 
 exports.logout = () => {
