@@ -51,10 +51,9 @@ const Modalregister = () => {
             if (!response.ok) {
                 const messege = await response.json();
                 console.log(messege);
-                }
                 console.log("response.status", response.status);
-
-            } else {
+                }
+             else {
                 const data = await response.json()
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
