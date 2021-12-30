@@ -9,6 +9,9 @@ const getLoggedProfile = () => {
     return axios.get(API_URL + '/logged/stores', { headers: authHeader() });
 }
 
+const updateProfile = (obj) => {
+    return axios.put(API_URL + '/stores/profiles', { ...obj }, { headers: authHeader() });
+}
 
 // Store product
 
@@ -23,8 +26,11 @@ const deleteProduct = (id) => {
 
 
 
+
+
 export default {
     getLoggedProfile,
+    updateProfile,
     getProducts,
     deleteProduct
 }
