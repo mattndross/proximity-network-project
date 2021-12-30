@@ -1,5 +1,11 @@
 import { useState } from 'react'
+<<<<<<< HEAD
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+=======
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+>>>>>>> modificando userPF
 import "bootstrap-icons/font/bootstrap-icons.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import LandingPage from "./pages/LandingPage";
@@ -15,12 +21,17 @@ import ProfileUserAccount from './pages/ProfileUserAccount';
 // import global context
 import { SearchContext } from './context/SearchContext.js'
 import { ProfileContext } from './context/ProfileContext'
+import PrivateRoute from './components/PrivateRoute';
+
+
+
 
 function App() {
   // Variable global que se modificara en el componente search de la landing !
   const [searchGlobal, setSearchGlobal] = useState('')
   // variable global para mandar los datos de una tienda!
   const [storeProfileId, setStoreProfileId] = useState('')
+
 
 
   return (
@@ -34,9 +45,19 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/stores-list" element={<StoresList />} />
               <Route path="/store-profile/:storeName" element={<StoreProfile />} />
-              <Route path="/profile-user" element={<ProfileUserStore />} />
-              <Route path="/profile-product" element={<ProfileUserProduct />} />
+              <Route path="/" element={<Public />} />
               <Route path="/profile-account" element={<ProfileUserAccount />} />
+              <Route path="/profile-user" element={
+                <PrivateRoute>
+                  <ProfileUserStore />
+                </PrivateRoute>} />
+
+              <Route path="/profile-product" element={
+                <PrivateRoute>
+                  <ProfileUserProduct />
+                </PrivateRoute>} />
+              <Route path="/" element={<Public />} />
+
             </Routes>
           </ProfileContext.Provider>
         </SearchContext.Provider>
@@ -44,6 +65,19 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
-  );
+  )
 }
+
+const Public = () => <div>public</div>
+
+
+
 export default App;
+
+
+
+
+
+
+
+
