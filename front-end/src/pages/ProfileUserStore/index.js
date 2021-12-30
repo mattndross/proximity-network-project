@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './ProfileUserStore.css'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import ProfileUserForm from '../../components/ProfileUserForm'
 import Loading from "../../components/BaseComponents/Loading"
 // Importando clase con los metodos a los endpoints.
@@ -13,7 +13,7 @@ const ProfileUserStore = () => {
     const [profile, setProfile] = useState("");
     const [error, setError] = useState("")
     const [action, setAction] = useState("LISTAR")
-    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         try {
@@ -42,11 +42,17 @@ const ProfileUserStore = () => {
                     </div>
                 </div>
                 <div className="d-flex title-content-profile">
-                    <Link to="/profile-user"><h2>PROFILE</h2></Link>
+                    <NavLink className={({ isActive }) =>
+                        isActive ? 'bg-dark font-bold' : 'bg-red-500 font-thin'
+                    } to="/profile-user"><h2>PROFILE</h2></NavLink >
                     <span>|</span>
-                    <Link to="/profile-account"><h2>ACCOUNT</h2></Link>
+                    <NavLink className={({ isActive }) =>
+                        isActive ? 'bg-dark font-bold' : 'bg-red-500 font-thin'
+                    } to="/profile-account"><h2>ACCOUNT</h2></NavLink >
                     <span>|</span>
-                    <Link to="/profile-product"><h2>YOUR PRODUCTS</h2></Link>
+                    <NavLink className={({ isActive }) =>
+                        isActive ? 'bg-dark font-bold' : 'bg-red-500 font-thin'
+                    } to="/profile-product"><h2>YOUR PRODUCTS</h2></NavLink >
                 </div>
 
 
