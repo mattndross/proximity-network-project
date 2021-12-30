@@ -12,7 +12,9 @@
 .title-content-profile a{
     text-decoration: none;
     color: #333333;
+    padding:10px;
 }
+
 .title-content-profile span{
     font-size: 22px;
     font-weight: 700;
@@ -53,15 +55,13 @@
     transition: all ease .8s;
     margin-top: 20px;
 }
-.btn-formulario-reset{
-    background: #528705;
-    border: unset;
-    border-radius: 22px;
-    font-size: clamp(14px,3vw,20px);
-    font-weight: 700;
-    width: clamp(200px,10vw,300px);
-    transition: all ease .8s;
-    margin-top: 20px;
+.formulario-check-edit{
+    font-size:clamp(12px,3vw,20px);
+    margin-bottom: 20px;
+}
+.form-check-input:checked {
+    background-color: #81b03e;
+    border-color: #81b03e;
 }
 button:focus:not(:focus-visible) {
     outline: unset;
@@ -104,13 +104,13 @@ button:focus:not(:focus-visible) {
 
 @media(min-width:992px){
 
-    .title-content-profile{
+.title-content-profile{
         margin-top: 80px;
-    }
-    .from-profile{
+}
+.from-profile{
         padding:100px;
         margin-top: 50px;
-    }
+}
 .from-profile .formulario-usuario input{
     height: 55px;
 }
@@ -120,5 +120,11 @@ button:focus:not(:focus-visible) {
 .formulario-usuario .form-label{
     text-align: end;
     padding-right: 50px;
+}
+.from-profile .form-switch{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    margin-bottom:50px;
 }
 }

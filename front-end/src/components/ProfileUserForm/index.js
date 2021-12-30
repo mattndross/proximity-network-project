@@ -37,11 +37,15 @@ const ProfileUserForm = ({ profile }) => {
                 <Link to="/profile-product"><h2>YOUR PRODUCTS</h2></Link>
             </div>
             <div className='from-profile'>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked />
+                    <label class="form-check-label formulario-check-edit" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                </div>
                 <form className="formulario-usuario" onSubmit={handleSubmit(onSubmit)}  >
                     <div className="row mb-3">
                         <label htmlFor="exampleInputName1" className="form-label col-lg-4 col-form-label">Full name<span>* </span></label>
                         <div className="col-lg-8">
-                            <input type="text" name="fullname" className={`form-control  ${errors.fullname ? 'is-invalid' : ''}`} id="exampleInputName" {...register('fullname')}
+                            <input type="text" defaultValue={profileInfo["store_manager"]} name="fullname" className={`form-control  ${errors.fullname ? 'is-invalid' : ''}`} id="exampleInputName" {...register('fullname')}
                             />
                             <div className="invalid-feedback">{errors.fullname?.message}</div>
                         </div>
@@ -115,7 +119,6 @@ const ProfileUserForm = ({ profile }) => {
 
                     <div className="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-lg-4">
                         <button type="submit" className="btn btn-primary btn-formulario">Save</button>
-                        <button type="button" onClick={() => reset()} className="btn btn-primary btn-formulario-reset ml-3">Reset</button>
                     </div>
 
                 </form>

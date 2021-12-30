@@ -6,9 +6,10 @@ import * as Yup from 'yup';
 
 const ProfileUserFormAcount = () => {
     const validationSchema = Yup.object().shape({
-        email: Yup.string()
-            .required('Email is required')
-            .email('Email is invalid'),
+        currentPassword: Yup.string()
+            .required('Your current password is required')
+            .min(6, 'Password must be at least 6 characters')
+            .max(40, 'Password must not exceed 40 characters'),
 
         password: Yup.string()
             .required('Password is required')
@@ -39,10 +40,10 @@ const ProfileUserFormAcount = () => {
             <div className='from-profile-account'>
                 <form className="formulario-user-account" onSubmit={handleSubmit(onSubmit)}  >
                     <div className="row mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label col-lg-4 col-form-label">New email<span>* </span></label>
+                        <label htmlFor="exampleInputEmail1" className="form-label col-lg-4 col-form-label">Current password<span>* </span></label>
                         <div className="col-lg-8">
-                            <input type="email" name="email" className={`form-control col-lg-6 ${errors.email ? 'is-invalid' : ''}`} {...register('email')} id="exampleInputEmail1" />
-                            <div className="invalid-feedback">{errors.email?.message}</div>
+                            <input type="password" name="currentPassword" className={`form-control col-lg-6 ${errors.currentPassword ? 'is-invalid' : ''}`} {...register('currentPassword')} id="exampleCurrentpassword1" />
+                            <div className="invalid-feedback">{errors.currentPassword?.message}</div>
                         </div>
                     </div>
                     <div className="row mb-3">

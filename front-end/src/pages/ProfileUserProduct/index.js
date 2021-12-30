@@ -1,6 +1,5 @@
 import "./ProfileUserProduct.css"
 import { useState, useEffect } from 'react';
-import NavBarProfileProduct from "../../components/NavBarProfileProduct";
 import ProfileUserYourProducts from "../../components/ProfileUserYourProducts"
 import ProfileUserService from '../../services/profileUser.service'
 const ProfileUserProduct = () => {

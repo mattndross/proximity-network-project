@@ -34,8 +34,14 @@ const Header = () => {
     }
 
     // Lo que mostrara cuando este logueado
-    const whenLooged = <li><button class="d-flex btn btn-outline-success" id="btn-logout" type="submit" onClick={logout}>
-        <i class="bi bi-shop"></i>Logout</button></li>
+    const whenLooged =
+        (<>
+            <li className="nav-item">
+                <a className=" nav-profile-user-link active" aria-current="page" href="#"><i className="bi bi-person-circle nav-profile-user-icon"></i>My profile</a>
+            </li>
+            <li><button class="d-flex btn btn-outline-success" id="btn-logout" type="submit" onClick={logout}>
+                <i class="bi bi-shop"></i>Logout</button></li>
+        </>)
 
     // Se mostrara cuando NO este logueado.
     const notLooged = (<> <li className="main-menu_item">

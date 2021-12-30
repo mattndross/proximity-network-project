@@ -20,6 +20,9 @@
     justify-content: center;
     align-items: center;
 }
+.container-user-img img{
+    height:150%;
+}
 .img-user-product{
     height: 80%;
     object-fit: cover;
