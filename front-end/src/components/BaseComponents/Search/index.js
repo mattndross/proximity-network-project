@@ -3,10 +3,22 @@ import React, { useState, useContext } from "react"
 import { SearchContext } from '../../../context/SearchContext'
 import { createSearchParams, useNavigate } from "react-router-dom";
 import './Search.css'
+<<<<<<< HEAD
 const Search = ({ loading, setLoading }) => {
     const [searchLocalValue, setSearchLocalValue] = useState("");
 
     let navigate = useNavigate();
+=======
+
+const Search = ({ setSearchGlobal, searchGlobal }) => {
+
+    const [searchContextGlobal, setSearchContextGlobal] = useContext(SearchContext)
+
+    const [searchLocalValue, setSearchLocalValue] = useState("");
+
+  
+
+>>>>>>> modificando userPF
 
     const handleSearchLocalValue = (event) => {
         setSearchLocalValue(event.target.value)
@@ -29,7 +41,11 @@ const Search = ({ loading, setLoading }) => {
 
     }
 
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> modificando userPF
     return (
 
         <div className="form-group has-search">
@@ -38,6 +54,9 @@ const Search = ({ loading, setLoading }) => {
                     <div className="col-8 col-lg-6" style={{ paddingRight: "0px" }}>
                         <span className="form-control-feedback" ><i className="bi bi-search"></i></span>
                         <input type="text" className="form-control" placeholder="Perform a new" value={searchLocalValue} onChange={handleSearchLocalValue} />
+                        <div>
+                        
+                        </div>
                     </div>
                     <div className="col-4 col-lg-6" style={{ paddingLeft: "0px" }}>
                         <button type="submit" class="btn btn-primary" id="searchButton">Search</button>

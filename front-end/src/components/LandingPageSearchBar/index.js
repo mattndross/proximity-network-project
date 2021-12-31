@@ -42,6 +42,14 @@ const LandingPageSearchBar = () => {
 
   }
 
+  // const returnTop = () => {
+  //       window.scrollTo({
+  //         top: 800,
+  //         behavior: "smooth", 
+  //         onClick={returnTop}
+  //       });
+  //     };
+
   return (
     <section id="searchLanding" className="search-page">
       <div className="container">
@@ -74,7 +82,7 @@ const LandingPageSearchBar = () => {
                   </div>
                 </div>
               </div>
-              <button className="btn-from">Search</button>
+              <button className="btn-from" >Search</button>
             </form>
           </div>
         </div>
