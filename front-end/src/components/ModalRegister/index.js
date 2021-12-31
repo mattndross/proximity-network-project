@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
     confirmPassword: Yup.string().oneOf([Yup.ref("password"), null])
 });
 
-const Modalregister = () => {
+const Modalregister = ({ setIsLogged }) => {
     let myModalRef = useRef();
     let navigate = useNavigate();
     const [storeManager, setStoreManager] = useState("")
@@ -52,11 +52,12 @@ const Modalregister = () => {
                 const messege = await response.json();
                 console.log(messege);
                 console.log("response.status", response.status);
-                }
-             else {
+            }
+            else {
                 const data = await response.json()
                 console.log("data", data);
                 localStorage.setItem("token", data.token);
+                setIsLogged(true);
                 dismissModal();
                 navigate("/profile-user", { "replace": true })
 

@@ -1,8 +1,24 @@
 import './ModalDeleteUserProduct.css'
+import ProfileUserService from '../../services/profileUser.service'
+const ModalDeleteUserProduct = ({ id, setAction }) => {
 
-const ModalDeleteUserProduct = ({ id }) => {
+
+
+    const handleDeleteProduct = () => {
+        try {
+
+            ProfileUserService.deleteProduct(id).then(
+                (response) => {
+                    console.log("Se elimino")
+                    setAction("ELIMINADO")
+                }
+            );
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
-        <div class="modal fade" id={id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id={`productDelete-${id}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header" style={{ borderBottom: "unset" }}>
@@ -15,7 +31,7 @@ const ModalDeleteUserProduct = ({ id }) => {
                     <div class="modal-footer modal-delete-footer">
                         <button type="button" class="btn-delete-cancel" data-bs-dismiss="modal">Cancel</button>
                         <span>|</span>
-                        <button type="button" class="btn-delete">Delete</button>
+                        <button type="button" onClick={handleDeleteProduct} class="btn-delete" data-bs-dismiss="modal">Delete</button>
                     </div>
                 </div>
             </div>

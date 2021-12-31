@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './ProfileUserStore.css'
-
+import { Link, NavLink } from 'react-router-dom'
+import ProfileUserNavLink from '../../components/ProfileUserNavLink'
 import ProfileUserForm from '../../components/ProfileUserForm'
+import Loading from "../../components/BaseComponents/Loading"
 // Importando clase con los metodos a los endpoints.
 import ProfileUserService from '../../services/profileUser.service'
 
@@ -11,29 +13,23 @@ const ProfileUserStore = () => {
 
     const [profile, setProfile] = useState("");
     const [error, setError] = useState("")
-
+    const [action, setAction] = useState("LISTAR")
 
 
     useEffect(() => {
         try {
+
             ProfileUserService.getLoggedProfile().then(
                 (response) => {
                     setProfile(response.data);
-                },
-                (error) => {
-                    const _content =
-                        (error.response && error.response.data) ||
-                        error.message ||
-                        error.toString();
 
-                    setProfile(_content);
                 }
             );
         } catch (error) {
             setError(error);
         }
 
-    }, []);
+    }, [action]);
 
     return (
         <>
@@ -46,7 +42,8 @@ const ProfileUserStore = () => {
 
                     </div>
                 </div>
-                {profile && <ProfileUserForm profile={profile} />}
+                <ProfileUserNavLink />
+                {profile && <ProfileUserForm setAction={setAction} profile={profile} />}
 
 
             </section>

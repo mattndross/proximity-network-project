@@ -3,7 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-const ModalUpdateProduct = ({ id }) => {
+const ModalUpdateProduct = ({ product }) => {
+
+
     const validationSchema = Yup.object().shape({
         productName: Yup.string().required('Product name is required'),
         brand: Yup.string().required('Brand is required'),
@@ -30,7 +32,7 @@ const ModalUpdateProduct = ({ id }) => {
         console.log(JSON.stringify(data, null, 2));
     };
     return (
-        <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={`product-${product.id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -46,42 +48,42 @@ const ModalUpdateProduct = ({ id }) => {
 
                             <form className="form-update-product" onSubmit={handleSubmit(onSubmit)}>
                                 <div className="mb-3">
-                                    <label htmlFor="exampleInputProductName1" className="form-label">Product name<span>* </span></label>
-                                    <input type="text" name="productName" className={`form-control input-update-product  ${errors.productName ? 'is-invalid' : ''}`} aria-label="Product name" {...register('productName')} />
+                                    <label htmlFor="exampleInputProductName1" className="form-label">brandName<span>* </span></label>
+                                    <input type="text" defaultValue={product["product_type"]} name="productName" className={`form-control input-update-product  ${errors.productName ? 'is-invalid' : ''}`} aria-label="Product name" {...register('productName')} />
                                     <div className="invalid-feedback">{errors.productName?.message}</div>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputBrand1" className="form-label">Brand<span>* </span></label>
-                                    <input type="text" name="brand" className={`form-control input-update-product  
+                                    <input type="text" defaultValue={product["brand"]} name="brand" className={`form-control input-update-product  
                                     ${errors.brand ? 'is-invalid' : ''}`} id="inputBrand" aria-describedby="emailHelp"  {...register('brand')} />
                                     <div className="invalid-feedback">{errors.brand?.message}</div>
                                 </div>
                                 <div className=" row mb-3">
                                     <div className="col-6" style={{ paddingRight: "0" }}>
                                         <label htmlFor="exampleInputUnit1" className="form-label ">Unit<span>* </span></label>
-                                        <input type="text" name="unit" className={`form-control input-update-product  ${errors.unit ? 'is-invalid' : ''}`} id="inputUnit"  {...register('unit')} />
+                                        <input type="text" defaultValue={product["unit"]} name="unit" className={`form-control input-update-product  ${errors.unit ? 'is-invalid' : ''}`} id="inputUnit"  {...register('unit')} />
                                         <div className="invalid-feedback">{errors.unit?.message}</div>
                                     </div>
                                     <div className="col-6" style={{ paddingRight: "0" }}>
                                         <label htmlFor="exampleInputPrice1" className="form-label">Price<span>* </span></label>
-                                        <input name="price" className={`form-control input-update-product  ${errors.price ? 'is-invalid' : ''}`} style={{ width: "95%" }} id="inputPrice" {...register('price')} />
+                                        <input name="price" defaultValue={product["price"]} className={`form-control input-update-product  ${errors.price ? 'is-invalid' : ''}`} style={{ width: "95%" }} id="inputPrice" {...register('price')} />
                                         <div className="invalid-feedback">{errors.price?.message}</div>
                                     </div>
                                 </div>
                                 <div className=" row mb-3">
                                     <div className="col-6" style={{ paddingRight: "0" }}>
                                         <label htmlFor="exampleInputProducer1" className="form-label">Producer/Manufacturer<span>* </span></label>
-                                        <input type="text" name="producerManufacture" className={`form-control input-update-product ${errors.producerManufacture ? 'is-invalid' : ''}`} id="inputProducer"  {...register('producerManufacture')} />
+                                        <input type="text" defaultValue={product["producer"]} name="producerManufacture" className={`form-control input-update-product ${errors.producerManufacture ? 'is-invalid' : ''}`} id="inputProducer"  {...register('producerManufacture')} />
                                         <div className="invalid-feedback">{errors.producerManufacture?.message}</div>
                                     </div>
                                     <div className="col-6" style={{ paddingRight: "0" }}>
                                         <label htmlFor="exampleInputOrigin1" className="form-label">Origin<span>* </span></label>
-                                        <input type="text" name="origin" className={`form-control input-update-product  ${errors.origin ? 'is-invalid' : ''}`} style={{ width: "95%" }} id="inputOrigin"  {...register('origin')} />
+                                        <input type="text" defaultValue={product["origin"]} name="origin" className={`form-control input-update-product  ${errors.origin ? 'is-invalid' : ''}`} style={{ width: "95%" }} id="inputOrigin"  {...register('origin')} />
                                         <div className="invalid-feedback">{errors.origin?.message}</div>
                                     </div>
                                     <div className="mb-3" style={{ paddingRight: "0" }}>
                                         <label htmlFor="message-text" className="col-form-label">Description<span>* </span></label>
-                                        <textarea name="description" className={`form-control input-update-product  ${errors.description ? 'is-invalid' : ''}`} id="message-text" {...register('description')}></textarea>
+                                        <textarea name="description" defaultValue={product["product_description"]} className={`form-control input-update-product  ${errors.description ? 'is-invalid' : ''}`} id="message-text" {...register('description')}></textarea>
                                         <div className="invalid-feedback">{errors.description?.message}</div>
                                     </div>
                                     <div className="mb-3 d-flex flex-column">

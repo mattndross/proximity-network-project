@@ -1,11 +1,7 @@
 import { useState } from 'react'
-<<<<<<< HEAD
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-=======
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
->>>>>>> modificando userPF
 import "bootstrap-icons/font/bootstrap-icons.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import LandingPage from "./pages/LandingPage";

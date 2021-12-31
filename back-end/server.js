@@ -12,7 +12,7 @@ const { pool } = require("./pool");
 const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
 const privilegeController = require("./controllers/privilege.controller");
-const filecontroller= require("./controllers/file.controller");
+const filecontroller = require("./controllers/file.controller");
 const uploadImage = require("./controllers/uploadImage.controller")
 global.__basedir = __dirname;
 
@@ -47,7 +47,7 @@ app.get("/products/:productId", publicController.findProductById);//devuelve los
 
 //privilege endpoints
 app.get("/logged/stores", authController.veryfyJwt, privilegeController.getLoggedProfile);//devuelve los datos de la tienda loggeada
-app.post("/stores/profiles",authController.veryfyJwt, privilegeController.insertProfileData);//la tienda completa los datos por primera vez
+app.post("/stores/profiles", authController.veryfyJwt, privilegeController.insertProfileData);//la tienda completa los datos por primera vez
 app.put("/stores/profiles", authController.veryfyJwt, privilegeController.editProfile);//la tienda puede editar los datos de su perfil
 app.get("/stores/managers/authentications", authController.veryfyJwt, authController.getNameAndEmail);//devuelve email y nombre del manager de la tienda loggeada
 app.put("/stores/managers/authentications", authController.veryfyJwt, authController.editAuthentications);//la tienda puede cambiar el email, contraseña o nombre del storeManager

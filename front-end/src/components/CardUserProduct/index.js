@@ -1,6 +1,4 @@
 import './CardUserProduct.css';
-import imgFake from '../../assets/img/fake-img/product.jpg';
-
 
 
 const CardUserProduct = ({ product }) => {
@@ -10,7 +8,7 @@ const CardUserProduct = ({ product }) => {
 
             <div class="row card-User-content">
                 <div className="col-4 container-user-img">
-                    <img src={imgFake} className="img-fluid img-user-product" alt="product store" />
+                    <img src={product['product_image']} className=" img-user-product" alt="product store" />
                 </div>
                 <div className="col-8 row ">
                     <div className="col-12 col-lg-8 container-user-product-text">
