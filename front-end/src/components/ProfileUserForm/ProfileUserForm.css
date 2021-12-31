@@ -117,6 +117,31 @@ button:focus:not(:focus-visible) {
 .iconsize{
     font-size:50px
 }
+.formulario-usuario .formulario-address .form-label{
+    font-size:clamp(14px,3vw,16px);
+    color:#484747;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #6e6e6e;
+    border-color: #6e6e6e;
+}
+.form-check-input:focus {
+    border-color: none;
+    outline: 0;
+    box-shadow: none;
+}
+.button-loading-user{
+    font-size:22px;
+    padding:20px 110px;
+    border-radius:8px;
+    color: white;
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
 @media(min-width:992px){
 
 .title-content-profile{
