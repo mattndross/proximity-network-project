@@ -1,5 +1,8 @@
 import './ProfileUserAccount.css'
 import ProfileUserFormAcount from '../../components/ProfileUserFormAccount';
+import { Link, NavLink } from 'react-router-dom'
+import ProfileUserNavLink from '../../components/ProfileUserNavLink'
+
 
 const ProfileUserAccount = () => {
     return (
@@ -14,6 +17,7 @@ const ProfileUserAccount = () => {
                         </div>
                     </div>
                 </div>
+                <ProfileUserNavLink />
                 <ProfileUserFormAcount></ProfileUserFormAcount>
             </section>
         </>

@@ -1,28 +1,4 @@
-.title-content-profile{
-    gap: clamp(20px,5vw,30px);
-    align-items: center;
-}
 
-.title-content-profile h2{
-    font-size: clamp(10px,3vw,22px);
-    font-weight: 700; 
-    transition: all ease .8s;
-    cursor: pointer;
-}
-.title-content-profile a{
-    text-decoration: none;
-    color: #333333;
-    padding:10px;
-}
-
-.title-content-profile span{
-    font-size: 22px;
-    font-weight: 700;
-}
-.title-content-profile h2:hover{
-    color: #607D33;
-    border-bottom: 3px solid #607D33;
-}
 .from-profile{
     background-color: #ffff;
     margin-top: 30px;

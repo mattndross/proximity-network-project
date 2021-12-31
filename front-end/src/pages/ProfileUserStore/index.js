@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './ProfileUserStore.css'
 import { Link, NavLink } from 'react-router-dom'
+import ProfileUserNavLink from '../../components/ProfileUserNavLink'
 import ProfileUserForm from '../../components/ProfileUserForm'
 import Loading from "../../components/BaseComponents/Loading"
 // Importando clase con los metodos a los endpoints.
@@ -41,21 +42,7 @@ const ProfileUserStore = () => {
 
                     </div>
                 </div>
-                <div className="d-flex title-content-profile">
-                    <NavLink className={({ isActive }) =>
-                        isActive ? 'bg-dark font-bold' : 'bg-red-500 font-thin'
-                    } to="/profile-user"><h2>PROFILE</h2></NavLink >
-                    <span>|</span>
-                    <NavLink className={({ isActive }) =>
-                        isActive ? 'bg-dark font-bold' : 'bg-red-500 font-thin'
-                    } to="/profile-account"><h2>ACCOUNT</h2></NavLink >
-                    <span>|</span>
-                    <NavLink className={({ isActive }) =>
-                        isActive ? 'bg-dark font-bold' : 'bg-red-500 font-thin'
-                    } to="/profile-product"><h2>YOUR PRODUCTS</h2></NavLink >
-                </div>
-
-
+                <ProfileUserNavLink />
                 {profile && <ProfileUserForm setAction={setAction} profile={profile} />}
 
 

@@ -13,6 +13,12 @@ const updateProfile = (obj) => {
     return axios.put(API_URL + '/stores/profiles', { ...obj }, { headers: authHeader() });
 }
 
+// Update Password
+
+const updatePassword = (obj) => {
+    return axios.put(API_URL + '/stores/authentications/passwords', { ...obj }, { headers: authHeader() });
+}
+
 // Store product
 
 
@@ -32,5 +38,6 @@ export default {
     getLoggedProfile,
     updateProfile,
     getProducts,
-    deleteProduct
+    deleteProduct,
+    updatePassword
 }

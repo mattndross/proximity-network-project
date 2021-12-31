@@ -1,5 +1,7 @@
 import "./ProfileUserProduct.css"
+import { Link, NavLink } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import ProfileUserNavLink from '../../components/ProfileUserNavLink'
 import ProfileUserYourProducts from "../../components/ProfileUserYourProducts"
 import ProfileUserService from '../../services/profileUser.service'
 const ProfileUserProduct = () => {
@@ -44,6 +46,7 @@ const ProfileUserProduct = () => {
                         </div>
                     </div>
                 </div>
+                <ProfileUserNavLink />
                 <ProfileUserYourProducts products={products} setAction={setAction}></ProfileUserYourProducts>
             </section>
         </>

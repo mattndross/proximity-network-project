@@ -9,14 +9,7 @@ const ProfileUserYourProducts = ({ products, setAction }) => {
 
     return (
         <div className="container px-4 py-4 p-lg-0 section-profile-product">
-            <div className="d-flex title-profile-product">
-                <Link to="/profile-user"><h2>PROFILE</h2></Link>
-                <span>|</span>
-                <Link to="/profile-account"><h2>ACCOUNT</h2></Link>
-                <span>|</span>
-                <Link to="/profile-product"><h2>YOUR PRODUCTS</h2></Link>
 
-            </div>
             <div className='container container-profile-products'>
                 <div className='row'>
 
