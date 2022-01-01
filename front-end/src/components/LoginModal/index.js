@@ -73,6 +73,7 @@ const LoginModal = ({ isLogged, setIsLogged }) => {
     const handleSubmitLoginData = (event) => {
         event.preventDefault()
         console.log(myModalRef.current)
+
         fetchSignIn();
 
     }

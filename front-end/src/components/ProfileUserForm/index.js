@@ -9,8 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const ProfileUserForm = ({ profile, setAction, action }) => {
     const profileInfo = profile[0]
 
-    // para poder ver el usario en el header.
-    localStorage.setItem("storeName", profileInfo.name)
+
 
 
 

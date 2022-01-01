@@ -24,10 +24,9 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
-  // Variable global que se modificara en el componente search de la landing !
-  // const [searchGlobal, setSearchGlobal] = useState(localStorage.getItem("storeName"))
-  // variable global para mandar los datos de una tienda!
-  const [storeProfileId, setStoreProfileId] = useState('')
+
+  // Context para el name del usuario..
+  const [storeProfileId, setStoreProfileId] = useState()
 
 
 
@@ -35,33 +34,33 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
 
-        {/* <SearchContext.Provider value={[searchGlobal, setSearchGlobal]}> */}
-        {<Header />}
 
-        {/* <ProfileContext.Provider value={[storeProfileId, setStoreProfileId]}> */}
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/stores-list" element={<StoresList />} />
-          <Route path="/store-profile/:storeName" element={<StoreProfile />} />
-          <Route path="/" element={<Public />} />
-          <Route path="/profile-account" element={
-            <PrivateRoute>
-              <ProfileUserAccount />
-            </PrivateRoute>} />
-          <Route path="/profile-user" element={
-            <PrivateRoute>
-              <ProfileUserStore />
-            </PrivateRoute>} />
+        <ProfileContext.Provider value={[storeProfileId, setStoreProfileId]}>
+          {<Header />}
 
-          <Route path="/profile-product" element={
-            <PrivateRoute>
-              <ProfileUserProduct />
-            </PrivateRoute>} />
-          <Route path="/" element={<Public />} />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/stores-list" element={<StoresList />} />
+            <Route path="/store-profile/:storeName" element={<StoreProfile />} />
+            <Route path="/" element={<Public />} />
+            <Route path="/profile-account" element={
+              <PrivateRoute>
+                <ProfileUserAccount />
+              </PrivateRoute>} />
+            <Route path="/profile-user" element={
+              <PrivateRoute>
+                <ProfileUserStore />
+              </PrivateRoute>} />
 
-        </Routes>
-        {/* </ProfileContext.Provider> */}
-        {/* </SearchContext.Provider> */}
+            <Route path="/profile-product" element={
+              <PrivateRoute>
+                <ProfileUserProduct />
+              </PrivateRoute>} />
+            <Route path="/" element={<Public />} />
+
+          </Routes>
+        </ProfileContext.Provider>
+
 
         <Footer />
       </BrowserRouter>
