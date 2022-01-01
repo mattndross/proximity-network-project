@@ -34,7 +34,7 @@ const Modalregister = ({ setIsLogged }) => {
             })
         }
 
-        const url = "http://localhost:4000/register";
+        const url = "https://proximity-network-api.herokuapp.com/register";
         const body = { storeManager: storeManager, managerEmail: managerEmail, password: password };
         const config = {
             method: "POST",
