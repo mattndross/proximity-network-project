@@ -37,7 +37,7 @@ const Header = () => {
     const whenLooged =
         (<>
             <li className="nav-item">
-                <a className=" nav-profile-user-link active" aria-current="page" href="#"><i className="bi bi-person-circle nav-profile-user-icon"></i>My profile</a>
+                <Link className=" nav-profile-user-link active" aria-current="page" to="/profile-user"><i className="bi bi-person-circle nav-profile-user-icon"></i>My profile</Link>
             </li>
             <li><button class="d-flex btn btn-outline-success" id="btn-logout" type="submit" onClick={logout}>
                 <i class="bi bi-shop"></i>Logout</button></li>

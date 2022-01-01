@@ -8,7 +8,7 @@ import ModalDeleteUserProduct from '../ModalDeleteUserProduct';
 const ProfileUserYourProducts = ({ products, setAction }) => {
 
     return (
-        <div className="container px-4 py-4 p-lg-0 section-profile-product">
+        <div className="container px-4 pb-4 p-lg-0 section-profile-product">
 
             <div className='container container-profile-products'>
                 <div className='row'>
@@ -22,7 +22,7 @@ const ProfileUserYourProducts = ({ products, setAction }) => {
 
 
 
-                                    <ModalUpdateProduct product={product}></ModalUpdateProduct>
+                                    <ModalUpdateProduct setAction={setAction} product={product}></ModalUpdateProduct>
                                     <ModalDeleteUserProduct setAction={setAction} id={product.id}></ModalDeleteUserProduct>
                                 </>
                             )
@@ -34,7 +34,7 @@ const ProfileUserYourProducts = ({ products, setAction }) => {
             <div className="d-flex align-items-center justify-content-center">
                 <button className="btn btn-outline-success btn-profile-product " data-bs-toggle="modal" data-bs-target="#modalNewProduct" type="submit"><i className="bi bi-plus-circle"></i>Upload product</button>
             </div>
-            <ModalNewProduct></ModalNewProduct>
+            <ModalNewProduct setAction={setAction}></ModalNewProduct>
 
         </div>
     )

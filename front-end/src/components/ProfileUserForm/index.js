@@ -186,7 +186,7 @@ const ProfileUserForm = ({ profile, setAction }) => {
     </div>)
 
     return (
-        <div className="container px-4 py-5 p-lg-0">
+        <div className="container px-4 pb-5 p-lg-0">
 
 
             {formProfile}

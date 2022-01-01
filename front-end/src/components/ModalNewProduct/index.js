@@ -2,14 +2,18 @@ import "./ModalNewProduct.css"
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-const ModalNewProduct = () => {
+
+import ProfileUserService from '../../services/profileUser.service'
+import toast, { Toaster } from 'react-hot-toast';
+const ModalNewProduct = ({ setAction }) => {
     const validationSchema = Yup.object().shape({
-        productName: Yup.string().required('Product name is required'),
+        type: Yup.string().required('Product name is required'),
         brand: Yup.string().required('Brand is required'),
         unit: Yup.string().required('Unit is required'),
-        price: Yup.number().integer('Please enter a valid amount without decimal values').typeError('Please enter a valid amount').positive('Please enter a valid amount').required('Please enter an amount'),
-        producerManufacture: Yup.string().required('Producer is required'),
+        price: Yup.number().positive('Please enter a valid amount').required('Please enter an amount'),
+        producer: Yup.string().required('Producer is required'),
         origin: Yup.string().required('Origin is required'),
+        category: Yup.string().required('Origin is required'),
         description: Yup.string().required('Description is required'),
         // image: Yup.string().required('Image is required'),
     });
@@ -25,6 +29,44 @@ const ModalNewProduct = () => {
 
     // Metodo onSubmit
     const onSubmit = data => {
+
+        const toasId = toast.custom(<div>
+            <button class="btn btn-primary button-loading-user" style={{ backgroundColor: "#408e0a", opacity: "1", fontWeight: "700" }} type="button" disabled>
+                <span class="spinner-border spinner-border-sm" style={{ color: "white", fontSize: "26px" }} role="status" aria-hidden="true"></span>
+                Loading...
+            </button>
+        </div>)
+        setTimeout(() => {
+
+
+            ProfileUserService.addProduct(data).then(
+                (response) => {
+                    toast.remove(toasId)
+
+                    toast.success("Upload  successfully!", {
+                        style: {
+                            backgroundColor: "#408e0a",
+                            color: "white",
+                            padding: "20px",
+                            fontSize: "20px"
+                        },
+                    })
+                    setAction("Added")
+                    reset();
+
+                }
+            ).catch((e) => {
+                console.log("EEROROR => ", e)
+                toast.remove(toasId)
+                toast.error("Upload error!!!", {
+                    style: {
+                        padding: "20px",
+                        fontSize: "20px"
+                    }
+                })
+            })
+
+        }, 1000)
 
         console.log(JSON.stringify(data, null, 2));
     };
@@ -44,8 +86,13 @@ const ModalNewProduct = () => {
                             <form className="form-new-product" onSubmit={handleSubmit(onSubmit)}>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputProductName1" className="form-label">Product name<span>* </span></label>
-                                    <input type="text" name="productName" className={`form-control input-product-user  ${errors.productName ? 'is-invalid' : ''}`} aria-label="Product name" {...register('productName')} />
-                                    <div className="invalid-feedback">{errors.productName?.message}</div>
+                                    <input type="text" name="type" className={`form-control input-product-user  ${errors.type ? 'is-invalid' : ''}`} aria-label="Product name" {...register('type')} />
+                                    <div className="invalid-feedback">{errors.type?.message}</div>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputProductName1" className="form-label">Category<span>* </span></label>
+                                    <input type="text" name="category" className={`form-control input-product-user  ${errors.category ? 'is-invalid' : ''}`} aria-label="Product name" {...register('category')} />
+                                    <div className="invalid-feedback">{errors.category?.message}</div>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputBrand1" className="form-label">Brand<span>* </span></label>
@@ -67,8 +114,8 @@ const ModalNewProduct = () => {
                                 <div className=" row mb-3">
                                     <div className="col-6" style={{ paddingRight: "0" }}>
                                         <label htmlFor="exampleInputProducer1" className="form-label">Producer/Manufacturer<span>* </span></label>
-                                        <input type="text" name="producerManufacture" className={`form-control input-product-user  ${errors.producerManufacture ? 'is-invalid' : ''}`} id="inputProducer"  {...register('producerManufacture')} />
-                                        <div className="invalid-feedback">{errors.producerManufacture?.message}</div>
+                                        <input type="text" name="producer" className={`form-control input-product-user  ${errors.producer ? 'is-invalid' : ''}`} id="inputProducer"  {...register('producer')} />
+                                        <div className="invalid-feedback">{errors.producer?.message}</div>
                                     </div>
                                     <div className="col-6" style={{ paddingRight: "0" }}>
                                         <label htmlFor="exampleInputOrigin1" className="form-label">Origin<span>* </span></label>

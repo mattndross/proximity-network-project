@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import ProfileUserNavLink from '../../components/ProfileUserNavLink'
 import ProfileUserYourProducts from "../../components/ProfileUserYourProducts"
 import ProfileUserService from '../../services/profileUser.service'
+import toast, { Toaster } from 'react-hot-toast';
 const ProfileUserProduct = () => {
 
 
@@ -34,6 +35,7 @@ const ProfileUserProduct = () => {
         <>
 
             <section id="profileProductHeader">
+                <Toaster position="bottom-left" />
                 <div className='container px-4 px-lg-0'>
                     <h1>Your products</h1>
                     <div className="row align-items-center justify-content-between">

@@ -22,6 +22,7 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 
+
 function App() {
   // Variable global que se modificara en el componente search de la landing !
   const [searchGlobal, setSearchGlobal] = useState('')
@@ -33,6 +34,7 @@ function App() {
   return (
     <div className="wrapper">
       <BrowserRouter>
+
         <SearchContext.Provider value={[searchGlobal, setSearchGlobal]}>
           {<Header />}
 
@@ -42,7 +44,10 @@ function App() {
               <Route path="/stores-list" element={<StoresList />} />
               <Route path="/store-profile/:storeName" element={<StoreProfile />} />
               <Route path="/" element={<Public />} />
-              <Route path="/profile-account" element={<ProfileUserAccount />} />
+              <Route path="/profile-account" element={
+                <PrivateRoute>
+                  <ProfileUserAccount />
+                </PrivateRoute>} />
               <Route path="/profile-user" element={
                 <PrivateRoute>
                   <ProfileUserStore />

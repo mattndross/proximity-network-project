@@ -68,7 +68,7 @@ const ProfileUserFormAcount = () => {
     };
 
     return (
-        <div className="container px-4 py-5 p-lg-0">
+        <div className="container px-4 pb-5 p-lg-0">
             <div className='from-profile-account'>
                 <form className="formulario-user-account" onSubmit={handleSubmit(onSubmit)}  >
                     <div className="row mb-3">

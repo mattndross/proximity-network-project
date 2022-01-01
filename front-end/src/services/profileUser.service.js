@@ -30,7 +30,13 @@ const deleteProduct = (id) => {
     return axios.delete(API_URL + `/products/${id}`, { headers: authHeader() });
 }
 
+const updateProduct = (id, obj) => {
+    return axios.put(API_URL + `/stores/products/${id}`, { ...obj }, { headers: authHeader() });
+}
 
+const addProduct = (obj) => {
+    return axios.post(API_URL + `/stores/products`, { ...obj }, { headers: authHeader() });
+}
 
 
 
@@ -39,5 +45,7 @@ export default {
     updateProfile,
     getProducts,
     deleteProduct,
-    updatePassword
+    updatePassword,
+    updateProduct,
+    addProduct
 }

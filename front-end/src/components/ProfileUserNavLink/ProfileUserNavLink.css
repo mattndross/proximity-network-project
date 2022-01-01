@@ -8,16 +8,24 @@
     font-weight: 700; 
     transition: all ease .8s;
     cursor: pointer;
+    margin-bottom:0px;
+    
 }
-.title-content-profile a{
-    text-decoration: none;
-    color: #333333;
-    padding:10px;
+.title-content-profile h2:hover{
+    color: #607D33;
+    
 }
 
 .title-content-profile span{
     font-size: 22px;
     font-weight: 700;
+}
+.link-inactivo{
+    color: #333333;
+    padding:10px;
+}
+.title-content-profile a{
+    text-decoration: none;
 }
 .link-activo{
     color: #607D33;
