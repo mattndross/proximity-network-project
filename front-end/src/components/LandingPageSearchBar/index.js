@@ -42,13 +42,7 @@ const LandingPageSearchBar = () => {
 
   }
 
-  // const returnTop = () => {
-  //       window.scrollTo({
-  //         top: 800,
-  //         behavior: "smooth", 
-  //         onClick={returnTop}
-  //       });
-  //     };
+  
 
   return (
     <section id="searchLanding" className="search-page">

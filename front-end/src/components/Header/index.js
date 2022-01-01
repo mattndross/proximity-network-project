@@ -33,6 +33,14 @@ const Header = () => {
         setOpen(!open)
     }
 
+    const returnTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", 
+          
+        });
+      };
+
     // Lo que mostrara cuando este logueado
     const whenLooged =
         (<>
@@ -54,7 +62,7 @@ const Header = () => {
         <>
             <nav className={`main-header px-5 ${open ? 'open' : ''}`}>
                 <Link to="/">
-                    <img src={logo} alt="..." className="logo"></img>
+                    <img src={logo} alt="..." className="logo" onClick={returnTop}></img>
                 </Link>
                 <input type="checkbox" id="check" onChange={handleChange}></input>
                 <label for="check" className="checkbtn">
