@@ -72,6 +72,7 @@ exports.insertProfileData = async (req, res) => {
 exports.editProfile = async (req, res) => {
   const storeId = req.user.id;
   const {
+    storeManager,
     storeName,
     storeDescription,
     storeWeb,
@@ -85,6 +86,10 @@ exports.editProfile = async (req, res) => {
   } = req.body;
   const mapsUrl = getMapsUrl(storeStreet, city);
   let response = {};
+
+  await pool.query("UPDATE stores_authentications SET store_manager=$1 WHERE id=$2", [storeManager, storeId])
+  .then(()=>response.manager = "manager name updated")
+  .catch((e)=>{console.log(e)});
   await pool
     .query(
       "UPDATE stores SET name=$1, store_description=$2, store_category=$3, web_page=$4, phone_number=$5, image=$6 WHERE store_id = $7",
