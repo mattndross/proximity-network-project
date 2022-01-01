@@ -13,7 +13,7 @@ const ProfileUserStore = () => {
 
     const [profile, setProfile] = useState("");
     const [error, setError] = useState("")
-    const [action, setAction] = useState("LISTAR")
+    const [action, setAction] = useState(false)
 
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const ProfileUserStore = () => {
                     </div>
                 </div>
                 <ProfileUserNavLink />
-                {profile && <ProfileUserForm setAction={setAction} profile={profile} />}
+                {profile && <ProfileUserForm action={action} setAction={setAction} profile={profile} />}
 
 
             </section>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import StoresListBanner from '../../components/StoresListBanner'
 import Loading from "../../components/BaseComponents/Loading"

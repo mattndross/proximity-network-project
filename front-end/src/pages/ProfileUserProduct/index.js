@@ -13,7 +13,7 @@ const ProfileUserProduct = () => {
 
     // Estado action para forzar el renderizado si ejecuto una accion Listar, actualizar, delete.
 
-    const [action, setAction] = useState("LISTAR")
+    const [action, setAction] = useState(false)
     const [counter, setCounter] = useState(null)
 
 
@@ -49,7 +49,7 @@ const ProfileUserProduct = () => {
                     </div>
                 </div>
                 <ProfileUserNavLink />
-                <ProfileUserYourProducts products={products} setAction={setAction}></ProfileUserYourProducts>
+                <ProfileUserYourProducts products={products} action={action} setAction={setAction}></ProfileUserYourProducts>
             </section>
         </>
     )

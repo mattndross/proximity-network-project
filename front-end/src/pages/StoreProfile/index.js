@@ -8,7 +8,6 @@ import SearchListProduct from '../../components/SearchListProduct';
 import CardProductStore from '../../components/CardProductStore';
 import StoreProductBanner from '../../components/StoreProductBanner';
 import ModalProduct from '../../components/ModalProduct';
-import { SearchContext } from '../../context/SearchContext'
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import Loading from '../../components/BaseComponents/Loading'

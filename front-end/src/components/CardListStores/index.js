@@ -12,7 +12,7 @@ import { ProfileContext } from "../../context/ProfileContext"
 const CardListStores = ({ stores, setStores }) => {
 
     // Estado necesario para la reactividad del componente.
-    const [storeProfileId, setStoreProfileId] = useContext(ProfileContext);
+    // const [storeProfileId, setStoreProfileId] = useContext(ProfileContext);
 
 
 
@@ -39,7 +39,7 @@ const CardListStores = ({ stores, setStores }) => {
                                     <div className='content-scroll-auto'>
 
                                         {
-                                            stores.length > 0 && stores.map((cardInfo) => <CardStore setStoreProfileId={setStoreProfileId} cardInfo={cardInfo} />)
+                                            stores.length > 0 && stores.map((cardInfo) => <CardStore cardInfo={cardInfo} />)
                                         }
                                     </div>
                                 </div>

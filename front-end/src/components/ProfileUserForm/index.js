@@ -1,17 +1,19 @@
 import './ProfileUserForm.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import Button from '../Button'
 import ProfileUserService from '../../services/profileUser.service';
 import toast, { Toaster } from 'react-hot-toast';
-const ProfileUserForm = ({ profile, setAction }) => {
+const ProfileUserForm = ({ profile, setAction, action }) => {
     const profileInfo = profile[0]
 
+    // para poder ver el usario en el header.
+    localStorage.setItem("storeName", profileInfo.name)
 
-    const [loading, setLoading] = useState(false);
-    const [checked, setChecked] = useState(false)
+
+
 
     const validationSchema = Yup.object().shape({
         fullname: Yup.string().required('Fullname is required'),
@@ -35,10 +37,6 @@ const ProfileUserForm = ({ profile, setAction }) => {
     // Metodo onSubmit
     const onSubmit = data => {
 
-        console.log(data);
-
-
-
         const toasId = toast.custom(<div>
             <button class="btn btn-primary button-loading-user" style={{ backgroundColor: "#408e0a", opacity: "1", fontWeight: "700" }} type="button" disabled>
                 <span class="spinner-border spinner-border-sm" style={{ color: "white", fontSize: "26px" }} role="status" aria-hidden="true"></span>
@@ -47,8 +45,6 @@ const ProfileUserForm = ({ profile, setAction }) => {
         </div>
 
         );
-
-
 
         setTimeout(() => {
             try {
@@ -67,7 +63,8 @@ const ProfileUserForm = ({ profile, setAction }) => {
                         })
 
 
-                        setAction("Actualizado")
+                        setAction(!action)
+
                     }
                 );
             } catch (error) {
@@ -79,17 +76,11 @@ const ProfileUserForm = ({ profile, setAction }) => {
 
 
     };
-    const onChangeSwitchButton = (e) => {
 
-        setChecked(!checked)
 
-    }
     // FormProfi
     const formProfile = (<div className='from-profile'>
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked={checked} onChange={(e) => setChecked(!checked)} />
-            <label class="form-check-label formulario-check-edit" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-        </div>
+
 
         <form className="formulario-usuario" onSubmit={handleSubmit(onSubmit)}  >
             <div className="row mb-3">
@@ -103,7 +94,7 @@ const ProfileUserForm = ({ profile, setAction }) => {
             <div className="row mb-3">
                 <label htmlFor="exampleInputStoreCategory" className="form-label col-lg-4 col-form-label">Store category<span>* </span></label>
                 <div className='col-lg-8'>
-                    <input type="text" name="" defaultValue={profileInfo["store_category"]} className={`form-control  ${errors.storeCategory ? 'is-invalid' : ''}`} {...register('storeCategory')} id="exampleInputStoreName1" />
+                    <input type="text" name="storeCategory" defaultValue={profileInfo["store_category"]} className={`form-control  ${errors.storeCategory ? 'is-invalid' : ''}`} {...register('storeCategory')} id="exampleInputStoreName1" />
                     <div className="invalid-feedback">{errors.storeCategory?.message}</div>
                 </div>
             </div>

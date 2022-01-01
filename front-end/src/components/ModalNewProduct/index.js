@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import ProfileUserService from '../../services/profileUser.service'
 import toast, { Toaster } from 'react-hot-toast';
-const ModalNewProduct = ({ setAction }) => {
+const ModalNewProduct = ({ setAction, action }) => {
     const validationSchema = Yup.object().shape({
         type: Yup.string().required('Product name is required'),
         brand: Yup.string().required('Brand is required'),
@@ -51,7 +51,8 @@ const ModalNewProduct = ({ setAction }) => {
                             fontSize: "20px"
                         },
                     })
-                    setAction("Added")
+                    setAction(!action)
+
                     reset();
 
                 }

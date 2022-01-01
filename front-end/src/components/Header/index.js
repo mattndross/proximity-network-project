@@ -14,7 +14,7 @@ const Header = () => {
     // Estado dependiente del localStorage
 
     const [isLogged, setIsLogged] = useState(localStorage.getItem('token'))
-
+    const [storeName, setStoreName] = useState(localStorage.getItem('storeName'))
     // logout
     const logout = () => {
         localStorage.removeItem('token');
@@ -66,7 +66,7 @@ const Header = () => {
                 <ul className="main-menu">
 
                     {isLogged ? whenLooged : notLooged}
-
+                    <li>{isLogged && storeName}</li>
 
                 </ul>
             </nav >
