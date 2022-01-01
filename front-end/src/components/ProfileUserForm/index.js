@@ -15,7 +15,7 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
 
 
     const validationSchema = Yup.object().shape({
-        fullname: Yup.string().required('Fullname is required'),
+        storeManager: Yup.string().required('Fullname is required'),
         storeName: Yup.string().required('Store name is required'),
         storeDescription: Yup.string().required('Description is required'),
         storeStreet: Yup.string().required('Street is required').min(2, 'Seems a bit short EX: Carrer Felipe .....'),
@@ -85,9 +85,9 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
             <div className="row mb-3">
                 <label htmlFor="exampleInputName1" className="form-label col-lg-4 col-form-label">Full name<span>* </span></label>
                 <div className="col-lg-8">
-                    <input type="text" defaultValue={profileInfo["store_manager"]} name="fullname" className={`form-control  ${errors.fullname ? '' : ''}`} id="exampleInputName" {...register('fullname')}
+                    <input type="text" defaultValue={profileInfo["store_manager"]} name="storeManager" className={`form-control  ${errors.storeManager ? '' : ''}`} id="exampleInputName" {...register('storeManager')}
                     />
-                    <div className="invalid-feedback">{errors.fullname?.message}</div>
+                    <div className="invalid-feedback">{errors.storeManager?.message}</div>
                 </div>
             </div>
             <div className="row mb-3">

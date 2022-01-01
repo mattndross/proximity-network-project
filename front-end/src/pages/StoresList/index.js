@@ -21,7 +21,7 @@ export default function StoresList() {
         const getData = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`http://localhost:4000/search/${search}`);
+                const response = await fetch(`https://proximity-network-api.herokuapp.com/search/${search}`);
                 const data = await response.json();
                 setStores(data);
                 setLoading(false);
@@ -41,7 +41,7 @@ export default function StoresList() {
 
 
 
-    }, [search, loading]);
+    }, [search]);
 
 
     const alert = <div className={`${stores.message || stores.length == 0 ? 'd-block' : 'd-none'} col-lg-12 text-center `} style={{ padding: "100px" }}>
