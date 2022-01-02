@@ -28,6 +28,8 @@ create table stores_locations(
     postcode              VARCHAR(12),
     country               VARCHAR(20),
     maps_url              VARCHAR(255),
+	latitude			  VARCHAR(30),
+	longitude			  VARCHAR(30),
     foreign key(store_id) references stores(store_id)
  );
 create table products (
@@ -62,12 +64,12 @@ INSERT INTO public.stores (store_id,"name",store_description,store_category,web_
 	 (6,'PEcos','Pecos is a store specialized in the sale of organic products. Created in 2016 with the mission of promoting conscious consumption.','alimentación','https://www.pecos.com','pecos@mail.com','63424476','https://www.freepik.es/vector-gratis/diseno-logotipo-tienda-salud_7248528.htm#page=1&query=bio%20store&position=22&from_view=search'),
 	 (1,'Ecoalimentaria','Ecoalimentaria is a family business dedicated to organic food. Born in 2010 with the aim of offering a complete range of organic, seasonal and local food. ','alimentación','https://www.ecoalimentaria.es/es/','eco@mail.com','632347635','https://scontent.fbcn7-2.fna.fbcdn.net/v/t1.18169-9/74265_436358423093621_2118048283_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=973b4a&_nc_ohc=cwb__zaKqcUAX8lZTe-&_nc_ht=scontent.fbcn7-2.fna&oh=00_AT_-n_w7UC1lEkHu1dNpYwHyaEbMxHMK1VgK0Rx8BqH5Kw&oe=61DDB3BE');	
 	 
-INSERT INTO public.stores_locations (store_id,address,city,postcode,country,maps_url) VALUES
-	 (1,'carrer de Asturies 9','Barcelona','08015','Spain','https://www.google.com/maps/search/?api=1&query=ecoalimentaria+asturies+9+barcelona'),
-	 (2,'carrer de Córsega 464','Barcelona','08025','Spain','https://www.google.com/maps/search/?api=1&query=carrer+de+corsega+464+barcelona'),
-	 (3,'Carrer de Cardedeu 33','Barcelona','08023','Spain','https://www.google.es/maps/search/?api=1&query=carrer+de+cardedeu+33+barcelona'),
-	 (4,'carrer de Rosello 314','Barcelona','08037','Spain','https://www.google.es/maps/search/?api=1&query=carrer+de+rosello+314+barcelona'),
-	 (5,'carrer de Rector 65','Badalona','08912','Spain','https://www.google.es/maps/search/?api=1&query=carrer+de+rector+65+badalona');
+INSERT INTO public.stores_locations (store_id,address,city,postcode,country,maps_url, latitude, longitude) VALUES
+	 (1,'carrer de Asturies 9','Barcelona','08015','Spain','https://www.google.com/maps/search/?api=1&query=carrer+de+asturies+9+barcelona', '41.40292159628453', '2.1530244981086333'),
+	 (2,'carrer de Córsega 464','Barcelona','08025','Spain','https://www.google.com/maps/search/?api=1&query=carrer+de+corsega+464+barcelona', '41.40312680647647', '2.1681452000000005'),
+	 (3,'Carrer de Cardedeu 33','Barcelona','08023','Spain','https://www.google.es/maps/search/?api=1&query=carrer+de+cardedeu+33+barcelona', '41.41757722718641', '2.1440028441819305'),
+	 (4,'carrer de Rosello 314','Barcelona','08037','Spain','https://www.google.es/maps/search/?api=1&query=carrer+de+rosello+314+barcelona', '41.401573652469786', '2.168431686509158'),
+	 (5,'carrer de Rector 65','Badalona','08912','Spain','https://www.google.es/maps/search/?api=1&query=carrer+de+rector+65+badalona', '41.450105869968546', '2.243304515345544');
 	 
 INSERT INTO public.products (store_id,product_type,brand,category,product_description,unit,price,producer,origin, product_image) VALUES
 	 (1,'yogurt','La Lacteo','eggs and dairy','','pack x6',2.10,'Laborolo','Lleida', 'https://image.freepik.com/foto-gratis/alto-angulo-yogur-natural-frascos-avena_23-2148566181.jpg'),
