@@ -2,9 +2,16 @@ import './ProfileUserAccount.css'
 import ProfileUserFormAcount from '../../components/ProfileUserFormAccount';
 import { Link, NavLink } from 'react-router-dom'
 import ProfileUserNavLink from '../../components/ProfileUserNavLink'
-
+import { ProfileContext } from '../../context/ProfileContext'
 
 const ProfileUserAccount = () => {
+
+
+    // const profileUserContext = useContext(ProfileContext)
+    // useEffect(() => {
+    //     profileUserContext[1](response.data[0].name)
+
+    // }, [])
     return (
         <>
 

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 function useAuth() {
 
@@ -15,7 +15,7 @@ export default function PrivateRoute({ children }) {
     return children
   } else {
 
-    toast.error("Debes loguearte primero!!")
+    toast.error("You must login or register first!!!")
     return <Navigate to="/" />
   }
   // return auth ? children : <Navigate to="/" />;

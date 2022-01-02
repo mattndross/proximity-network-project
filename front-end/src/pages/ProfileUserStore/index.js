@@ -12,7 +12,7 @@ const ProfileUserStore = () => {
 
     const profileUserContext = useContext(ProfileContext)
     console.log("PROFILE USER", profileUserContext)
-    const profileContext = useContext(ProfileContext)
+
     const [profile, setProfile] = useState("");
     const [error, setError] = useState("")
     const [action, setAction] = useState(false)
@@ -24,6 +24,8 @@ const ProfileUserStore = () => {
             ProfileUserService.getLoggedProfile().then(
                 (response) => {
                     profileUserContext[1](response.data[0].name)
+                    localStorage.setItem('storeName', response.data[0].name)
+
                     setProfile(response.data);
                 }
             );
