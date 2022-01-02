@@ -1,17 +1,9 @@
 import "./CardStore.css"
 import { Link } from 'react-router-dom'
 import icon from "../../assets/img/stores-list-banner/icon-direction.png"
-const CardStore = ({ cardInfo, setStoreProfileId }) => {
+const CardStore = ({ cardInfo }) => {
 
 
-    const handleOnClick = (objCard) => {
-
-        setStoreProfileId(objCard)
-
-
-    }
-
-    // funcion para capitalizar la primera letra
 
     function capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1)
@@ -36,7 +28,7 @@ const CardStore = ({ cardInfo, setStoreProfileId }) => {
                     <p>{cardInfo.address}<span className="d-block">{cardInfo.postcode} - {cardInfo.city}</span></p>
                 </div>
 
-                <Link onClick={() => handleOnClick(cardInfo)} className="btn btn-primary btn-card-store" to={`/store-profile/${slugName(cardInfo.name)}`}>view profile</Link>
+                <Link className="btn btn-primary btn-card-store" to={`/store-profile/${slugName(cardInfo.name)}`}>view profile</Link>
             </div>
         </div>
 

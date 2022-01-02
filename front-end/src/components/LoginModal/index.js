@@ -30,7 +30,7 @@ const LoginModal = ({ isLogged, setIsLogged }) => {
 
         const user = { email, password };
 
-        const url = "http://localhost:4000/login";
+        const url = "https://proximity-network-api.herokuapp.com/login";
         const config = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -73,6 +73,7 @@ const LoginModal = ({ isLogged, setIsLogged }) => {
     const handleSubmitLoginData = (event) => {
         event.preventDefault()
         console.log(myModalRef.current)
+
         fetchSignIn();
 
     }

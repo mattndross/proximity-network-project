@@ -1,6 +1,6 @@
 import './ModalDeleteUserProduct.css'
 import ProfileUserService from '../../services/profileUser.service'
-const ModalDeleteUserProduct = ({ id, setAction }) => {
+const ModalDeleteUserProduct = ({ id, setAction, action }) => {
 
 
 
@@ -10,7 +10,7 @@ const ModalDeleteUserProduct = ({ id, setAction }) => {
             ProfileUserService.deleteProduct(id).then(
                 (response) => {
                     console.log("Se elimino")
-                    setAction("ELIMINADO")
+                    setAction(!action)
                 }
             );
         } catch (error) {

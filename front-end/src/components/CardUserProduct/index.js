@@ -21,7 +21,7 @@ const CardUserProduct = ({ product }) => {
                             <i className="bi bi-trash user-product-icon"></i>
                         </button>
 
-                        <button className="user-product-btn" data-bs-toggle="modal" data-bs-target={`#product-${product.id}`}>
+                        <button className="user-product-btn" data-bs-toggle="modal" data-bs-target={`#productUpdate-${product.id}`}>
                             <i class="bi bi-pencil user-product-icon"></i>
                         </button>
                     </div>

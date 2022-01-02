@@ -4,26 +4,30 @@ import logo from "../Header/img/logo.png"
 import { Link } from 'react-router-dom'
 import LoginModal from '../LoginModal'
 import Modalregister from '../ModalRegister';
+import { ProfileContext } from "../../context/ProfileContext";
 import "../Header/Header.css"
 
 const Header = () => {
 
     const [open, setOpen] = useState(false)
 
-
-    // Estado dependiente del localStorage
+    const profileContext = useContext(ProfileContext)
 
     const [isLogged, setIsLogged] = useState(localStorage.getItem('token'))
+
+
 
     // logout
     const logout = () => {
         localStorage.removeItem('token');
+
         setIsLogged(false);
         window.location.href = "/"
     }
 
     useEffect(() => {
         console.log("me volvi a renderizar....")
+
     }, [isLogged])
 
 
@@ -37,7 +41,7 @@ const Header = () => {
     const whenLooged =
         (<>
             <li className="nav-item">
-                <a className=" nav-profile-user-link active" aria-current="page" href="#"><i className="bi bi-person-circle nav-profile-user-icon"></i>My profile</a>
+                <Link className=" nav-profile-user-link active" aria-current="page" to="/profile-user"><i className="bi bi-person-circle nav-profile-user-icon"></i>{profileContext[0]}</Link>
             </li>
             <li><button class="d-flex btn btn-outline-success" id="btn-logout" type="submit" onClick={logout}>
                 <i class="bi bi-shop"></i>Logout</button></li>
@@ -66,7 +70,6 @@ const Header = () => {
                 <ul className="main-menu">
 
                     {isLogged ? whenLooged : notLooged}
-
 
                 </ul>
             </nav >

@@ -11,7 +11,7 @@ import { ProfileContext } from "../../context/ProfileContext"
 const CardListStores = ({ stores, setStores }) => {
 
     // Estado necesario para la reactividad del componente.
-    const [storeProfileId, setStoreProfileId] = useContext(ProfileContext);
+    // const [storeProfileId, setStoreProfileId] = useContext(ProfileContext);
 
 
 

@@ -22,41 +22,45 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 
+
 function App() {
-  // Variable global que se modificara en el componente search de la landing !
-  const [searchGlobal, setSearchGlobal] = useState('')
-  // variable global para mandar los datos de una tienda!
-  const [storeProfileId, setStoreProfileId] = useState('')
+
+  // Context para el name del usuario..
+  const [storeProfileId, setStoreProfileId] = useState()
 
 
 
   return (
     <div className="wrapper">
       <BrowserRouter>
-        <SearchContext.Provider value={[searchGlobal, setSearchGlobal]}>
+
+
+        <ProfileContext.Provider value={[storeProfileId, setStoreProfileId]}>
           {<Header />}
 
-          <ProfileContext.Provider value={[storeProfileId, setStoreProfileId]}>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/stores-list" element={<StoresList />} />
-              <Route path="/store-profile/:storeName" element={<StoreProfile />} />
-              <Route path="/" element={<Public />} />
-              <Route path="/profile-account" element={<ProfileUserAccount />} />
-              <Route path="/profile-user" element={
-                <PrivateRoute>
-                  <ProfileUserStore />
-                </PrivateRoute>} />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/stores-list" element={<StoresList />} />
+            <Route path="/store-profile/:storeName" element={<StoreProfile />} />
+            <Route path="/" element={<Public />} />
+            <Route path="/profile-account" element={
+              <PrivateRoute>
+                <ProfileUserAccount />
+              </PrivateRoute>} />
+            <Route path="/profile-user" element={
+              <PrivateRoute>
+                <ProfileUserStore />
+              </PrivateRoute>} />
 
-              <Route path="/profile-product" element={
-                <PrivateRoute>
-                  <ProfileUserProduct />
-                </PrivateRoute>} />
-              <Route path="/" element={<Public />} />
+            <Route path="/profile-product" element={
+              <PrivateRoute>
+                <ProfileUserProduct />
+              </PrivateRoute>} />
+            <Route path="/" element={<Public />} />
 
-            </Routes>
-          </ProfileContext.Provider>
-        </SearchContext.Provider>
+          </Routes>
+        </ProfileContext.Provider>
+
 
         <Footer />
       </BrowserRouter>

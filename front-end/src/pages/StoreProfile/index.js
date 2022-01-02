@@ -8,7 +8,6 @@ import SearchListProduct from '../../components/SearchListProduct';
 import CardProductStore from '../../components/CardProductStore';
 import StoreProductBanner from '../../components/StoreProductBanner';
 import ModalProduct from '../../components/ModalProduct';
-import { SearchContext } from '../../context/SearchContext'
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import Loading from '../../components/BaseComponents/Loading'
@@ -34,13 +33,13 @@ export default function StoreProfile() {
 
 
                 // Llamo al endpoint /stores/:storeName
-                const response1 = await fetch(`http://localhost:4000/stores/${storeName}`);
+                const response1 = await fetch(`https://proximity-network-api.herokuapp.com/stores/${storeName}`);
                 const data1 = await response1.json();
 
                 const storeId = await data1[0].store_id;
 
                 // Llamo al endpoint /products/storeProducts/:storeId
-                const response2 = await fetch(`http://localhost:4000/products/storeProducts/${storeId}`)
+                const response2 = await fetch(`https://proximity-network-api.herokuapp.com/products/storeProducts/${storeId}`)
                 const data2 = await response2.json();
 
                 setFilteredProducts(data2);
