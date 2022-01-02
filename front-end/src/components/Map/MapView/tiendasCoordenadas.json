@@ -1,0 +1,32 @@
+{
+    "stores": [
+        {
+            "id": 1,
+            "name": "la conciensuda",
+            "location": "C. Industria, 76, 08025 Barcelona",
+            "coordinates": [
+                41.405735,
+                2.169445
+            ]
+        },
+        {
+            "id": 2,
+            "name": "campechano",
+            "location": "Pg. de Sant Joan, 179, 08037 Barcelona",
+            "coordinates": [
+                41.403111,
+                2.164330
+            ] 
+        },
+        {
+            "id": 3,
+            "name": "dorotea",
+            "location": "Carrer de Roger de Llúria, 100, 08037 Barcelona",
+            "coordinates": [
+                41.395833, 
+                2.165299
+            ] 
+        }
+    ]
+}
+

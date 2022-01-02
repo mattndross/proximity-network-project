@@ -1,25 +1,31 @@
 import React from 'react';
 import { Marker } from 'react-leaflet';
-import L from 'leaflet';
 import "leaflet/dist/leaflet.css"
-
+import IconLoc from './IconLoc';
+import * as data from "../Map/MapView/tiendasCoordenadas.json"
 
 
 //ACA CADA TIENDA TENDRA SU MARKR HACIENDO EL MAP
 const Markers = () => {
-    const IconLoc = L.icon({
-        iconUrl: "../../../node_modules/leaflet/dist/images/marker-icon.png",
-        iconAnchor: [5, 55],
-        shadowUrl: require("../../../node_modules/leaflet/dist/images/marker-shadow.png"),
-        shadowSize: [5, 55], 
-        shadowAnchor: null, 
-        iconSize: [30, 30], 
-        className: "leaflet-location-point"
-    
-    
-    })
+
+    // const position = [41.391111, 2.152504]
+    // <Marker position={position} icon={IconLoc}/>
+
     return (
-        <Marker position={{lat:'41.439104', lng:'2.166111'}} icon={IconLoc}/>
+        
+ <>
+     {data.stores.map(store => 
+        <Marker 
+        key={store.id}
+        position={[store.coordinates[0], store.coordinates[1]]}
+        icon={IconLoc} 
+        />
+
+)
+}
+</>
+      
+
     )
 }
 

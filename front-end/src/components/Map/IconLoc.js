@@ -1,18 +1,18 @@
+import  L  from 'leaflet'
+import icon from 'leaflet'
 
-import L from 'leaflet'
-
- const IconLoc = L.icon({
-    iconUrl: "../../../node_modules/leaflet/dist/images/marker-icon.png",
+// '../../../node_modules/leaflet/dist/images/marker-icon.png'
+//../../assets/img/img-about/icon-1.png
+const IconLoc = new L.icon({
+    iconUrl: require('../Map/imageIcon/pinLocation.png').default,
     iconAnchor: [5, 55],
-    shadowUrl: require("../../../node_modules/leaflet/dist/images/marker-shadow.png"),
+   // shadowUrl: "../../../node_modules/leaflet/dist/images/marker-shadow.png",
     shadowSize: [5, 55], 
-    shadowAnchor: null, 
-    iconSize: [30, 30], 
+    iconSize: [20, 30], 
     className: "leaflet-location-point"
 
 
 })
 
-export default IconLoc
-    
 
+export default IconLoc
