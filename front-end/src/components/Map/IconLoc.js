@@ -1,18 +1,15 @@
 
-import React from 'react'
-import  icon  from 'leaflet'
 import L from 'leaflet'
 
- const IconLoc = new L.icon({
-    iconUrl: require("../Map/imageIcon/png-clipart-google-map-maker-marker-pen-drawing-pin-green-christmas-tree-pin-dryerase-boards").default,
-    iconRetinaUrl: require("../Map/imageIcon/png-clipart-google-map-maker-marker-pen-drawing-pin-green-christmas-tree-pin-dryerase-boards").default,
-    iconAnchor: null,
-    shadowUrl: null,
-    shadowSize: null, 
+ const IconLoc = L.icon({
+    iconUrl: "../../../node_modules/leaflet/dist/images/marker-icon.png",
+    iconAnchor: [5, 55],
+    shadowUrl: require("../../../node_modules/leaflet/dist/images/marker-shadow.png"),
+    shadowSize: [5, 55], 
     shadowAnchor: null, 
-    iconSize: [35, 35], 
+    iconSize: [30, 30], 
     className: "leaflet-location-point"
-    
+
 
 })
 
