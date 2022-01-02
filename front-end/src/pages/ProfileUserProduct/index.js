@@ -1,13 +1,15 @@
 import "./ProfileUserProduct.css"
 import { Link, NavLink } from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ProfileUserNavLink from '../../components/ProfileUserNavLink'
 import ProfileUserYourProducts from "../../components/ProfileUserYourProducts"
 import ProfileUserService from '../../services/profileUser.service'
 import toast, { Toaster } from 'react-hot-toast';
+
+import { ProfileContext } from '../../context/ProfileContext'
 const ProfileUserProduct = () => {
 
-
+    const profileUserContext = useContext(ProfileContext)
     const [products, setProducts] = useState([])
     const [error, setError] = useState([]);
 
@@ -21,6 +23,7 @@ const ProfileUserProduct = () => {
         try {
             ProfileUserService.getProducts().then(
                 (response) => {
+
                     setProducts(response.data);
                     setCounter(response.data.length)
                 }

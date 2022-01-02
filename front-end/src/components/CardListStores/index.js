@@ -30,12 +30,15 @@ const CardListStores = ({ stores, setStores }) => {
                                 <div className="col-lg-8 col-xl-6 content-scroll-hidden">
                                     <div className='content-scroll-auto'>
                                         {
-                                         stores.length > 0 && stores.map((cardInfo) => <CardStore setStoreProfileId={setStoreProfileId} cardInfo={cardInfo} />)
+                                            stores.length > 0 && stores.map((cardInfo) => <CardStore setStoreProfileId={setStoreProfileId} cardInfo={cardInfo} />)
                                         }
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-xl-6 map-content">
+
                                    <MapView/>
+
+
                                 </div>
                             </>
                         )

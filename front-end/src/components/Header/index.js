@@ -20,7 +20,7 @@ const Header = () => {
     // logout
     const logout = () => {
         localStorage.removeItem('token');
-
+        localStorage.removeItem('storeName')
         setIsLogged(false);
         window.location.href = "/"
     }
