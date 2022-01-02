@@ -15,10 +15,9 @@ import ProfileUserProduct from './pages/ProfileUserProduct';
 import ProfileUserAccount from './pages/ProfileUserAccount';
 
 // import global context
-import { SearchContext } from './context/SearchContext.js'
+import { Toaster } from 'react-hot-toast';
 import { ProfileContext } from './context/ProfileContext'
 import PrivateRoute from './components/PrivateRoute';
-
 
 
 
@@ -26,12 +25,13 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
 
   // Context para el name del usuario..
-  const [storeProfileId, setStoreProfileId] = useState()
+  const [storeProfileId, setStoreProfileId] = useState(localStorage.getItem("storeName"))
 
 
 
   return (
     <div className="wrapper">
+
       <BrowserRouter>
 
 
