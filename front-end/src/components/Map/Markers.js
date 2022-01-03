@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css"
 import IconLoc from './IconLoc';
@@ -7,31 +6,40 @@ import * as data from "../Map/MapView/tiendasCoordenadas.json"
 
 
 //ACA CADA TIENDA TENDRA SU MARKR HACIENDO EL MAP
-const Markers = () => {
+const Markers = ({ stores }) => {
 
-    // const position = [41.391111, 2.152504]
-    // <Marker position={position} icon={IconLoc}/>
     return (
+        <>
+            {
+                stores.filter((store, i) => {
+                    if (stores[i].latitude && stores[i].longitude) {
+                        return store
+                    }
+                })
+                    .map((store, i) => {
 
-        <div>
-            {data.stores.map(store =>
-                <Marker
-                    key={store.id}
-                    position={[store.coordinates[0], store.coordinates[1]]}
-                    icon={IconLoc}
-                >)
-                    <Popup>
-                        <div><h6 style={{color:"#80b13d"}}>{store.name}</h6></div>
-                    </Popup>
-                </Marker>)
+                        let latitude = parseFloat(stores[i].latitude);
+                        let longitude = parseFloat(stores[i].longitude);
 
+                        return (
+                            <Marker
+                                key={store.store_id}
+                                position={[latitude, longitude]}
+                                icon={IconLoc}
+                            >
+                                <Popup>
+                                    <div>
+                                        <p style={{ color: "#80b13d" }}>{store.name}</p>
+                                        <p>{`${store.address}, ${store.postcode}, ${store.city}`}</p>
+                                    </div>
+                                </Popup>
+                            </Marker>)
+                    }
+
+                    )
             }
-
-        </div>
-
-
+        </>
     )
 }
 
 export default Markers;
-
