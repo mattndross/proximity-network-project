@@ -36,7 +36,7 @@ const ModalNewProduct = ({ setAction, action }) => {
     // Metodo onSubmit
     const onSubmit = data => {
 
-        data.productImage = image;
+        data.productImage = "https://proximity-network-api.herokuapp.com/images/" + image;
         console.log(data);
         const toasId = toast.custom(<div>
             <button class="btn btn-primary button-loading-user" style={{ backgroundColor: "#408e0a", opacity: "1", fontWeight: "700" }} type="button" disabled>
