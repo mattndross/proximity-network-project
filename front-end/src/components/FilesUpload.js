@@ -88,7 +88,7 @@ const FilesUpload = () => {
             <div className="row my-3">
                 <div className="col-8">
                     <label className="btn btn-default p-0">
-                        <input type="file" name="images" multiple onChange={selectFiles} />
+                        <input type="file" name="image" multiple onChange={selectFiles} />
                     </label>
                 </div>
 
