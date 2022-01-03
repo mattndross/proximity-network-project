@@ -46,7 +46,8 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
 
         );
 
-        data.imageUrl = image;
+        data.imageUrl = "https://proximity-network-api.herokuapp.com/images/" + image;
+        console.log(data)
         setTimeout(() => {
             try {
                 ProfileUserService.updateProfile(data).then(
@@ -103,7 +104,7 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                 <label htmlFor="exampleInputImage" className="form-label col-lg-4 col-form-label">Main photo<span>* </span></label>
                 <div className="col-lg-8">
                     <div className='icon-img-form  form-control '>
-                        <img src={`https://proximity-network-api.herokuapp.com/images/${profileInfo.image}`} alt="" class="img-fluid" style={{ height: "100%", objectFit: "contain" }} />
+                        <img src={profileInfo.image} alt="" class="img-fluid" style={{ height: "100%", objectFit: "contain" }} />
                         {/* <i className="bi bi-camera"></i> */}
                     </div>
                     <FilesUpload setImage={setImage} />
