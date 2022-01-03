@@ -7,6 +7,14 @@ import ButtonBack from '../BaseComponents/ButtonBack'
 const CardStoreProfile = ({ store }) => {
     let storeInfo = store[0]
 
+    const getUrlImg = (img) => {
+
+        if (img !== null && img.includes('https')) {
+            return img;
+        } else {
+            return `https://proximity-network-api.herokuapp.com/images/${img}`
+        }
+    }
     return (
         <section id="cardStoreProfile" className="p-4">
 
@@ -17,7 +25,7 @@ const CardStoreProfile = ({ store }) => {
                 <div className="row align-items-center">
                     <div className="col-lg-6 d-flex justify-content-center justify-content-lg-end">
                         <div className="card-img-store">
-                            <img src={storeInfo['image']} className="img-fluid" alt="logo tieda" />
+                            <img src={getUrlImg(storeInfo['image'])} className="img-fluid" alt="logo tieda" />
                         </div>
 
                     </div>

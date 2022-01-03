@@ -1,11 +1,17 @@
 import "./ModalNewProduct.css"
+import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import FileUploadProduct from "../../components/FilesUploadProduct/FilesUploadProduct";
 import * as Yup from 'yup';
 
 import ProfileUserService from '../../services/profileUser.service'
 import toast, { Toaster } from 'react-hot-toast';
 const ModalNewProduct = ({ setAction, action }) => {
+
+    const [image, setImage] = useState(null);
+
+
     const validationSchema = Yup.object().shape({
         type: Yup.string().required('Product name is required'),
         brand: Yup.string().required('Brand is required'),
@@ -30,6 +36,8 @@ const ModalNewProduct = ({ setAction, action }) => {
     // Metodo onSubmit
     const onSubmit = data => {
 
+        data.productImage = image;
+        console.log(data);
         const toasId = toast.custom(<div>
             <button class="btn btn-primary button-loading-user" style={{ backgroundColor: "#408e0a", opacity: "1", fontWeight: "700" }} type="button" disabled>
                 <span class="spinner-border spinner-border-sm" style={{ color: "white", fontSize: "26px" }} role="status" aria-hidden="true"></span>
@@ -131,7 +139,7 @@ const ModalNewProduct = ({ setAction, action }) => {
                                     <div className="mb-3 d-flex flex-column">
                                         <label htmlFor="image" className="col-form-label">Image<span>* </span></label>
                                         <div className="icon-product-modal text-center">
-                                            <i className="bi bi-camera"></i>
+                                            <FileUploadProduct setImage={setImage} />
                                         </div>
                                     </div>
                                 </div>

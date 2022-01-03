@@ -3,7 +3,14 @@ import { Link } from 'react-router-dom'
 import icon from "../../assets/img/stores-list-banner/icon-direction.png"
 const CardStore = ({ cardInfo }) => {
 
+    const getUrlImg = (img) => {
 
+        if (img !== null && img.includes('https')) {
+            return img;
+        } else {
+            return `https://proximity-network-api.herokuapp.com/images/${img}`
+        }
+    }
 
     function capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1)
@@ -17,7 +24,7 @@ const CardStore = ({ cardInfo }) => {
         <div id={`store-${cardInfo.store_id}`} className="row align-items-center mb-5">
             <div className="col-6">
                 <div className="img-container">
-                    <img src={cardInfo.image} className="img-fluid card-img" alt="picture store" />
+                    <img src={getUrlImg(cardInfo.image)} className="img-fluid card-img" alt="picture store" />
                 </div>
             </div>
             <div className="col-6 card-store-text">

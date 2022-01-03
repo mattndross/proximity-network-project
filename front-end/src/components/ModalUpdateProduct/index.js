@@ -3,10 +3,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import ProfileUserService from '../../services/profileUser.service'
+import { useState } from 'react';
+import FileUploadProduct from "../../components/FilesUploadProduct/FilesUploadProduct";
 import toast, { Toaster } from 'react-hot-toast';
 
 const ModalUpdateProduct = ({ product, setAction, action }) => {
 
+    const [image, setImage] = useState(null);
 
     const validationSchema = Yup.object().shape({
         type: Yup.string().required('Product name is required'),
@@ -31,7 +34,7 @@ const ModalUpdateProduct = ({ product, setAction, action }) => {
 
     // Metodo onSubmit
     const onSubmit = (data) => {
-
+        data.productImage = image;
         const toasId = toast.custom(<div>
             <button class="btn btn-primary button-loading-user" style={{ backgroundColor: "#408e0a", opacity: "1", fontWeight: "700" }} type="button" disabled>
                 <span class="spinner-border spinner-border-sm" style={{ color: "white", fontSize: "26px" }} role="status" aria-hidden="true"></span>
@@ -134,7 +137,7 @@ const ModalUpdateProduct = ({ product, setAction, action }) => {
                                     <div className="mb-3 d-flex flex-column">
                                         <label htmlFor="image" className="col-form-label">Image<span>* </span></label>
                                         <div className="icon-product-modal text-center">
-                                            <i className="bi bi-camera"></i>
+                                            <FileUploadProduct setImage={setImage} />
                                         </div>
                                     </div>
                                     <div className="d-flex align-items-center justify-content-center" style={{ marginBottom: "30px" }}>

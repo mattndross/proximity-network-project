@@ -1,6 +1,14 @@
 import './ModalProduct.css'
 import imagenModal from '../../assets/img/fake-img/product.jpg'
 const ModalProduct = ({ id, product }) => {
+    const getUrlImg = (img) => {
+
+        if (img !== null && img.includes('https')) {
+            return img;
+        } else {
+            return `https://proximity-network-api.herokuapp.com/images/${img}`
+        }
+    }
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg modal-dialog-centered">
@@ -14,7 +22,7 @@ const ModalProduct = ({ id, product }) => {
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="modal-img-product">
-                                        <img src={product["product_image"]} className="" alt="modal imagen" />
+                                        <img src={getUrlImg(product["product_image"])} className="" alt="modal imagen" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
