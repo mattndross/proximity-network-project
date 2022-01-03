@@ -1,7 +1,5 @@
 import { useState } from 'react'
-
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import LandingPage from "./pages/LandingPage";
@@ -18,6 +16,7 @@ import ProfileUserAccount from './pages/ProfileUserAccount';
 import { Toaster } from 'react-hot-toast';
 import { ProfileContext } from './context/ProfileContext'
 import PrivateRoute from './components/PrivateRoute';
+import GenericError from './components/GernericError';
 
 
 
@@ -57,7 +56,7 @@ function App() {
                 <ProfileUserProduct />
               </PrivateRoute>} />
             <Route path="/" element={<Public />} />
-
+            <Route path="*" element={<GenericError/>}/>
           </Routes>
         </ProfileContext.Provider>
 
