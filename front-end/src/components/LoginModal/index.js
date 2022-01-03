@@ -30,7 +30,7 @@ const LoginModal = ({ isLogged, setIsLogged }) => {
 
         const user = { email, password };
 
-        const url = "https://proximity-network-api.herokuapp.com/login";
+        const url = "http://localhost:4000/login";
         const config = {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -5,6 +5,7 @@ import CardUserProduct from '../../components/CardUserProduct';
 import ModalNewProduct from '../ModalNewProduct';
 import ModalUpdateProduct from '../ModalUpdateProduct';
 import ModalDeleteUserProduct from '../ModalDeleteUserProduct';
+import FilesUpload from '../FilesUpload';
 const ProfileUserYourProducts = ({ products, setAction, action }) => {
 
     return (
@@ -35,6 +36,7 @@ const ProfileUserYourProducts = ({ products, setAction, action }) => {
                 <button className="btn btn-outline-success btn-profile-product " data-bs-toggle="modal" data-bs-target="#modalNewProduct" type="submit"><i className="bi bi-plus-circle"></i>Upload product</button>
             </div>
             <ModalNewProduct setAction={setAction} action={action}></ModalNewProduct>
+            <FilesUpload />
 
         </div>
     )
