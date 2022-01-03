@@ -6,11 +6,12 @@ import * as Yup from 'yup';
 import Button from '../Button'
 import ProfileUserService from '../../services/profileUser.service';
 import toast, { Toaster } from 'react-hot-toast';
+import FilesUpload from '../FilesUpload';
 const ProfileUserForm = ({ profile, setAction, action }) => {
     const profileInfo = profile[0]
 
 
-
+    const [image, setImage] = useState(null)
 
 
 
@@ -45,6 +46,7 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
 
         );
 
+        data.imageUrl = image;
         setTimeout(() => {
             try {
                 ProfileUserService.updateProfile(data).then(
@@ -101,9 +103,10 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                 <label htmlFor="exampleInputImage" className="form-label col-lg-4 col-form-label">Main photo<span>* </span></label>
                 <div className="col-lg-8">
                     <div className='icon-img-form  form-control '>
-                        <img src={profileInfo.image} alt="" class="img-fluid" style={{ height: "100%", objectFit: "contain" }} />
+                        <img src={`https://proximity-network-api.herokuapp.com/images/${profileInfo.image}`} alt="" class="img-fluid" style={{ height: "100%", objectFit: "contain" }} />
                         {/* <i className="bi bi-camera"></i> */}
                     </div>
+                    <FilesUpload setImage={setImage} />
                 </div>
             </div>
             <div className="row mb-3">
@@ -162,6 +165,7 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                     <div className="invalid-feedback">{errors.phoneNumber?.message}</div>
                 </div>
             </div>
+
 
             <div className="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-lg-4">
                 <button type="submit" className="btn btn-primary btn-formulario" >

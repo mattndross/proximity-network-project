@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import UploadService from "../services/FileUploadServices";
 
-const FilesUpload = () => {
+const FilesUpload = ({ setImage }) => {
     const [selectedFiles, setSelectedFiles] = useState(undefined);
     const [progressInfos, setProgressInfos] = useState({ val: [] });
     const [message, setMessage] = useState([]);
@@ -43,9 +43,12 @@ const FilesUpload = () => {
             setProgressInfos({ val: _progressInfos });
         })
             .then(() => {
+                setImage(file.name)
+                console.log(" FILE NAME ", file.name)
                 setMessage((prevMessage) => ([
                     ...prevMessage,
                     "Uploaded the file successfully: " + file.name,
+
                 ]));
             })
             .catch(() => {
@@ -95,6 +98,7 @@ const FilesUpload = () => {
                 <div className="col-4">
                     <button
                         className="btn btn-success btn-sm"
+                        type="button"
                         disabled={!selectedFiles}
                         onClick={uploadFiles}
                     >
@@ -113,7 +117,7 @@ const FilesUpload = () => {
                 </div>
             )}
 
-            <div className="card">
+            {/* <div className="card">
                 <div className="card-header">List of Files</div>
                 <ul className="list-group list-group-flush">
                     {fileInfos &&
@@ -123,7 +127,7 @@ const FilesUpload = () => {
                             </li>
                         ))}
                 </ul>
-            </div>
+            </div> */}
         </div>
 
     );
