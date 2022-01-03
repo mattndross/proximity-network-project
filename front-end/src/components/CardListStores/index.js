@@ -35,10 +35,7 @@ const CardListStores = ({ stores, setStores }) => {
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-xl-6 map-content">
-
                                    <MapView/>
-
-
                                 </div>
                             </>
                         )
