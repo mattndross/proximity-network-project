@@ -73,10 +73,6 @@ button:focus:not(:focus-visible) {
     transition: all ease .8s;
     cursor: pointer;
 }
-.icon-img-form:hover{
-    background-color: #81B03E;
-    color: #fff;
-}
 .toast-custom {
     display: flex;
     align-items: center;

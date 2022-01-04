@@ -1,11 +1,17 @@
 import "./ModalNewProduct.css"
+import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import FileUploadProduct from "../../components/FilesUploadProduct/FilesUploadProduct";
 import * as Yup from 'yup';
 
 import ProfileUserService from '../../services/profileUser.service'
 import toast, { Toaster } from 'react-hot-toast';
 const ModalNewProduct = ({ setAction, action }) => {
+
+    const [image, setImage] = useState(null);
+
+
     const validationSchema = Yup.object().shape({
         type: Yup.string().required('Product name is required'),
         brand: Yup.string().required('Brand is required'),
@@ -30,6 +36,8 @@ const ModalNewProduct = ({ setAction, action }) => {
     // Metodo onSubmit
     const onSubmit = data => {
 
+        data.productImage = "https://proximity-network-api.herokuapp.com/images/" + image;
+        console.log(data);
         const toasId = toast.custom(<div>
             <button class="btn btn-primary button-loading-user" style={{ backgroundColor: "#408e0a", opacity: "1", fontWeight: "700" }} type="button" disabled>
                 <span class="spinner-border spinner-border-sm" style={{ color: "white", fontSize: "26px" }} role="status" aria-hidden="true"></span>
@@ -100,6 +108,12 @@ const ModalNewProduct = ({ setAction, action }) => {
                                     <input type="text" name="brand" className={`form-control input-product-user  ${errors.brand ? 'is-invalid' : ''}`} id="inputBrand" aria-describedby="emailHelp"  {...register('brand')} />
                                     <div className="invalid-feedback">{errors.brand?.message}</div>
                                 </div>
+                                <div className="mb-3 d-flex flex-column">
+                                    <label htmlFor="image" className="col-form-label">Image<span>* </span></label>
+                                    <div className="icon-product-modal text-center">
+                                        <FileUploadProduct setImage={setImage} />
+                                    </div>
+                                </div>
                                 <div className=" row mb-3">
                                     <div className="col-6" style={{ paddingRight: "0" }}>
                                         <label htmlFor="exampleInputUnit1" className="form-label ">Unit<span>* </span></label>
@@ -128,12 +142,7 @@ const ModalNewProduct = ({ setAction, action }) => {
                                         <textarea name="description" className={`form-control input-product-user  ${errors.description ? 'is-invalid' : ''}`} id="message-text" {...register('description')}></textarea>
                                         <div className="invalid-feedback">{errors.description?.message}</div>
                                     </div>
-                                    <div className="mb-3 d-flex flex-column">
-                                        <label htmlFor="image" className="col-form-label">Image<span>* </span></label>
-                                        <div className="icon-product-modal text-center">
-                                            <i className="bi bi-camera"></i>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div className="d-flex align-items-center justify-content-center" style={{ marginBottom: "30px" }}>
                                     <button className="btn btn-outline-success btn-modal-product" type="submit">Upload product</button>

@@ -33,7 +33,8 @@ export default function StoreProfile() {
 
 
                 // Llamo al endpoint /stores/:storeName
-                const response1 = await fetch(`https://proximity-network-api.herokuapp.com/stores/${storeName}`);
+
+                const response1 = await fetch(`https://proximity-network-api.herokuapp.com/stores/${storeName.trim()}`);
                 const data1 = await response1.json();
 
                 const storeId = await data1[0].store_id;

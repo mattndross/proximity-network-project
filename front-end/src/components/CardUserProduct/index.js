@@ -2,6 +2,10 @@ import './CardUserProduct.css';
 
 
 const CardUserProduct = ({ product }) => {
+
+
+
+
     const brandName = `${product["product_type"].toUpperCase()} - ${product.brand.toUpperCase()}`;
     return (
         <div className="col-12 pb-4">

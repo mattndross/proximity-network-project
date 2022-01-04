@@ -6,11 +6,12 @@ import * as Yup from 'yup';
 import Button from '../Button'
 import ProfileUserService from '../../services/profileUser.service';
 import toast, { Toaster } from 'react-hot-toast';
+import FilesUpload from '../FilesUpload';
 const ProfileUserForm = ({ profile, setAction, action }) => {
     const profileInfo = profile[0]
 
-
-
+    console.log("hola", profileInfo)
+    const [image, setImage] = useState(null)
 
 
 
@@ -22,6 +23,8 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
         postcode: Yup.string().required('Postal code is required'),
         city: Yup.string().required('City is required'),
         country: Yup.string().required('Country is required'),
+        latitude: Yup.string().required('Latitude is required'),
+        longitude: Yup.string().required('Longitude is required'),
         storeCategory: Yup.string().required('Store category is required'),
         storeWeb: Yup.string().matches(/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/, 'Enter correct url! EX: www.myWeb.com'),
         phoneNumber: Yup.number().min(9).required('Phone number required.. EX: 60122..'),
@@ -45,6 +48,8 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
 
         );
 
+        data.imageUrl = "https://proximity-network-api.herokuapp.com/images/" + image;
+        console.log(data)
         setTimeout(() => {
             try {
                 ProfileUserService.updateProfile(data).then(
@@ -104,6 +109,7 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                         <img src={profileInfo.image} alt="" class="img-fluid" style={{ height: "100%", objectFit: "contain" }} />
                         {/* <i className="bi bi-camera"></i> */}
                     </div>
+                    <FilesUpload setImage={setImage} />
                 </div>
             </div>
             <div className="row mb-3">
@@ -145,6 +151,26 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                             <input type="text" name="country" defaultValue={profileInfo.country} className={`form-control title-placeholder ${errors.country ? 'is-invalid' : ''}`} {...register('country')} id="exampleInputCountry1" aria-describedby="emailHelp" />
                             <div className="invalid-feedback">{errors.country?.message}</div>
                         </div>
+                        <div className="col-6 my-3 formulario-address" style={{ paddingRight: "6px" }}>
+                            <label htmlFor="inputLatitude2" className="form-label col-form-label mb-2 pt-lg-0">Latitude</label>
+                            <input type="text" name="latitude" defaultValue={profileInfo.latitude} className={`form-control title-placeholder ${errors.latitude ? 'is-invalid' : ''}`} {...register('latitude')} id="exampleInputStreet1" aria-describedby="emailHelp" />
+                            <div className="invalid-feedback">{errors.latitude?.message}</div>
+                        </div>
+                        <div className="col-6 my-3 formulario-address" style={{ paddingRight: "6px" }}>
+                            <label htmlFor="inputLongitude2" className="form-label col-form-label mb-2 pt-lg-0">Longitude</label>
+                            <input type="text" name="longitude" defaultValue={profileInfo.longitude} className={`form-control title-placeholder ${errors.latitude ? 'is-invalid' : ''}`} {...register('longitude')} id="exampleInputStreet1" aria-describedby="emailHelp" />
+                            <div className="invalid-feedback">{errors.longitude?.message}</div>
+                        </div>
+                        <div className="col-12 my-3 formulario-address" style={{ paddingRight: "6px" }}>
+                            <ul>
+                                <li>Get the coordinates of a place</li>
+                                <li>1. On your computer, open <a href="https://www.google.com/maps"> Google Maps</a>.</li>
+                                <li> 2. Right-click the place or area on the map.</li>
+                                <li> 3. To copy the coordinates automatically, select the latitude and longitude.</li>
+
+                            </ul>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -162,6 +188,7 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                     <div className="invalid-feedback">{errors.phoneNumber?.message}</div>
                 </div>
             </div>
+
 
             <div className="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-lg-4">
                 <button type="submit" className="btn btn-primary btn-formulario" >

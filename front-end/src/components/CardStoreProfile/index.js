@@ -7,6 +7,7 @@ import ButtonBack from '../BaseComponents/ButtonBack'
 const CardStoreProfile = ({ store }) => {
     let storeInfo = store[0]
 
+
     return (
         <section id="cardStoreProfile" className="p-4">
 

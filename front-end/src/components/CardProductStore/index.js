@@ -1,6 +1,7 @@
 import imgProduct from '../../assets/img/fake-img/product.jpg'
 import './CardProductStore.css'
 const CardProductStore = ({ product }) => {
+
     const brandName = `${product["product_type"].toUpperCase()} - ${product.brand.toUpperCase()}`;
     return (
         <div className="col-6 col-lg-4 pb-4" data-bs-toggle="modal" data-bs-target={`#product-${product.id}`}>

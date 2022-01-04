@@ -1,0 +1,19 @@
+.label-modal-product{
+    width: 100%;
+    cursor:pointer;
+}
+.input-modal-product{
+    width: 100%;
+    cursor:pointer;
+}
+.btn-new-product{
+    width: 100%;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.btn-new-product:hover{
+    background-color: #12663f;
+}
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    pointer-events: inherit;
+}
