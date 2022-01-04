@@ -20,7 +20,7 @@ const Markers = ({ stores }) => {
 
                         let latitude = parseFloat(store.latitude);
                         let longitude = parseFloat(store.longitude);
-
+                        //filter cambiado
                         return (
                             <Marker
                                 key={store.store_id}
