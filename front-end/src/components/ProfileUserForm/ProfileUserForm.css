@@ -113,6 +113,20 @@ button:focus:not(:focus-visible) {
     gap:10px;
 
 }
+.list-place-maps{
+    padding-left: 0px;
+    font-size: clamp(10px,5vw,16px);
+    margin-bottom: 0px;
+}
+.list-place-maps li{
+    list-style: none;
+}
+.list-place-maps a{
+    color: #79aa33;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 @media(min-width:992px){
 
