@@ -18,8 +18,8 @@ const Markers = ({ stores }) => {
                 })
                     .map((store, i) => {
 
-                        let latitude = parseFloat(stores[i].latitude);
-                        let longitude = parseFloat(stores[i].longitude);
+                        let latitude = parseFloat(store.latitude);
+                        let longitude = parseFloat(store.longitude);
 
                         return (
                             <Marker

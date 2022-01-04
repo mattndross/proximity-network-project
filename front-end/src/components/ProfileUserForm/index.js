@@ -162,9 +162,9 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                             <div className="invalid-feedback">{errors.longitude?.message}</div>
                         </div>
                         <div className="col-12 my-3 formulario-address" style={{ paddingRight: "6px" }}>
-                            <ul>
-                                <li>Get the coordinates of a place</li>
-                                <li>1. On your computer, open <a href="https://www.google.com/maps"> Google Maps</a>.</li>
+                            <ul className='list-place-maps'>
+                                <li className='mb-2'>Get the coordinates of a place</li>
+                                <li>1. On your computer, open <a href="https://www.google.com/maps" target="_blank"> Google Maps</a>.</li>
                                 <li> 2. Right-click the place or area on the map.</li>
                                 <li> 3. To copy the coordinates automatically, select the latitude and longitude.</li>
 
