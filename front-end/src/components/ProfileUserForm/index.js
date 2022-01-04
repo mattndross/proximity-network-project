@@ -149,6 +149,16 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
                             <input type="text" name="country" defaultValue={profileInfo.country} className={`form-control title-placeholder ${errors.country ? 'is-invalid' : ''}`} {...register('country')} id="exampleInputCountry1" aria-describedby="emailHelp" />
                             <div className="invalid-feedback">{errors.country?.message}</div>
                         </div>
+                        <div className="col-6 my-3 formulario-address" style={{ paddingRight: "6px" }}>
+                            <label htmlFor="inputLatitude2" className="form-label col-form-label mb-2 pt-lg-0">Latitude</label>
+                            <input type="text" name="latitude" defaultValue={profileInfo.latitude} className={`form-control title-placeholder ${errors.latitude ? 'is-invalid' : ''}`} {...register('latitude')} id="exampleInputStreet1" aria-describedby="emailHelp" />
+                            <div className="invalid-feedback">{errors.latitude?.message}</div>
+                        </div>
+                        <div className="col-6 my-3 formulario-address" style={{ paddingRight: "6px" }}>
+                            <label htmlFor="inputLongitude2" className="form-label col-form-label mb-2 pt-lg-0">Longitude</label>
+                            <input type="text" name="longitude" defaultValue={profileInfo.longitude} className={`form-control title-placeholder ${errors.latitude ? 'is-invalid' : ''}`} {...register('longitude')} id="exampleInputStreet1" aria-describedby="emailHelp" />
+                            <div className="invalid-feedback">{errors.longitude?.message}</div>
+                        </div>
                     </div>
                 </div>
             </div>

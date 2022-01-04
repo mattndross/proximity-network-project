@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import UploadService from "../services/FileUploadServices";
-
+import './FileUpload.css'
 const FilesUpload = ({ setImage }) => {
     const [selectedFiles, setSelectedFiles] = useState(undefined);
     const [progressInfos, setProgressInfos] = useState({ val: [] });
@@ -89,15 +89,15 @@ const FilesUpload = ({ setImage }) => {
                 ))}
 
             <div className="row my-3">
-                <div className="col-8">
-                    <label className="btn btn-default p-0">
-                        <input type="file" name="image" multiple onChange={selectFiles} />
+                <div className="col-12 col-lg-8" id="updateImagen">
+                    <label className="btn btn-default p-0 label-update-imagen">
+                        <input type="file" className="input-update-imagen" name="image" style={{ width: "100%" }} multiple onChange={selectFiles} />
                     </label>
                 </div>
 
-                <div className="col-4">
+                <div className="col-12 col-lg-4">
                     <button
-                        className="btn btn-success btn-sm"
+                        className="btn btn-success btn-sm btn-update-imagen"
                         type="button"
                         disabled={!selectedFiles}
                         onClick={uploadFiles}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import UploadService from "../../services/FileUploadServices";
+import './FilesUploadProduct.css'
 
 const FilesUpload = ({ setImage }) => {
     const [selectedFiles, setSelectedFiles] = useState(undefined);
@@ -89,15 +90,15 @@ const FilesUpload = ({ setImage }) => {
                 ))}
 
             <div className="row my-3">
-                <div className="col-8">
-                    <label className="btn btn-default p-0">
-                        <input type="file" name="image" multiple onChange={selectFiles} />
+                <div className="col-12">
+                    <label className="btn btn-default p-0 label-modal-product">
+                        <input className="input-modal-product" type="file" name="image" multiple onChange={selectFiles} />
                     </label>
                 </div>
 
-                <div className="col-4">
+                <div className="col-12 ">
                     <button
-                        className="btn btn-success btn-sm"
+                        className="btn btn-success btn-sm btn-new-product"
                         type="button"
                         disabled={!selectedFiles}
                         onClick={uploadFiles}

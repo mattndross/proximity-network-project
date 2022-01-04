@@ -1,0 +1,34 @@
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    pointer-events: inherit;
+}
+.input-update-imagen{
+    cursor:pointer;
+}
+
+.btn-update-imagen{
+    width:100%;
+    margin-top:10px;
+    cursor:pointer;
+}
+.btn-update-imagen:hover{
+    background-color: #116940;
+}
+.label-update-imagen{
+    width: 100%;
+}
+
+
+@media(min-width:992px){
+   
+ #updateImagen .input-update-imagen{
+        height: 40px;
+       
+    }
+    .btn-update-imagen{
+       margin-top: 0px;
+       height: 40px;
+    }
+    #updateImagen{
+        padding-right: 0px;
+    }
+}
