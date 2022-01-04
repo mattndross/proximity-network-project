@@ -4,7 +4,8 @@ const app = express();
 const bcrypt = require("bcrypt");
 app.use(express.json());
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://proximitynetwork-a9855.firebaseapp.com"],
+
 };
 app.use(cors(corsOptions));
 
