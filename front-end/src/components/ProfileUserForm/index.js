@@ -10,7 +10,7 @@ import FilesUpload from '../FilesUpload';
 const ProfileUserForm = ({ profile, setAction, action }) => {
     const profileInfo = profile[0]
 
-
+    console.log("hola", profileInfo)
     const [image, setImage] = useState(null)
 
 
@@ -23,6 +23,8 @@ const ProfileUserForm = ({ profile, setAction, action }) => {
         postcode: Yup.string().required('Postal code is required'),
         city: Yup.string().required('City is required'),
         country: Yup.string().required('Country is required'),
+        latitude: Yup.string().required('Latitude is required'),
+        longitude: Yup.string().required('Longitude is required'),
         storeCategory: Yup.string().required('Store category is required'),
         storeWeb: Yup.string().matches(/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/, 'Enter correct url! EX: www.myWeb.com'),
         phoneNumber: Yup.number().min(9).required('Phone number required.. EX: 60122..'),
