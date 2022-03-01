@@ -2,6 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const bcrypt = require("bcrypt");
+const https = require("https")
+const fs = require("fs");
+const path = require("path");
+
 app.use(express.json());
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -13,7 +17,8 @@ const authController = require("./controllers/auth.controller");
 const publicController = require("./controllers/public.controller");
 const privilegeController = require("./controllers/privilege.controller");
 const filecontroller = require("./controllers/file.controller");
-const uploadImage = require("./controllers/uploadImage.controller")
+const uploadImage = require("./controllers/uploadImage.controller");
+const { fstat } = require("fs");
 global.__basedir = __dirname;
 
 
@@ -68,8 +73,12 @@ app.put("/products/images/upload/:productId", authController.veryfyJwt, uploadIm
 
 
 
+const sslServer = https.createServer({
+  key : fs.readFileSync(path.join(__dirname, "cert", "key.pem")),
+  cert: fs.readFileSync(path.join(__dirname, "cert", "cert.pem")),
+}, app)
 
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`proximity network is running in port ${PORT}`));
+sslServer.listen(PORT, () => console.log(`proximity network is running in port ${PORT}`));
 
